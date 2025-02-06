@@ -1,11 +1,11 @@
 import React from 'react';
-import MainVisual from "../../../components/MainVisual"
-import MainSchedule from "../../../components/MainSchedule"
-import MainPopup from "../../../components/MainPopup"
-import MainNotice from "../../../components/MainNotice"
-import MainMeal from "../../../components/MainMeal"
-import MainLink01 from "../../../components/MainLink01"
-import MainGallery from "../../../components/MainGallery"
+import MainVisual from "../../../../components/template1/MainVisual"
+import MainSchedule from "../../../../components/template1/MainSchedule"
+import MainPopup from "../../../../components/template1/MainPopup"
+import MainNotice from "../../../../components/template1/MainNotice"
+import MainMeal from "../../../../components/template1/MainMeal"
+import MainLink01 from "../../../../components/template1/MainLink01"
+import MainGallery from "../../../../components/template1/MainGallery"
 
 
 function App() {

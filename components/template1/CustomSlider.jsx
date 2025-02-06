@@ -89,8 +89,8 @@ const CustomSlider = ({ className, items, controlButtonsOrder, sliderName }) => 
         <Fragment>
             <Slider ref={slider => (sliderRef = slider)} {...settings}>
                 {items.map((item) => (
-                    <div className="item" key={item.id}>
-                        <img src={item.src} alt={item.alt} />
+                    <div className="item">
+                        <img key={item.id} src={item.src} alt={item.alt} />
                     </div>
                 ))}
             </Slider>

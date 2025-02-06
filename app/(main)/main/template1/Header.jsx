@@ -1,8 +1,8 @@
 "use client"
 
 import React, { useState, useEffect, Fragment } from 'react';
-import '../../../styles/global.css';
-import '../../../styles/Layout.css';
+import '../../../../styles/global.css';
+import '../../../../styles/template1/Layout.css';
 
 
 const Header = () => {
@@ -352,7 +352,7 @@ const Header = () => {
     return (
         <header id="header">
             <div className="top container">
-                <HeaderTitle url={'/'} src={'./images/template/T0030/main/logo.png'} schoolName={'학교명'} />
+                <HeaderTitle url={'/'} src={'./../images/template/T0030/main/logo.png'} schoolName={'학교명'} />
                 <Search />
                 <Util />
             </div>

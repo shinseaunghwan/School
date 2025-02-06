@@ -7,7 +7,7 @@ import IconBtnMore from "./IconBtnMore"
 
 export default function MainGallery() {
   const Items = [
-    { url: './images/template/T0030/main/0030_thumb01.png', src: './images/template/T0030/main/0030_thumb01.png', text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", date: "05. 24", open: true, id: 1 }
+    { url: './../images/template/T0030/main/0030_thumb01.png', src: './../images/template/T0030/main/0030_thumb01.png', text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", date: "05. 24", open: true, id: 1 }
   ];
 
   const NoData = () => {
