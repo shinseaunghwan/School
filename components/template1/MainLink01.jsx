@@ -6,9 +6,9 @@ import Title from "./Title"
 export default function MainLink01() {
   const Items = [
     { url: './../images/template/T0030/main/0030_link01_01.png', src: './../images/template/T0030/main/0030_link01_01.png', name: "교육목표", id: 1 },
-    { url: './../images/template/T0030/main/0030_link01_01.png', src: './../images/template/T0030/main/0030_link01_02.png', name: "학교알리미", id: 2 },
-    { url: './../images/template/T0030/main/0030_link01_01.png', src: './../images/template/T0030/main/0030_link01_03.png', name: "방과후학교", id: 3 },
-    { url: './../images/template/T0030/main/0030_link01_01.png', src: './../images/template/T0030/main/0030_link01_04.png', name: "학생소통방", id: 4 }
+    { url: './../images/template/T0030/main/0030_link01_02.png', src: './../images/template/T0030/main/0030_link01_02.png', name: "학교알리미", id: 2 },
+    { url: './../images/template/T0030/main/0030_link01_03.png', src: './../images/template/T0030/main/0030_link01_03.png', name: "방과후학교", id: 3 },
+    { url: './../images/template/T0030/main/0030_link01_04.png', src: './../images/template/T0030/main/0030_link01_04.png', name: "학생소통방", id: 4 }
   ];
 
   return (

@@ -1,10 +1,12 @@
-#root {position: relative; overflow: hidden;}
+.root {position: relative; overflow: hidden;}
 /* #root * {scrollbar-arrow-color: #ddd; scrollbar-Track-Color: #ddd; scrollbar-base-color: #aaa; scrollbar-Face-Color: #aaa; scrollbar-3dLight-Color: #aaa; scrollbar-DarkShadow-Color: #aaa; scrollbar-Highlight-Color: #aaa; scrollbar-Shadow-Color: #aaa;} */
-#root ::-webkit-scrollbar {width: 5px; height: 5px;}
-#root ::-webkit-scrollbar-thumb {background-color: #aaa; border-radius: 5px;}
-#root ::-webkit-scrollbar-track {background-color: #ddd; border-radius: 5px;}
+.root ::-webkit-scrollbar {width: 5px; height: 5px;}
+.root ::-webkit-scrollbar-thumb {background-color: #aaa; border-radius: 5px;}
+.root ::-webkit-scrollbar-track {background-color: #ddd; border-radius: 5px;}
 
-.container {position: relative; margin: 0 auto; width: 100%; max-width: 70rem;}
+/*.container {position: relative; margin: 0 auto; width: 100%; max-width: 60rem;} 템플릿1 */
+.container {position: relative; margin: 0 auto; width: 100%; max-width: 70rem;}/* 템플릿1 */
+
 .container:after {clear: both; display: block; content: "";}
 
 /* slick slide common */
@@ -21,7 +23,7 @@
 .arwShow .slick-arrow.slick-hidden {display: inline-block;}
 
 /* 레이어팝업 */
-.lyrPopup {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url("../../public/images/up_pop/pattern.png"); z-index: 999;}
+.lyrPopup {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url("../public/images/up_pop/pattern.png"); z-index: 999;}
 .lyrWrap {position: absolute; top: 50%; padding: 0 1rem; width: 100%; text-align: center; transform: translateY(-50%);}
 .lyrWrap .inner {display: inline-block; width: 100%; max-width: 50rem; background: #fff; border-radius: 2rem; overflow: hidden;}
 .lyrWrap .inner h3 {padding: 1rem; text-align: center; font-size: 0.95rem; color: #fff; background: #474d5d;}
@@ -375,7 +377,7 @@
 
 /* 서브메뉴 */
 /* 세로형 : typeVert */
-.typeVert #snb h2 {display: flex; align-items: center; justify-content: center; padding-bottom: 1rem; width: 100%; height: 6.25rem; line-height: 1.3; font-size: 1.3rem; font-weight: 700; color: #fff; background: #124da7 url("../../public/images/con_com/bg_snb_h2.png") no-repeat top center; border-radius: 1rem 1rem 0 0;}
+.typeVert #snb h2 {display: flex; align-items: center; justify-content: center; padding-bottom: 1rem; width: 100%; height: 6.25rem; line-height: 1.3; font-size: 1.3rem; font-weight: 700; color: #fff; background: #124da7 url("../public/images/con_com/bg_snb_h2.png") no-repeat top center; border-radius: 1rem 1rem 0 0;}
 .typeVert #snb h2 span {position: relative; display: block; padding-top: 0.75rem;}
 .typeVert #snb h2 span:after {position: absolute; top: -0.5rem; left: 0; width: 100%; text-align: center; font-family: 'xeicon'; content: "\e94a";}
 .typeVert #snb .home {display: none;}
@@ -906,5 +908,5 @@
 	  .typeHori #snb .dep03 > li > a:before {background: var(--text-color);}
   }
   
-.menuTypeWrap {position: absolute; top: 7rem; right: -7rem; width: 5rem; z-index: 999;}
+.menuTypeWrap {position: absolute; top: 0rem; right: -7rem; width: 5rem; z-index: 999;}
 .menuTypeWrap button {margin: 0.15rem 0;}

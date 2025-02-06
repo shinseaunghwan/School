@@ -10,7 +10,7 @@ export default function MainMeal() {
 
   return (
     <div className="meal_menu0030">
-      <Title>오늘의 식단</Title>
+      <Title className="heading">오늘의 식단</Title>
       <div className="inner">
         <ul>
           {Items.map((item) => (

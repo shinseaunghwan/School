@@ -7,7 +7,6 @@ import MainMeal from "../../../../components/template1/MainMeal"
 import MainLink01 from "../../../../components/template1/MainLink01"
 import MainGallery from "../../../../components/template1/MainGallery"
 
-
 function App() {
   return (
     <div id='container'>

@@ -23,7 +23,8 @@ export default function MainPage () {
       alt="인트로"
       />
       </div>
-    <div className="button"><Link href="/main/template1">메인 페이지</Link></div>
+    <div className="button"><Link href="/main/template1">템플릿 페이지 1</Link></div>
+    <div className="button"><Link href="/main/template2">템플릿 페이지 2</Link></div>
     </div>
 </div>
     );

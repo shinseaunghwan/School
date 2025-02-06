@@ -1,8 +1,10 @@
-body {position:relative;background: #d9effb url('../public/images/intro/pt_bg.png') repeat}
+.wrap {position:relative;background: #d9effb url('../public/images/intro/pt_bg.png') repeat; height: 100vh;}
 .intro_page {position:relative;width:95%;margin:0 auto;padding-top: 30px;text-align:center;font-family:'SCDream';}
 .intro_page .img {z-index:1; margin: 0 auto; max-width: 800px;}
 .intro_page .img img {max-width:100%;}
-.intro_page .button {display: inline-block; font-family:'NotoM';  padding:.5rem 2rem; background-color: #fff; color: #111; border-radius: 10px; font-weight: 700;}
+.intro_page .button {display: inline-block; padding:.5rem 2rem; background-color: #fff; border-radius: 10px; }
+.intro_page .button a {font-family:'SCDream'; font-weight: 700; color: #111; font-size: 1rem;}
+.intro_page .button + .button {margin-left: 1rem;}
 
 /* 타이틀 */
 .tit {max-width: 1000px; margin: 0 auto;}

@@ -4,9 +4,7 @@ import "../font/Pretendard/fonts.css";
 import "../font/Montserrat/fonts.css";
 import "../font/XEIcon-2.3.3/xeicon.css";
 import '../styles/global.css';
-import '../styles/template1/Layout.css';
-import '../styles/template1/main.css';
-
+import '../styles/Layout.css';
 
 export const metadata: Metadata = {
   title: {

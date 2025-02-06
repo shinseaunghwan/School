@@ -1,7 +1,7 @@
 /* 메인 컨테이너 */
 #container { position:relative; z-index:2; width:100%;}
 .MC_wrap1 {background:var(--main-bg-color);}
-.MC_wrap1 > .container {display:flex; flex-wrap:wrap; height:890px;}
+.MC_wrap1 > .container {display:flex; flex-wrap:wrap; height:890px; max-width: 70rem;}
 .MC_wrap1 .container > .con_wrap1 {flex:1 1 calc(100% - 410px); width:100%; height:100%; overflow:hidden; position:relative; display:flex; flex-wrap:wrap;}
 .MC_wrap1 .container > .con_wrap2 {flex:1 1 410px; width:100%; height:100%; position:relative; overflow:hidden; display:flex; flex-wrap:wrap;}
 .MC_wrap1 .container .con_wrap1 .con_content {width: 100%; height:100%; display:flex; flex-wrap:wrap; gap:0;}
@@ -20,6 +20,7 @@
 .btn_more:focus {transform: rotate(180deg); }
 .btn_more,
 .btn_more i{transition: all 0.2s; }
+.btn_more i {font-size: 1.2rem;height: 1.2rem;left: 50%;position: relative;top: 50%;transform: translate(-50%, -50%);width: 1.2rem;}
 h2 {font-size: 1.1rem; font-weight: 700; overflow: hidden; white-space: nowrap; }
 h2.heading {position:relative; height:3rem; display:flex; align-items:center; font-size: 1.12rem; font-weight: 700; color: #222;}
 h2.heading span {display:inline-block; position:relative; font-size: 1.1rem; font-weight: 700;}
