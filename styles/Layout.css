@@ -296,48 +296,18 @@
 
 .openPop .quickMenu {margin-top: -9.5rem;}
 
-/* footer */
-#footer {position: relative; font-size: 0.75rem; font-weight: 400; background: #fff;}
-#footer .footer_link {position: relative; padding-right: 12rem; height: 2.5rem; line-height: 2.5rem; font-size: 0.8rem;}
-#footer .footer_link:before {position: absolute; top: 0; left: -200%; width: 500%; height: 100%; background: #f1f1f1; content: "";}
-#footer .footer_link > ul {margin: 0 -1rem; overflow: hidden; padding: 0.5rem 0;}
-#footer .footer_link > ul > li {position: relative; float: left; padding: 0 1rem;}
-#footer .footer_link > ul > li + li:before {position: absolute; top: calc(50% - 0.35rem); left: 0; width: 1px; height: 0.7rem; background: #bdbfc4; content: "";}
-#footer .footer_link > ul > li a {display: block; line-height:1.5rem; color: #333;}
-#footer .footer_link > ul > li a:hover,
-#footer .footer_link > ul > li a:focus {text-decoration: underline;}
-#footer .footer_link > ul > li a strong {font-weight: 700; color: #124ea8;}
-#footer .f_info {padding: 2rem 0; font-weight: 200; color: #666;}
-#footer address {margin-bottom: 0.25rem; font-weight: 400; color: #333;}
-#footer address span {display: inline-block; margin-right: 1rem;}
-#footer address span:before {position: absolute; top: 0; right: 0; width: 1rem; content: "/";}
-#footer .copyright {margin-top: 0.5rem; color: #666;}
-#footer .wa_mark {position: absolute; top: -1rem; right: 0; max-width: 5.25rem;}
-#footer .wa_mark img {display: block;}
-/* 방문자수 */
-#footer .visitant {position: absolute; top: 0; right: 0; display: block; padding: 0 1rem; width: 12rem; height: 2.5rem; font-size: 0.8rem; font-weight: 400; color: #111; background: #dfdfdf; overflow: hidden;}
-#footer .visitant i {float: right; display: inline-block; margin-top: 0.5rem; width: 1.5rem; height: 1.5rem; line-height: 1.5rem; text-align: center; background: #fff; border-radius: 50%;}
-/* 사이트링크 */
-#footer .footBtnWrap {position: relative; display: flex;}
-#footer .footBtnWrap:after {display: block; clear: both; content: "";}
-#footer .footBtn {position: relative; flex: 1;}
-#footer .footBtn + .footBtn {border-left: 1px solid #fff;}
-#footer .footBtn button {position: relative; display: flex; align-items: center; justify-content: flex-start; padding: 0 2.5rem 0 1.5rem; width: 100%; height: 2.5rem; text-align: left; font-size: 0.8rem; color: #fff; background: #35363a;}
-#footer .footBtn button:before {position: absolute; top: 50%; right: 1.5rem; font-family: "xeicon"; content: "\e944";  transform: translateY(-50%);}
-#footer .footBtn div {position: absolute; bottom: 2.5rem; left: 0; display: none; width: calc(100% + 1px); max-height: 12rem; overflow-y: auto; border: 1px solid #728197; border-bottom: 0; z-index: 10000;}
-#footer .footBtn ul li {font-size: 0.7rem; font-weight: 400; border-top: 1px solid #5d6a77;}
-#footer .footBtn ul li strong {display: block; padding: 0.35rem 0.5rem; color: #fff799; background: #343b42; opacity: 1;}
-#footer .footBtn ul li:first-child {border: 0;}
-#footer .footBtn ul li ul {border-top: 1px solid #5d6a77;}
-#footer .footBtn ul li a {display: block; padding: 0.35rem 0.5rem; color: #d4dde7; background: #343b42; opacity: 0.9; overflow: hidden;}
-/* 사이트링크  :action */
-#footer .footBtn ul li a:hover,
-#footer .footBtn ul li a:focus,
-#footer .footBtn ul li a:active {color: #fff; opacity: 1;}
-#footer .footBtn.on button {background: #00a7eb;}
-#footer .footBtn.on button:before {  transform: translateY(-50%) rotate(180deg);}
-#footer .footBtn button,
-#footer .footBtn button:before { transition: all 0.3s ease;}
+/* 리엑트캘린더 */
+.react-calendar {width: 100%; max-width: calc(100% - 1rem); background: transparent; border: none;}
+.react-calendar__month-view__weekdays__weekday,
+.react-calendar__tile {color: #fff;}
+.react-calendar__tile.event {position:relative;}
+.react-calendar__tile.event:before {content:''; position:absolute; width:4px; height:4px; border-radius:50%; background:#fd7727; bottom:0.15rem; left:calc(50% - 2px);}
+.react-calendar__tile--active {color: #fff; background: transparent;}
+.react-calendar__tile--now {color: #fff; background: #7536bb !important; border-radius:50%;}
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {text-decoration: underline;}
+.react-calendar__tile:not(.react-calendar__tile--now):enabled:hover,
+.react-calendar__tile:not(.react-calendar__tile--now):enabled:focus {background-color: transparent;}
 
 /* 탑버튼 */
 .btn_top {position: absolute; right: 0; bottom: 2rem; z-index: 998; transition: all 0.6s ease;}
@@ -554,7 +524,7 @@
 	.container {padding: 0 1rem;}
 
 	/* 사이트링크 */
-	#footer .footBtnWrap {flex-wrap: wrap; margin-left: -1rem; width: calc(100% + 2rem);}
+	
 }
 
 @media screen and (max-width: 1280px){   
@@ -635,20 +605,20 @@
 	.popFullmenu .depth03 > ul > li.active > a {border: none;}
 
 	/* footer */
-	#footer .f_info {padding: 1.5rem 0;}
-	#footer .footer_link {padding: 0; height: auto;}
-	#footer .footer_link > ul {margin: 0 -0.5rem;}
-	#footer .footer_link > ul > li {padding: 0 0.5rem; width: auto; text-align: center;}
-	#footer .footer_link > ul > li + li:before {display: none;}
+	
+	
+	
+	
+	
 	/* 사이트링크 */
-	#footer .footBtn + .footBtn {border-left: none;}
-	#footer .footBtn:nth-of-type(2n) {border-left: 1px solid #fff;}
-	#footer .footBtn:nth-of-type(n+3) {border-top: 1px solid #fff;}
-	#footer .footBtn {flex: inherit; width: 50%;}
-	#footer .footBtn button {padding-left: 1rem; padding-right: 1.75rem;}
-	#footer .footBtn button:before {right: 1rem;}
+	
+	
+	
+	
+	
+	
 	/* 방문자수 */
-	#footer .visitant {position: relative; top: auto; right: auto; margin: 0 -1rem; width: calc(100% + 2rem); line-height: 2.5rem;}
+	
 
 	/* 탑버튼 */
 	.btn_top {bottom: 1.5rem;}
@@ -735,8 +705,8 @@
 
 @media (max-width: 380px) {
 	/* 사이트링크 */
-	#footer .footBtn {width: 100%;}
-	#footer .footBtn + .footBtn {border-top: 1px solid #fff; border-left: none;}
+	
+	
 }
 
 :root {
@@ -831,11 +801,11 @@
   
   /* footer */
   
-  #footer {background: var(--footer-bg);}
-  #footer address,
-  #footer .f_info {color: var(--text-color);}
-  #footer .copyright {color: var(--copy-color);}
-  #footer .footer_link > ul > li a strong {color:var(--footer-color);}
+  
+  
+  
+  
+  
   
   
   

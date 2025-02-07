@@ -61,6 +61,10 @@
 .footer .footBtn button,
 .footer .footBtn button:before { transition: all 0.3s ease;}
 
+/* NOTICE POPUP */
+.btn_popup {position: fixed; right: 2rem; bottom: 2rem; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 4rem; height: 4rem; font-size: 0.7rem; color: #fff; background: #124da7; border-radius: 50%; z-index: 10; transition: all 0.6s ease;}
+.btn_popup:before {position: absolute; top: -0.75rem; left: 50%; width: 1.5rem; height: 1.5rem; line-height: 1.5rem; text-align: center; font-family: 'xeicon'; font-size: 1.2rem; color: #fff; background: #00245a; border-radius: 50%; transform: translateX(-50%); content: "\e914";}
+
 /* 탑버튼 */
 .btn_top {position: absolute; right: 0; bottom: 2rem; z-index: 998; transition: all 0.6s ease; width: 50px; height: 50px;}
 .btn_top i {position: relative; width: 2.5rem; height: 2.5rem; line-height: 2.5rem; text-align: center; font-size: 1.2rem; color: #464d5d; background: #fff; border-radius: 50%;}
@@ -140,7 +144,7 @@
   .footer {background: #2e3548;}
   .footer address,
   .footer .f_info {color: #fff;}
-  .footer .copyright {color: var(--copy-color);}
+  .footer .copyright {color: #c4c4c4;}
   .footer .footer_link > ul > li a strong {color:#8852C2;}
   
   /* NOTICE POPUP */
