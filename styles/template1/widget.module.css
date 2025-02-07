@@ -1,18 +1,3 @@
-/* 메인 컨테이너 */
-#container { position:relative; z-index:2; width:100%;}
-.MC_wrap1 {background:var(--main-bg-color);}
-.MC_wrap1 > .container {display:flex; flex-wrap:wrap; height:890px; max-width: 70rem;}
-.MC_wrap1 .container > .con_wrap1 {flex:1 1 calc(100% - 410px); width:100%; height:100%; overflow:hidden; position:relative; display:flex; flex-wrap:wrap;}
-.MC_wrap1 .container > .con_wrap2 {flex:1 1 410px; width:100%; height:100%; position:relative; overflow:hidden; display:flex; flex-wrap:wrap;}
-.MC_wrap1 .container .con_wrap1 .con_content {width: 100%; height:100%; display:flex; flex-wrap:wrap; gap:0;}
-.MC_wrap1 .container .con_wrap1 .con_content > div {display:inline-block; flex:1 1; overflow:hidden; position:relative;}
-.MC_wrap1 .container .con_wrap1 .con_content > div:nth-child(1) {flex-basis: calc(100% - 17rem); max-height: 30rem;}
-.MC_wrap1 .container .con_wrap1 .con_content > div:nth-child(2) {flex-basis: 17rem; background:#f2f3f8;}
-.MC_wrap1 .container .con_wrap1 .con_content > div:nth-child(3) {flex-basis: calc(100% - 17rem); background:#fff;}
-.MC_wrap1 .container .con_wrap1 .con_content > div:nth-child(4) {flex-basis: 17rem;}
-.MC_box5, .MC_box6, .MC_box7  {width:100%; background:#fff;}
-.MC_box6 {border-top:1px solid #e6e6e6;}
-
 /* 공통 */
 .btn_more {position: absolute; right: 0; color: #000; width:2rem; height:2rem;}
 .btn_more:before {content:''; position:absolute; background:#f1f3f8; border-radius:50%; width:100%; height:100%;}
@@ -21,12 +6,12 @@
 .btn_more,
 .btn_more i{transition: all 0.2s; }
 .btn_more i {font-size: 1.2rem;height: 1.2rem;left: 50%;position: relative;top: 50%;transform: translate(-50%, -50%);width: 1.2rem;}
-h2 {font-size: 1.1rem; font-weight: 700; overflow: hidden; white-space: nowrap; }
 h2.heading {position:relative; height:3rem; display:flex; align-items:center; font-size: 1.12rem; font-weight: 700; color: #222;}
+h2.heading2 {font-size: 1.1rem; font-weight: 700; overflow: hidden; white-space: nowrap; }
 h2.heading span {display:inline-block; position:relative; font-size: 1.1rem; font-weight: 700;}
 h2.heading span:before {content:''; position:absolute; top:-14px; height:2px; width:100%; background:#a277cc; left:0;}
 .tit_Wrap {width: 100%; height: 3rem; background:#fff; padding:0 1.2rem;}
-
+.hid {position: absolute; margin: -1px; padding: 0; width: 1px; height: 1px; border: 0; clip: rect(0, 0, 0, 0); overflow: hidden;}
 /* 메인비주얼 */
 .MVisual0030 { position: relative; height: 100%; overflow:hidden;}
 .MVisual0030 .slider{ position:relative; z-index: 0;}
@@ -95,7 +80,7 @@ h2.heading span:before {content:''; position:absolute; top:-14px; height:2px; wi
 .notice0030 .list_box li a span {position:relative; display:flex; justify-content: space-between; align-items: center; font-size: 0.7rem; color: #444;}
 .notice0030 .list_box li a span:before {content:""; position:absolute; left: 4.3rem; top:50%; width:0; height: 1rem; border-top:1px solid #bdcfe5;}
 .notice0030 .list_box li a span i {width: 1.1rem; height: 1.1rem; color: #fff; background: #1246ae; border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0;}
-.notice0030 .list_box li.no_data {display:flex; width: 100%; height:100%; justify-content: center; align-items: center; font-size: 0.9rem; border-radius:1rem; border:1px solid #ddd;}
+.notice0030 .list_box li.no_data {display:flex; width: 100%; height:90%; justify-content: center; align-items: center; font-size: 0.9rem; border-radius:1rem; border:1px solid #ddd;}
 .notice0030 a,
 .notice0030 :before,
 .notice0030 .list_box li a span i,
@@ -120,7 +105,7 @@ h2.heading span:before {content:''; position:absolute; top:-14px; height:2px; wi
 /* 행사일정 */
 .pop_schedule0030 {position:relative; height:16rem; background: linear-gradient(to bottom right, #a77ece, #7334ba); display:flex; flex-direction: column;}
 .pop_schedule0030:after {clear: both; display: block; content: "";}
-.pop_schedule0030 .sche_frame {width:100%; display: flex; align-items:flex-start; justify-content: center; margin:1rem 0; height: 10.5rem;}
+.pop_schedule0030 .sche_frame {width:100%; display: flex; align-items:flex-start; justify-content: center; margin:1rem 0; height: 10.5rem; overflow: hidden;}
 .pop_schedule0030 .tit_wrap {flex: 1 1 33%; flex-shrink: 0; color: #fff;}
 .pop_schedule0030 .tit_wrap .date {height:100%; display: flex; padding: 0 1rem; text-align: center; align-items:center; justify-content:center; flex-direction:column;}
 .pop_schedule0030 .tit_wrap .date span {font-size: 1.1rem; font-weight: 500; line-height: 1.8rem;}
@@ -135,18 +120,6 @@ h2.heading span:before {content:''; position:absolute; top:-14px; height:2px; wi
 .pop_schedule0030 .btn_more i {color:#7334ba;}
 .pop_schedule0030 .sche_wrap {width: 100%;}
 
-.pop_schedule0030 .react-calendar {width: 100%; max-width: calc(100% - 1rem); background: transparent; border: none;}
-.pop_schedule0030 .react-calendar__month-view__weekdays__weekday,
-.pop_schedule0030 .react-calendar__tile {color: #fff;}
-.pop_schedule0030 .react-calendar__tile.event {position:relative;}
-.pop_schedule0030 .react-calendar__tile.event:before {content:''; position:absolute; width:4px; height:4px; border-radius:50%; background:#fd7727; bottom:0.15rem; left:calc(50% - 2px);}
-.pop_schedule0030 .react-calendar__tile--active {color: #fff; background: transparent;}
-.pop_schedule0030 .react-calendar__tile--now {color: #fff; background: #7536bb !important; border-radius:50%;}
-/** 행사일정 : active **/
-.pop_schedule0030 .react-calendar__tile:enabled:hover,
-.pop_schedule0030 .react-calendar__tile:enabled:focus {text-decoration: underline;}
-.pop_schedule0030 .react-calendar__tile:not(.react-calendar__tile--now):enabled:hover,
-.pop_schedule0030 .react-calendar__tile:not(.react-calendar__tile--now):enabled:focus {background-color: transparent;}
 
 .pop_schedule0030 .lst {position:relative; border-top:1px solid #9a6dcc; height: 100%; overflow-y: auto; padding:0 1.5rem; height: 3.5rem;}
 .pop_schedule0030 .lst li {display: flex; align-items: flex-start; width: 100%; height: 100%; flex-direction:column;}
@@ -239,27 +212,8 @@ h2.heading span:before {content:''; position:absolute; top:-14px; height:2px; wi
 .no_mber .prvt .ico{ min-width:0px; min-height:0px;}
 .no_mber .prvt > p{ font-size:0.75rem; margin:0.5rem 0; font-weight:400;}
 
-/* 배너존 */
-.banner_zone {line-height: 1; background: #fff; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;}
-.banner_zone .container {position: relative; height: 4rem; overflow: hidden;}
-.banner_zone .btn {float: left; margin-top: 1.1rem; overflow: hidden;}
-.banner_zone .btn a {float: left; margin-right: 0.25rem; width: 1.8rem; height: 1.8rem; line-height: 1.8rem; text-align: center; font-size: 1.1rem; color: #000; background: #f6f6f6; border-radius: 50%; overflow: hidden;}
-.banner_zone .btn a.play {display: none;}
-.banner_zone .bnWrap {float: left; padding-top: 0.75rem; padding-left: 1.5rem; width: calc(100% - 8.25rem); overflow: hidden;}
-.banner_zone .bnWrap a {display: block; height: 2.5rem; line-height: 2.3rem; text-align: center; margin:0 5px; border: 1px solid #c8d1db; overflow: hidden;}
-.banner_zone .bnWrap a img {max-width: 100%; max-height: 100%; vertical-align: middle;}
-/* 배너존 : active */
-.banner_zone .btn a:hover,
-.banner_zone .btn a:focus {background: #f1f1f1;}
 
 @media (max-width:1440px) {
-	.MC_wrap1 > .container {height:auto;}
-	.MC_wrap1 .container > .con_wrap1 {flex:1 1 100%;}
-	.MC_wrap1 .container > .con_wrap2 {flex:1 1 100%; margin-top:1rem;}
-	.MC_box5 {margin-bottom:1.5rem;}
-	.MC_box6 {float:left; width:40%;}
-	.MC_box7 {float:right; width:60%;}	
-
 	.pop_schedule0030 {height:100%;}
 	.pop_schedule0030 .sche_wrap .sche_list ul {width:100%;}
 	.pop_schedule0030 .sche_wrap .sche_list ul li {width:calc(100% / 7);}
@@ -304,10 +258,10 @@ h2.heading span:before {content:''; position:absolute; top:-14px; height:2px; wi
 }
 
 @media (max-width: 860px) {
-	/* 배너존 */
-	.banner_zone .btn {margin-top: 1.3rem;}
-	.banner_zone .btn a {width: 1.5rem; height: 1.5rem; line-height: 1.5rem; font-size: 1rem;}
-	.banner_zone .bnWrap {padding-left: 0.5rem; width: calc(100% - 7rem);}
+	
+	
+	
+	
 }
 
 @media (max-width: 768px) {
@@ -316,15 +270,6 @@ h2.heading span:before {content:''; position:absolute; top:-14px; height:2px; wi
 }
 
 @media (max-width: 720px) {
-	.container {padding:0px;}
-	.MC_wrap1 .container .con_wrap1 .con_content > div:nth-child(1) {flex-basis:100%;}
-	.MC_wrap1 .container .con_wrap1 .con_content > div:nth-child(2) {flex-basis:100%;}
-	.MC_wrap1 .container .con_wrap1 .con_content > div:nth-child(3) {flex-basis:100%;}
-	.MC_wrap1 .container .con_wrap1 .con_content > div:nth-child(4) {flex-basis:100%; margin-top:1rem;}
-	.MC_box5 {margin-bottom:0;}
-	.MC_box6, 
-	.MC_box7 {float:none; width:100%;}
-
 	/* 행사일정 */
 	.pop_schedule0030 .tit_frame { width: 100%; }
 	.pop_schedule0030 .sche_wrap { width: 100%; }

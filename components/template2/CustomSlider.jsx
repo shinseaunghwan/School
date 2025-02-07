@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, Fragment } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import widget from "../../styles/template2/T0002_widget.module.css"
 
 const CustomSlider = ({ className, items, controlButtonsOrder, sliderName }) => {
 
@@ -52,13 +53,13 @@ const CustomSlider = ({ className, items, controlButtonsOrder, sliderName }) => 
 
     const ControlButton = ({ className, onClick, iconClass, text }) => (
         <button className={className} onClick={onClick}>
-            <span className="hid">{text}</span>
+            <span className={widget.hid}>{text}</span>
             <i className={iconClass} aria-hidden="true"></i>
         </button>
     );
 
     const SlideCounter = ({ currentSlide, totalSlides }) => (
-        <p className="page">
+        <p className={widget.page}>
             <strong>{currentSlide + 1}</strong>
             <span>{totalSlides}</span>
         </p>
@@ -71,14 +72,14 @@ const CustomSlider = ({ className, items, controlButtonsOrder, sliderName }) => 
                     return <SlideCounter currentSlide={currentSlide} totalSlides={totalSlides} />;
                 case 'play':
                     return isPlaying ? (
-                        <ControlButton className="stop" onClick={togglePlay} iconClass="xi-pause" text={sliderName + "정지"} />
+                        <ControlButton className={widget.stop} onClick={togglePlay} iconClass="xi-pause" text={sliderName + "정지"} />
                     ) : (
-                        <ControlButton className="play" onClick={togglePlay} iconClass="xi-play" text={sliderName + "재생"} />
+                        <ControlButton className={widget.play} onClick={togglePlay} iconClass="xi-play" text={sliderName + "재생"} />
                     );
                 case 'prev':
-                    return <ControlButton className="prev" onClick={prev} iconClass="xi-angle-left" text={sliderName + " 이전"} />;
+                    return <ControlButton className={widget.prev} onClick={prev} iconClass="xi-angle-left" text={sliderName + " 이전"} />;
                 case 'next':
-                    return <ControlButton className="next" onClick={next} iconClass="xi-angle-right" text={sliderName + " 다음"} />;
+                    return <ControlButton className={widget.next} onClick={next} iconClass="xi-angle-right" text={sliderName + " 다음"} />;
                 default:
                     return null;
             }
@@ -89,12 +90,12 @@ const CustomSlider = ({ className, items, controlButtonsOrder, sliderName }) => 
         <Fragment>
             <Slider ref={slider => (sliderRef = slider)} {...settings}>
                 {items.map((item) => (
-                    <div className="item">
-                        <img key={item.value} src={item.src} alt={item.alt} />
+                    <div className={widget.item} key={item.id}>
+                        <img src={item.src} alt={item.alt} />
                     </div>
                 ))}
             </Slider>
-            <div className="control">
+            <div className={widget.control}>
                 {renderControlButtons()}
             </div>
         </Fragment>

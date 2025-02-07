@@ -1,11 +1,11 @@
 "use client"
+import Link from 'next/link';
 
 import React, { useState, useEffect, Fragment } from 'react';
 
-
 const Header = () => {
     const HeaderTitle = (props) => {
-        return <h1><a href={props.url}><img src={props.src} alt={props.schoolName} /></a></h1>
+        return <h1><Link href={props.url}><img src={props.src} alt={props.schoolName} /></Link></h1>
     }
 
     const [selectMenuType, setSelectMenuType] = useState('oneDown');

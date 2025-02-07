@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, Fragment } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import widget from "../../styles/template2/T0002_widget.module.css"
 const PopupSlider = ({ className, items, controlButtonsOrder, sliderName }) => {
 
     const [currentSlide, setCurrentSlide] = useState(0); // 현재 슬라이드 인덱스 상태
@@ -52,12 +52,12 @@ const PopupSlider = ({ className, items, controlButtonsOrder, sliderName }) => {
 
     const ControlButton = ({ className, onClick, iconClass, text }) => (
         <button className={className} onClick={onClick}>
-            <span className="hid">{text}</span>
+            <span className={widget.hid}>{text}</span>
             <i className={iconClass} aria-hidden="true"></i>
         </button>
     );
     const SlideCounter = ({ currentSlide, totalSlides }) => (
-        <p className="page">
+        <p className={widget.page}>
           <strong>{currentSlide + 1}</strong>
           <span>{totalSlides}</span>
         </p>
@@ -70,14 +70,14 @@ const PopupSlider = ({ className, items, controlButtonsOrder, sliderName }) => {
               return <SlideCounter key={buttonName} currentSlide={currentSlide} totalSlides={totalSlides} />;
             case 'play':
               return isPlaying ? (
-                <ControlButton key={buttonName} className="stop" onClick={togglePlay} iconClass="xi-pause" text={sliderName + "정지"} />
+                <ControlButton key={buttonName} className={widget.stop} onClick={togglePlay} iconClass="xi-pause" text={sliderName + "정지"} />
               ) : (
-                <ControlButton key={buttonName} className="play" onClick={togglePlay} iconClass="xi-play" text={sliderName + "재생"} />
+                <ControlButton key={buttonName} className={widget.play} onClick={togglePlay} iconClass="xi-play" text={sliderName + "재생"} />
               );
             case 'prev':
-              return <ControlButton key={buttonName} className="prev" onClick={prev} iconClass="xi-angle-left" text={sliderName + " 이전"} />;
+              return <ControlButton key={buttonName} className={widget.prev} onClick={prev} iconClass="xi-angle-left" text={sliderName + " 이전"} />;
             case 'next':
-              return <ControlButton key={buttonName} className="next" onClick={next} iconClass="xi-angle-right" text={sliderName + " 다음"} />;
+              return <ControlButton key={buttonName} className={widget.next} onClick={next} iconClass="xi-angle-right" text={sliderName + " 다음"} />;
             default:
               return null;
           }
@@ -86,7 +86,7 @@ const PopupSlider = ({ className, items, controlButtonsOrder, sliderName }) => {
         return (
           <>
             {controlButtons.find(button => button.key === 'pager')}
-            <div className='btn_box'>
+            <div className={widget.btn_box}>
               {controlButtons.filter(button => button.key !== 'pager')}
             </div>
           </>
@@ -96,13 +96,13 @@ const PopupSlider = ({ className, items, controlButtonsOrder, sliderName }) => {
 
     return (
         <Fragment>
-            <div className="control">
+            <div className={widget.control}>
                 {renderControlButtons()}
             </div>
-            <Slider className={'pop_img'} ref={slider => (sliderRef = slider)} {...settings}>
+            <Slider className={widget.pop_img} ref={slider => (sliderRef = slider)} {...settings}>
                 {items.map((item) => (
-                    <p className="item">
-                        <a href=''><img key={item.value} src={item.src} alt={item.alt} /></a>
+                    <p className={widget.item} key={item.id}>
+                        <a href=''><img src={item.src} alt={item.alt} /></a>
                     </p>
                 ))}
             </Slider>

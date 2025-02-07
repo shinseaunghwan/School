@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NoData from "./NoData"
 import IconBtnMore from "./IconBtnMore"
-
+import widget from "../../styles/template1/widget.module.css"
 
 export default function MainNotice() {
   const Tabs = [
@@ -12,77 +12,88 @@ export default function MainNotice() {
     { url: '#notice3', part: 'notice3', name: "자료실", id: 3 }
   ];
   const TabDatas = [
-    { part: 'notice1', url: './../images/template/T0030/main/0030_link01_01.png', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2024. 05. 24", id: 1 },
-    { part: 'notice1', url: './../images/template/T0030/main/0030_link01_01.png', text: '현장체험학습(야영교육) 대전 교육 연수원 설문 조사', date: "2024. 05. 22", id: 2 },
-    { part: 'notice1', url: './../images/template/T0030/main/0030_link01_01.png', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2024. 05. 24", id: 9 },
-    { part: 'notice1', url: './../images/template/T0030/main/0030_link01_01.png', text: '현장체험학습(야영교육) 대전 교육 연수원 설문 조사', date: "2024. 05. 22", id: 10 },
-    { part: 'notice1', url: './../images/template/T0030/main/0030_link01_01.png', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2024. 05. 24", id: 11 },
-    { part: 'notice1', url: './../images/template/T0030/main/0030_link01_01.png', text: '현장체험학습(야영교육) 대전 교육 연수원 설문 조사', date: "2024. 05. 22", id: 12 },
-    { part: 'notice1', url: './../images/template/T0030/main/0030_link01_01.png', text: '수업량 유연화 주간 \'융합 독서 토론\' 계획', date: "2024. 05. 17", id: 3 },
-    { part: 'notice1', url: './../images/template/T0030/main/0030_link01_01.png', text: '학교폭력 없는 안전한 학교 만들기 이벤트', date: "2024. 05. 15", id: 4 },
-    { part: 'notice3', url: './../images/template/T0030/main/0030_link01_01.png', text: '2024학년도 1,4학년 정서행동특성검사 실시 안내', date: "2024. 03. 20", id: 5 },
-    { part: 'notice3', url: './../images/template/T0030/main/0030_link01_01.png', text: '청소년 인터넷·스마트폰 이용습관 진단조사 안내', date: "2024. 03. 17", id: 6 },
-    { part: 'notice3', url: './../images/template/T0030/main/0030_link01_01.png', text: '학교급식 알레르기 유발식품 표시제 안내 및 식품알레르기 유병학생 조사', date: "2024. 03. 16", id: 7 },
-    { part: 'notice3', url: './../images/template/T0030/main/0030_link01_01.png', text: '상담실 이용 안내 및 개인정보 수집 및 이용에 관한 보호자 동의서', date: "2024. 03. 10", id: 8 }
+    { part: 'notice1', url: '#', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2024. 05. 24", id: 1 },
+    { part: 'notice1', url: '#', text: '현장체험학습(야영교육) 대전 교육 연수원 설문 조사', date: "2024. 05. 22", id: 2 },
+    { part: 'notice1', url: '#', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2024. 05. 24", id: 9 },
+    { part: 'notice1', url: '#', text: '현장체험학습(야영교육) 대전 교육 연수원 설문 조사', date: "2024. 05. 22", id: 10 },
+    { part: 'notice1', url: '#', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2024. 05. 24", id: 11 },
+    { part: 'notice1', url: '#', text: '현장체험학습(야영교육) 대전 교육 연수원 설문 조사', date: "2024. 05. 22", id: 12 },
+    { part: 'notice1', url: '#', text: '수업량 유연화 주간 \'융합 독서 토론\' 계획', date: "2024. 05. 17", id: 3 },
+    { part: 'notice1', url: '#', text: '학교폭력 없는 안전한 학교 만들기 이벤트', date: "2024. 05. 15", id: 4 },
+    { part: 'notice3', url: '#', text: '2024학년도 1,4학년 정서행동특성검사 실시 안내', date: "2024. 03. 20", id: 5 },
+    { part: 'notice3', url: '#', text: '청소년 인터넷·스마트폰 이용습관 진단조사 안내', date: "2024. 03. 17", id: 6 },
+    { part: 'notice3', url: '#', text: '학교급식 알레르기 유발식품 표시제 안내 및 식품알레르기 유병학생 조사', date: "2024. 03. 16", id: 7 },
+    { part: 'notice3', url: '#', text: '상담실 이용 안내 및 개인정보 수집 및 이용에 관한 보호자 동의서', date: "2024. 03. 10", id: 8 }
   ];
+  
+  const [currentTab, setCurrentTab] = useState(Tabs[0].part);
+  const [tabData, setTabData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const [currentTab, setCurrentTab] = useState("notice1"); // 현재 선택된 탭의 상태
+  useEffect(() => {
+    fetchTabData(currentTab);
+  }, [currentTab]);
 
-  function handleTabClick(part) {
+  const fetchTabData = (tabPart) => {
+    setLoading(true);
+
+    const result = TabDatas.filter((data) => data.part === tabPart);
+    setTabData(result);
+    setLoading(false);
+  };
+
+  const handleTabClick = (part) => {
     setCurrentTab(part);
-  }
+  };
 
   const TitTab = () => {
     return (
-      <div className="titTab">
+      <div className={widget.titTab}>
         <ul>
           {Tabs.map((tab) => (
-            <li key={tab.id}><a href={tab.url}
-              className={currentTab === tab.part ? "current" : ""} // 현재 선택된 탭인 경우에만 current
-              onClick={() => handleTabClick(tab.part)} // 탭 클릭시 현재 선택된 탭 업데이트
-            ><span>{tab.name}</span></a></li>
+            <li key={tab.id}>
+              <a href={tab.url}
+                className={currentTab === tab.part ? widget.current : ""}
+                onClick={() => handleTabClick(tab.part)}
+              >
+                <span>{tab.name}</span>
+              </a>
+            </li>
           ))}
         </ul>
       </div>
     )
   }
 
-  function TabDataList({ tabpart }) {
-    const result = TabDatas.filter((tabdata) => tabdata.part == tabpart).map((tabdata) => (
-      <li key={tabdata.id}><a href={tabdata.url} className="current">{tabdata.text}<span>{tabdata.date}</span></a></li>
-    ))
+  const TabDataList = () => {
+    if (loading) return <p>Loading...</p>;
+    if (tabData.length === 0) return <NoData />;
 
-    if (result.length === 0) {
-      return <NoData />
-    }
+    return tabData.map((tabdata) => (
+      <li key={tabdata.id}>
+        <a href={tabdata.url} className={widget.current}>
+          {tabdata.text}
+          <span>{tabdata.date}</span>
+        </a>
+      </li>
+    ));
+  };
 
-    return result
-  }
-
-  const TabDataWrap = () => {
-    return (
-      <div className="tabWrap">
-        {
-          Tabs.map((tab) => (
-            <div className={`list_box ${currentTab === tab.part ? "on" : ""}`} id={tab.part} key={tab.id}>
-              <ul>
-                <TabDataList tabpart={tab.part} />
-              </ul>
-              <IconBtnMore LinkHref={''} LinkClassName={'btn_more'} IconClassName={'xi-plus'} LinkTitle={tab.name} />
-            </div>
-          ))
-        }
+  const TabContent = () => (
+    <div className={widget.tabWrap}>
+      <div className={`${widget.list_box} ${widget.on}`}>
+        <ul>
+          <TabDataList />
+        </ul>
+        <IconBtnMore LinkHref={'#'} LinkClassName={widget.btn_more} IconClassName={'xi-plus'} LinkTitle={currentTab} />
       </div>
-    )
-  }
+    </div>
+  )
 
   return (
-    <div className="notice0030">
+    <div className={widget.notice0030}>
       <TitTab />
-      <TabDataWrap />
+      <TabContent />
     </div>
   )
 }
-
-
-

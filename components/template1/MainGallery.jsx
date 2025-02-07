@@ -3,37 +3,37 @@
 import React from 'react';
 import Title from "./Title"
 import IconBtnMore from "./IconBtnMore"
-
+import widget from "../../styles/template1/widget.module.css"
 
 export default function MainGallery() {
   const Items = [
-    { url: './../images/template/T0030/main/0030_thumb01.png', src: './../images/template/T0030/main/0030_thumb01.png', text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", date: "05. 24", open: true, id: 1 }
+    { url: '#', src: './../images/template/T0030/main/0030_thumb01.png', text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", date: "05. 24", open: true, id: 1 }
   ];
 
   const NoData = () => {
     return (
-      <li className="no_data">
-        <p className="svcIco">
+      <li className={widget.no_data}>
+        <p className={widget.svcIco}>
           <i className="xi-user-o"></i>
           <span>회원서비스</span>
         </p>
-        <p className="svcInfo"><em>게시글 열람권한이 없습니다.</em> 로그인 후 홈페이지를 이용해 주세요.</p>
+        <p className={widget.svcInfo}><em>게시글 열람권한이 없습니다.</em> 로그인 후 홈페이지를 이용해 주세요.</p>
       </li>
     )
   }
 
   function GalleryList() {
     const result = Items.map((item) => (
-      <li className={item.open === false ? "no_mber" : ""} key={item.id}>
+      <li className={item.open === false ? widget.no_mber : ""} key={item.id}>
         <a href={item.url}>
-          <div className="img">
+          <div className={widget.img}>
             <img src={item.src} alt={item.text} />
-            <div className={item.open === false ? "prvt" : ""}>
-              <div className="ico"><i className="xi-user-o" aria-hidden="true"></i><span>회원서비스</span></div>
+            <div className={item.open === false ? widget.prvt : ""}>
+              <div className={widget.ico}><i className="xi-user-o" aria-hidden="true"></i><span>회원서비스</span></div>
               <p>게시글 열람권한이 없습니다. 로그인 후 홈페이지를 이용해주세요</p>
             </div>
           </div>
-          <p className="txt"><span>{item.text}</span>{item.date}</p>
+          <p className={widget.txt}><span>{item.text}</span>{item.date}</p>
         </a>
       </li>
     ))
@@ -46,16 +46,16 @@ export default function MainGallery() {
   }
 
   return (
-    <div className="gallery0030">
-      <div className="tit_Wrap">
-        <Title className="heading"><span>포토갤러리</span></Title>
+    <div className={widget.gallery0030}>
+      <div className={widget.tit_Wrap}>
+        <Title className={widget.heading}><span>포토갤러리</span></Title>
       </div>
-      <div className="list_box">
+      <div className={widget.list_box}>
         <ul>
           <GalleryList />
         </ul>
       </div>
-      <IconBtnMore LinkHref={''} LinkClassName={'btn_more'} IconClassName={'xi-plus'} LinkTitle={'갤러리'} />
+      <IconBtnMore LinkHref={'#'} LinkClassName={widget.btn_more} IconClassName={'xi-plus'} LinkTitle={'갤러리'} />
     </div>
   )
 }

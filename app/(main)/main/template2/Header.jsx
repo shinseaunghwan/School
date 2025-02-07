@@ -1,35 +1,34 @@
 "use client"
+import Link from 'next/link';
 
 import React, { useState, useEffect, Fragment } from 'react';
 
-
-
 const Header = () => {
     const HeaderTitle = (props) => {
-        return <h1><a href={props.url}><img src={props.src} alt={props.schoolName} /></a></h1>
+        return <h1><Link href={props.url}><img src={props.src} alt={props.schoolName} /></Link></h1>
     }
 
     const [selectMenuType, setSelectMenuType] = useState('oneDown');
 
     const CreateMenu = ({ menuType }) => {
         const Items = [
-            { href: '/', depth: 1, menuId: 'menu1', order: 1, name: "1뎁스 메뉴명1", id: 125698650791452 },
-            { href: '/', depth: 1, menuId: 'menu2', order: 2, name: "1뎁스 메뉴명2", id: 225698650791452 },
-            { href: '/', depth: 1, menuId: 'menu5', order: 5, name: "1뎁스 메뉴명5", id: 325698650791452 },
-            { href: '/', depth: 1, menuId: 'menu4', order: 4, name: "1뎁스 메뉴명4", id: 425698650791452 },
-            { href: '/', depth: 1, menuId: 'menu3', order: 3, name: "1뎁스 메뉴명3", id: 525698650791452 },
-            { href: '/', depth: 2, menuId: 'menu1', order: 1, name: "2뎁스 메뉴명1", id: 625698650791452 },
-            { href: '/', depth: 2, menuId: 'menu2', order: 1, name: "2뎁스 메뉴명1", id: 725698650791452 },
-            { href: '/', depth: 2, menuId: 'menu3', order: 1, name: "2뎁스 메뉴명1", id: 825698650791452 },
-            { href: '/', depth: 2, menuId: 'menu3', order: 2, name: "2뎁스 메뉴명2", id: 925698650791452 },
-            { href: '/', depth: 2, menuId: 'menu3', order: 3, name: "2뎁스 메뉴명3", id: 1256986507914520 },
-            { href: '/', depth: 3, menuId: 'menu2', order: 2, name: "3뎁스 메뉴명2", id: 1256986507914521 },
-            { href: '/', depth: 3, menuId: 'menu1', order: 1, name: "3뎁스 메뉴명1", id: 1256986507914522 },
-            { href: '/', depth: 3, menuId: 'menu3', order: 1, name: "3뎁스 메뉴명3", id: 1256986507914523 },
-            { href: '/', depth: 3, menuId: 'menu2', order: 1, name: "3뎁스 메뉴명2", id: 1256986507914524 },
-            { href: '/', depth: 2, menuId: 'menu4', order: 1, name: "2뎁스 메뉴명1", id: 1256986507914525 },
-            { href: '/', depth: 2, menuId: 'menu4', order: 2, name: "2뎁스 메뉴명2", id: 1256986507914526 },
-            { href: '/', depth: 2, menuId: 'menu4', order: 3, name: "2뎁스 메뉴명3", id: 1256986507914527 }
+            { href: '/', depth: 1, menuId: 'menu1', order: 1, name: "1뎁스 메뉴명1", id: 1342378571 },
+            { href: '/', depth: 1, menuId: 'menu2', order: 2, name: "1뎁스 메뉴명2", id: 29867314365 },
+            { href: '/', depth: 1, menuId: 'menu5', order: 5, name: "1뎁스 메뉴명5", id: 39867314365 },
+            { href: '/', depth: 1, menuId: 'menu4', order: 4, name: "1뎁스 메뉴명4", id: 49867314365 },
+            { href: '/', depth: 1, menuId: 'menu3', order: 3, name: "1뎁스 메뉴명3", id: 59867314365 },
+            { href: '/', depth: 2, menuId: 'menu1', order: 1, name: "2뎁스 메뉴명1", id: 69867314365 },
+            { href: '/', depth: 2, menuId: 'menu2', order: 1, name: "2뎁스 메뉴명1", id: 79867314365 },
+            { href: '/', depth: 2, menuId: 'menu3', order: 1, name: "2뎁스 메뉴명1", id: 89867314365 },
+            { href: '/', depth: 2, menuId: 'menu3', order: 2, name: "2뎁스 메뉴명2", id: 99867314365 },
+            { href: '/', depth: 2, menuId: 'menu3', order: 3, name: "2뎁스 메뉴명3", id: 198673143650 },
+            { href: '/', depth: 3, menuId: 'menu2', order: 2, name: "3뎁스 메뉴명2", id: 198673143651 },
+            { href: '/', depth: 3, menuId: 'menu1', order: 1, name: "3뎁스 메뉴명1", id: 198673143652 },
+            { href: '/', depth: 3, menuId: 'menu3', order: 1, name: "3뎁스 메뉴명3", id: 198673143653 },
+            { href: '/', depth: 3, menuId: 'menu2', order: 1, name: "3뎁스 메뉴명2", id: 198673143654 },
+            { href: '/', depth: 2, menuId: 'menu4', order: 1, name: "2뎁스 메뉴명1", id: 198673143655 },
+            { href: '/', depth: 2, menuId: 'menu4', order: 2, name: "2뎁스 메뉴명2", id: 198673143656 },
+            { href: '/', depth: 2, menuId: 'menu4', order: 3, name: "2뎁스 메뉴명3", id: 198673143657 }
         ];
 
         const [selectDepth1Index, setSelectDepth1Index] = useState(null);

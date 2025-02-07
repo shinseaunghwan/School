@@ -1,7 +1,7 @@
 
 import React from 'react';
 import CustomSlider from "./CustomSlider";
-
+import widget from "../../styles/template2/T0002_widget.module.css"
 // 메인비주얼
 export default function MainVisual() {
   
@@ -14,7 +14,7 @@ export default function MainVisual() {
   const controlButtonsOrder = ['prev', 'play', 'next'];
 
   return (
-    <div className="MVisual0002 visual">
+    <div className={`${widget.MVisual0002} ${widget.visual}`}>
       <CustomSlider items={Items} controlButtonsOrder={controlButtonsOrder} sliderName={'비주얼'} />
     </div>
   );

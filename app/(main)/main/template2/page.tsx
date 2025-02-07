@@ -1,7 +1,7 @@
 import App from "./App";
 import Footer from "./Footer";
 import MyComponent from './MyComponent.client';
-import '../../../../styles/template2/T0002_widget.css';
+import layout from "../../../../styles/Layout.module.css"
 
 export const metadata = {
   title: "템플릿 2",
@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function MainPage() {
   return (
-    <div className="root">
+    <div className={layout.root}>
       <MyComponent />
         <App />
         <Footer />

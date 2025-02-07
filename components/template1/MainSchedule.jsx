@@ -5,7 +5,7 @@ import Calendar from 'react-calendar';
 import "react-calendar/dist/Calendar.css";
 import NoData from "./NoData"
 import IconBtnMore from "./IconBtnMore"
-
+import widget from "../../styles/template1/widget.module.css"
 export default function MainSchedule() {
   const [date, setDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null); // 선택된 날짜 상태
@@ -40,11 +40,11 @@ export default function MainSchedule() {
     };
 
     return (
-      <div className="date">
+      <div className={widget.date}>
         <span>{value.getFullYear()}<em>{value.getMonth() + 1}</em></span>
         <p>
-          <button className="prev" onClick={() => onChangeMonth(new Date(value.getFullYear(), value.getMonth() - 1))}><i className="xi-angle-left" aria-hidden="true"></i><em className="hid">이전달</em></button>
-          <button className="next" onClick={() => onChangeMonth(new Date(value.getFullYear(), value.getMonth() + 1))}><i className="xi-angle-right" aria-hidden="true"></i><em className="hid">다음달</em></button>
+          <button className={widget.prev} onClick={() => onChangeMonth(new Date(value.getFullYear(), value.getMonth() - 1))}><i className="xi-angle-left" aria-hidden="true"></i><em className={widget.hid}>이전달</em></button>
+          <button className={widget.next} onClick={() => onChangeMonth(new Date(value.getFullYear(), value.getMonth() + 1))}><i className="xi-angle-right" aria-hidden="true"></i><em className={widget.hid}>다음달</em></button>
         </p>
       </div>
     );
@@ -70,7 +70,7 @@ export default function MainSchedule() {
     }
 
     return (
-      <div className="sche_list">
+      <div className={widget.sche_list}>
         <Calendar
           value={value}
           onChange={onChange}
@@ -104,19 +104,19 @@ export default function MainSchedule() {
   }
 
   return (
-    <div className="pop_schedule0030">
-      <div className="sche_frame">
-        <div className="tit_wrap">
+    <div className={widget.pop_schedule0030}>
+      <div className={widget.sche_frame}>
+        <div className={widget.tit_wrap}>
           <CalendarHeader value={date} onChange={setDate} />
-          <IconBtnMore LinkHref={''} LinkClassName={'btn_more'} IconClassName={'xi-plus'} LinkTitle={'행사일정'} />
+          <IconBtnMore LinkHref={'#'} LinkClassName={widget.btn_more} IconClassName={'xi-plus'} LinkTitle={'행사일정'} />
         </div>
 
-        <div className="sche_wrap">
+        <div className={widget.sche_wrap}>
           <CalendarBody value={date} onChange={setDate} />
         </div>
 
       </div>
-      <ul className="lst">
+      <ul className={widget.lst}>
         <ScheList />
       </ul>
     </div>

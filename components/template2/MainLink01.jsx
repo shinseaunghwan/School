@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-
+import widget from "../../styles/template2/T0002_widget.module.css"
 export default function MainLink01() {
   const Items = [
     { url: './../images/template/T0002/main/0002_icn01_link01.png', src: './../images/template/T0002/main/0002_icn01_link01.png', name: "교육목표", id: 376534561 },
@@ -13,13 +13,13 @@ export default function MainLink01() {
   ];
 
   return (
-    <div className="M_link0002">
+    <div className={widget.M_link0002}>
       <ul>
         {Items.map((item) => (
           <li key={item.id}>
             <a href={item.url}>
-            <div class="img_box">
-                                    <span class="img"><img src={item.src} alt={item.alt}/></span>
+            <div className={widget.img_box}>
+                                    <span class={widget.img}><img src={item.src} alt={item.alt}/></span>
                                 </div>
               <p>{item.name}</p>
             </a>

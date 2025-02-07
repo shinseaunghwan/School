@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, Fragment } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import widget from "../../styles/template1/widget.module.css"
 
 const CustomSlider = ({ className, items, controlButtonsOrder, sliderName }) => {
 
@@ -58,7 +59,7 @@ const CustomSlider = ({ className, items, controlButtonsOrder, sliderName }) => 
     );
 
     const SlideCounter = ({ currentSlide, totalSlides }) => (
-        <p className="page">
+        <p className={widget.page}>
             <strong>{currentSlide + 1}</strong>
             <span>{totalSlides}</span>
         </p>
@@ -89,12 +90,12 @@ const CustomSlider = ({ className, items, controlButtonsOrder, sliderName }) => 
         <Fragment>
             <Slider ref={slider => (sliderRef = slider)} {...settings}>
                 {items.map((item) => (
-                    <div className="item">
-                        <img key={item.id} src={item.src} alt={item.alt} />
+                    <div className={widget.item} key={item.id}>
+                        <img src={item.src} alt={item.alt} />
                     </div>
                 ))}
             </Slider>
-            <div className="control">
+            <div className={widget.control}>
                 {renderControlButtons()}
             </div>
         </Fragment>

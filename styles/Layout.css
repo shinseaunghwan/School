@@ -6,7 +6,6 @@
 
 /*.container {position: relative; margin: 0 auto; width: 100%; max-width: 60rem;} 템플릿1 */
 .container {position: relative; margin: 0 auto; width: 100%; max-width: 70rem;}/* 템플릿1 */
-
 .container:after {clear: both; display: block; content: "";}
 
 /* slick slide common */

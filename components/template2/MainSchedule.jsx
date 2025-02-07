@@ -6,7 +6,7 @@ import "react-calendar/dist/Calendar.css";
 import NoData from "./NoData"
 import IconBtnMore from "./IconBtnMore"
 import Title from "./Title"
-
+import widget from "../../styles/template2/T0002_widget.module.css"
 export default function MainSchedule() {
   const [date, setDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null); // 선택된 날짜 상태
@@ -47,10 +47,10 @@ export default function MainSchedule() {
 
     return (
       <>
-        <p className="month">
-            <button className="prev" onClick={() => onChangeMonth(new Date(value.getFullYear(), value.getMonth() - 1))}><i className="xi-angle-left" aria-hidden="true"></i><em className="hid">이전달</em></button>
+        <p className={widget.month}>
+            <button className={widget.prev} onClick={() => onChangeMonth(new Date(value.getFullYear(), value.getMonth() - 1))}><i className="xi-angle-left" aria-hidden="true"></i><em className={widget.hid}>이전달</em></button>
             <span>{value.getFullYear()}<em>{value.getMonth() + 1}</em></span>
-            <button className="next" onClick={() => onChangeMonth(new Date(value.getFullYear(), value.getMonth() + 1))}><i className="xi-angle-right" aria-hidden="true"></i><em className="hid">다음달</em></button>
+            <button className={widget.next} onClick={() => onChangeMonth(new Date(value.getFullYear(), value.getMonth() + 1))}><i className="xi-angle-right" aria-hidden="true"></i><em className={widget.hid}>다음달</em></button>
         </p>
       </>
     );
@@ -76,7 +76,7 @@ export default function MainSchedule() {
     }
 
     return (
-      <div className="sche_list">
+      <div className={widget.sche_list}>
         <Calendar
           value={value}
           onChange={onChange}
@@ -105,23 +105,23 @@ export default function MainSchedule() {
     return scheduleItems.map((item) => (
       <li key={item.id}>
         <a href={item.url}>
-          <span className='dt'>{item.date}</span>
-          <span className='dsc'>{item.text}</span>
+          <span className={widget.dt}>{item.date}</span>
+          <span className={widget.dsc}>{item.text}</span>
           </a>
       </li>
     ));
   }
 
   return (
-    <div className="pop_schedule0002">
-        <div className="tit">
-          <Title className="heading">행사일정</Title>
-          <IconBtnMore LinkHref={''} LinkClassName={'btn_more'} IconClassName={'xi-plus'} LinkTitle={'행사일정'} />
+    <div className={widget.pop_schedule0002}>
+        <div className={widget.tit}>
+          <Title className={widget.heading}>행사일정</Title>
+          <IconBtnMore LinkHref={'#'} LinkClassName={widget.btn_more} IconClassName={'xi-plus'} LinkTitle={'행사일정'} />
         </div>
         <CalendarHeader value={date} onChange={setDate} />
-        <div className="sche_wrap">
+        <div className={widget.sche_wrap}>
           {/* <CalendarBody value={date} onChange={setDate} /> */}
-          <div className='lst'>
+          <div className={widget.lst}>
             <ul>
           <ScheList />
         </ul>

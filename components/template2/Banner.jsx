@@ -2,7 +2,8 @@
 
 import React from 'react';
 import BannerSlider from "./BannerSlider";
-
+import widget from "../../styles/template2/T0002_widget.module.css"
+import main from "../../styles/template2/T0002.module.css"
 
 export default function Banner() {
   const Items = [
@@ -17,8 +18,8 @@ export default function Banner() {
   const controlButtonsOrder = ['prev', 'play', 'next','list'];
 
   return (
-    <div className="banner_zone">
-      <div className='container'>
+    <div className={widget.banner_zone}>
+      <div className={widget.container}>
       <BannerSlider items={Items} controlButtonsOrder={controlButtonsOrder} sliderName={'배너'} />
       </div>
 
