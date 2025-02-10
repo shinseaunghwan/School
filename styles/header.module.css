@@ -1,0 +1,422 @@
+.menuTypeWrap {position: absolute; top: 0rem; right: -7rem; width: 5rem; z-index: 999;}
+.menuTypeWrap button {margin: 0.15rem 0;}
+
+/* header */
+.header {position: relative; margin: 0 auto; height: 7.5rem; background: #fff; z-index: 102;}
+.header:before {position: absolute; top: 4.5rem; left: 0; width: 100%; height: 1px; background: #eeeff1; content: ""; z-index: 100;}
+.header .top {width: 96%; height: 4.5rem; padding:1.25rem 0 0; text-align: right;}
+.header .top:after {clear: both; display: block; content: "";}
+.header h1 {position: absolute; top: 22px; left: 0;}
+.header h1 a {display: block; font-size: 0;} 
+
+/* header - 유틸리티 */
+.header .topUtil {position: absolute; right: 0; top: 50%; display: flex; align-items: center; transform: translateY(-50%); }
+.header .topUtil .util_wrap {display: flex; align-items: center;}
+.header .topUtil .util_wrap > a.alarm {position: relative; padding: 0.25rem 0.5rem; font-size: 0.65rem; color: #fff; background: #124ea8; border-radius: 1rem;}
+.header .topUtil .util_wrap > a.alarm.new:before {position: absolute; top: -0.5rem; left: -0.5rem; width: 1rem; height: 1rem; line-height: 1rem; text-align: center; font-size: 0.6rem; color: #fff; background: #004fba; border: 1px solid #fff; border-radius: 50%; content: "N";}
+.header .topUtil .util_wrap > a,
+.header .topUtil .util_wrap li {position: relative; display: block; padding: 0 0.625rem; line-height: 1rem; font-size: 0.75rem; color: #333; font-weight: 600;}
+.header .topUtil .util_wrap ul {display: flex; align-items: center;}
+.header .topUtil .util_wrap li:before {position: absolute; top: 0.4rem; left: -0.1rem; width: 4px; height: 4px; border-radius: 50%; background: #c9c9c9; content: "";}
+.header .topUtil .util_wrap .mob {display: none;}
+.header .topUtil .util_wrap a i {margin-right: 0.15rem;}
+/* header - 유틸리티 - 글자크기 */
+.header .topUtil .font_size {display: flex; align-items: center; margin: 0 0.35rem;}
+.header .topUtil .font_size p {padding: 0 10px; font-size: 0.7rem; color: #333; font-weight: 600;}
+.header .topUtil .font_size button {display: inline-block; padding: 0; width: 1rem; height: 1rem; line-height: 1rem; border: 1px solid #d1d4d7; text-align: center; font-size: 0.7rem; color: #666; margin: 0 -0.5px;}
+.hid {display: none;}
+/* header - 유틸리티 : active */
+.header .topUtil .util_wrap a:hover,
+.header .topUtil .util_wrap a:focus {text-decoration: underline;}
+.header .mBtn {display: none;} 
+
+/* 검색 */
+.box_search {position: absolute; top: 50%; left: 50%; width: 17.25rem; height: 2.5rem; line-height: 2.2rem; background: #fff; border: 0.15rem solid #f1f1f1; border-radius: 1.25rem; transform: translate(-50%, -50%); }
+.box_search input {float: left; width: calC(100% - 2.5rem); padding: 0 1rem; height: 2.2rem; background: transparent; border: none;}
+.box_search .srch_btn {float: right; margin: 0.25rem; padding: 0; width: 1.7rem; height: 1.7rem; line-height: 1.7rem; text-align: center; font-size: 1rem; color: #fff; background: #464d5d; border-radius: 50%;}
+.box_search input::-webkit-input-placeholder {color: #666;}
+.box_search .btnSearchClose {position: absolute; top: -3.5rem; left: 0; display: none; width: 3.5rem; height: 3.5rem; line-height: 3.5rem; text-align:center; font-size:1.2rem; color:#fff; background: #004fba;}
+.searchOpen {position: absolute; top: 0; right: 4rem; display: block; width: 4rem; height: 4rem; line-height: 4rem; text-align: center; font-size: 1.5rem; color: #464d5d;}
+
+/* web navigation */
+/* gnb common */
+.nav {position: relative; width: 100%; z-index: 99;}
+.nav ul,
+.nav li {height:100%;}
+.gnb {position: relative; height: 3rem; z-index: 2;}
+.gnb:before {position: absolute; top: calc(3rem - 1px); left: 0; width: 100%; height: 2px; background: #eeeff1; content: ''; z-index: 0;}/* 1뎁스 메뉴영역 하단 1px 라인용 */
+.gnb li a {position: relative; display: block; font-weight: 400;}
+.gnb li.dep > a:after {position: absolute; top: 0.2rem; right: 0; font-family: 'xeicon'; font-size: 1rem; content: '\e942'; z-index: 2;}
+.gnb li.dep.active > a:after {content: '\e945';}
+.gnb li a[target='_blank']:after {position: absolute; top: 0.35rem; right: 0; font-family: 'xeicon'; line-height: 1; content: "\e980"; z-index: 2;}
+.gnb li a span {position: relative; z-index: 2;}
+.gnb .depth01 {margin: 0 auto; width: 100%; max-width: 70rem; z-index: 1;}
+.gnb .depth01 > ul {display: flex; width: 100%; text-align: center;}
+.gnb .depth01 > ul > li {flex: 1; line-height: 1.6; vertical-align: top;}
+.gnb .depth01 > ul > li > a {display: flex; justify-content: center; align-items: center; width: 100%; height: 3rem; font-size: 1rem; font-weight: 700;}
+.gnb .depth01 > ul > li.on > a {color: #1756b3;}
+.gnb .depth01 > ul > li > a > span:before {position: absolute; bottom: 0; left: 50%; width: 0; height: 0.5rem; background: #1756b3; border-radius: 0.25rem; opacity: 0.2; content: "";}
+.gnb .depth01 > ul > li.on > a > span:before {left: 0; width: 100%;}
+.gnb .depth02 {padding: 1rem 0.75rem; width: 100%; height: auto; text-align: left;}
+.gnb .depth02 > ul > li > a {padding: 0.35rem 0; font-size: 0.8rem; color: #444;}
+.gnb .depth02 > ul > li.dep > a {padding-right: 1rem;}
+.gnb .depth03 {position: relative; display: none;}
+.gnb .depth03 > ul > li > a {font-size: 0.75rem; padding-left: 0.5rem; color: #555;}
+.gnb .depth03 > ul > li > a:before {position: absolute; top: 0.5rem; left: 0; width: 3px; height: 3px; background: #606060; content: "";}
+.gnb .depth03 > ul > li > a[target='_blank']{ padding-right:1rem;}
+.gnb .depth03 > ul > li > a[target='_blank']:after{ top: 0.2rem;}
+.gnb .depth03 > ul > li > a:hover,
+.gnb .depth03 > ul > li > a:focus {font-weight: 600; color: #000;}
+.gnb .depth03 > ul > li.dep > a:after {display: none;}
+.gnb .depth04 {display: none;}
+.gnb .titBox {display: none;}
+.gnb:before, 
+.nav a, 
+.gnb li > a:before, 
+.gnb li > a:after, 
+.gnb li > a > span:before {transition: all 0.1s; }
+/* active */
+.gnb .active > .depth03 {display: block;}
+.gnb .depth02 > ul > li.active > a,
+.gnb .depth02 > ul > li > a:hover,
+.gnb .depth02 > ul > li > a:focus {font-weight: 700; color: #265eb6;}
+
+/* gnb : oneDown */
+.nav.oneDown .depth01 {position: relative;}
+.nav.oneDown .depth01 > ul {display: table;}
+.nav.oneDown .depth01 > ul > li {position: relative; display: table-cell;}
+.nav.oneDown .depth01 > ul > li > a {display: flex; justify-content: center; align-items: center; width: 100%; height: 3rem;}
+.nav.oneDown .depth01 > ul > li.on > a {font-weight: 700; color: #1756b3;}
+.nav.oneDown .depth02 {position: absolute; top: calc(3rem - 1px); left: calc(50% - 5.5rem); width:11rem; background: #fff; border: 2px solid #1756b3; border-top: 0; border-radius: 0 0 0.5rem 0.5rem; opacity: 0; visibility: hidden; transition-delay: 0s; z-index: 1;}
+.nav.oneDown .depth02:before{ display: none; content: ""; position: absolute; left: calc(50% - 0.25rem); top: -0.25rem; width: 0.5rem; height: 0.5rem; transform: rotate(45deg); background: #fff; z-index: 1;}
+.nav.oneDown .depth02 > ul > li.dep > a:before {right: 0; top: 0.35rem;}
+.nav.oneDown .depth03 {margin: 0 calc(-1rem + 6px); padding: 0 0.75rem; background: #f6f6f6;}
+.nav.oneDown .depth03 > ul {padding: 0.5rem 0;}
+/** oneDown : active **/
+.nav.oneDown .depth01 > ul > li.on > .depth02 {opacity: 1; visibility: visible; display: block;}
+
+/* gnb : fullDown */
+.nav.fullDown .gnb:after {position: absolute; left: 0; top: calc(3rem + 1px); width: 100%; height: calc(100% - 3rem); background: #f9f9f9; opacity: 0; box-shadow: 0 5px 10px rgba(0,0,0,0.1); content: ""; z-index: 0;}/* 2뎁스 메뉴 전체영역 열림용 */
+.nav.fullDown .depth01 {position: relative; height:3rem; overflow:hidden;}
+.nav.fullDown .depth01:before{ z-index: 2;}
+.nav.fullDown .depth01 > ul {display: table;}
+.nav.fullDown .depth01 > ul > li {position: relative; display: table-cell;}
+.nav.fullDown .depth01 > ul > li:before {position: absolute; top: 3rem; left: 0; width: 100%; height: calc(100% - 3rem); border-right: 1px solid #e0e2e6; opacity: 0; content: "";}
+.nav.fullDown .depth01 > ul > li:first-of-type:before {border-left: 1px solid #e0e2e6;}
+.nav.fullDown .depth01 > ul > li > a {display: flex; justify-content: center; align-items: center; width: 100%; height: 3rem;}
+.nav.fullDown .depth01 > ul > li.on > a {font-weight: 700; color: #1756b3;}
+.nav.fullDown .depth02 {opacity: 0; visibility: hidden;}
+.nav.fullDown .depth02 > ul > li.dep > a:before {right: 0; top: 0.35rem;}
+.nav.fullDown .depth03 > ul {padding: 0.5rem 0; border-top: 2px solid #1756b3; border-bottom: 1px solid #c5c9d6;}
+/** fullDown:active **/
+.nav.fullDown .gnb.active {height: auto;}
+.nav.fullDown .gnb.active:after {opacity: 1;}/* 2뎁스 메뉴 전체영역 열림용 */
+.nav.fullDown .active .depth01 {display: block; height: auto;}
+.nav.fullDown .active .depth02 {opacity: 1; visibility: visible; transition-delay: 0.15s;}
+.nav.fullDown .active .depth01 > ul > li.on {background: #fff;}
+.nav.fullDown .active .depth01 > ul > li:before {opacity: 1;}
+
+/* gnb : oneFull */
+.nav.oneFull .depth02 {position: absolute; left: 0; top: calc(3rem + 1px); display: none; padding: 0; min-height: 16.5rem;}
+.nav.oneFull .depth02:before {position: absolute; left: 0; top: 0; width: 100%; height: 0; background: #fff; opacity: 0; box-shadow: 0 5px 10px rgba(0,0,0,0.1); content: ""; z-index: 0;}
+.nav.oneFull .depth02 .titBox {position: absolute; top: 0; left: calc(50% - 35rem); display: block; padding: 1.5rem 1rem 1.5rem 0; width: 13rem; height: 100%;}
+.nav.oneFull .depth02 .titBox:before {position: absolute; right: 0; top: 0; width: 400%; height: 100%; background: #f9f9f9; content: "";}
+.nav.oneFull .depth02 .titBox > * {position: relative;}
+.nav.oneFull .depth02 .titBox strong {display: inline-block; padding-bottom: 0.75rem; margin-bottom: 0.75rem; font-size: 1.3rem; font-weight: 700; color: #000;}
+.nav.oneFull .depth02 .titBox strong:before {position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: #000; content: "";}
+.nav.oneFull .depth02 .titBox p {color: #555}
+.nav.oneFull .depth02 > ul {margin: 0 auto; padding: 0.5rem 0.5rem 0.5rem 13.5rem; width: 100%; max-width: 70rem; height: 100%; font-size: 0; line-height: 0;}
+.nav.oneFull .depth02 > ul > li {display: inline-block; margin: 0.5rem 0; padding: 0 0.5rem; width: 25%; vertical-align: top; font-size: 0.8rem; line-height: 1.6;}
+.nav.oneFull .depth02 > ul > li > a {padding: 0.35rem 0.75rem; color: #333; background: #fff; border: 1px solid #e4e5e7; border-radius: 0.25rem; z-index: 1;}
+.nav.oneFull .depth02 > ul > li > a:after {right: 0.25rem; top: 0.15rem;}
+.nav.oneFull .depth02 > ul > li > a[target="_blank"]:after{ top: 0.55rem;}
+.nav.oneFull .depth03 {padding: 0.5rem;}
+.nav.oneFull .depth03 > ul > li > a:after {font-size: 0.8rem;}
+/** oneFull:active **/
+.nav.oneFull .gnb.active {height: auto;}
+.nav.oneFull .depth02 > ul > li:not(.active) > a:focus,
+.nav.oneFull .depth02 > ul > li:not(.active) > a:hover {color: #1756b3; border-color: #1756b3;}
+.nav.oneFull .depth02 > ul > li.dep.active > a {color: #fff; background: #1756b3; border-color: #1756b3; box-shadow: 2px 2px 6px rgba(0,0,0,0.3);}
+.nav.oneFull .depth01 > ul > li.on > .depth02 {display:block;}
+.nav.oneFull .depth01 > ul > li.on > .depth02:before {height:100%; opacity: 1; transition-delay: 0s;}
+.nav.oneFull .depth03 > ul > li > a:hover,
+.nav.oneFull .depth03 > ul > li > a:focus {font-weight: 600; color: #1756b3;}
+
+/* 전체메뉴 */
+.popFullmenu {position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #fff; z-index: 999;}
+.popFullmenu .fullmenu_wrap {position: relative; margin: 0 auto; width: 100%; max-width: 70rem; height: 100%;}
+.popFullmenu h2 {position: relative; height: 4.5rem; line-height: 4.5rem; font-size: 1.25rem; border-bottom: 1px solid #000;}
+.popFullmenu .popUntil {display: none;}
+.popFullmenu .fullmenu_group {padding: 1.5rem 0; height: calc(100% - 4.5rem); overflow: hidden;} 
+.popFullmenu .titBox {display: none;}
+.popFullmenu .depth02 > ul > li.dep > a,
+.popFullmenu .depth02 > ul > li > a[target='_blank'] {padding-right: 1.5rem;}
+.popFullmenu .depth03 > ul > li.dep > a,
+.popFullmenu .depth03 > ul > li > a[target='_blank'] {padding-right: 1rem;}
+.popFullmenu .depth04 > ul > li > a[target='_blank'] {padding-right: 0.5rem;}
+.popFullmenu .depth01 {height: 100%; overflow-y: auto;}
+.popFullmenu .depth01 > ul > li {display: table; padding-bottom: 1.5rem; width: 100%; line-height: 1.6; vertical-align: top; font-size: 0.8rem;}
+.popFullmenu .depth01 > ul > li + li {padding-top: 1.5rem; border-top: 1px solid #e4e5e9;}
+.popFullmenu .depth01 > ul > li > a {display: table-cell; width: 11rem; font-size: 1.2rem; color: #000; font-weight: 700; overflow: hidden;}
+.popFullmenu .depth02 {display: table-cell;}
+.popFullmenu .depth02 > ul {display: flex; flex-wrap: wrap; width: 100%;}
+.popFullmenu .depth02 > ul > li {padding: 0 0.5rem; width: 25%;}
+.popFullmenu .depth02 > ul > li:nth-of-type(n+5) {padding-top: 1rem;}
+.popFullmenu .depth02 > ul > li > a {position: relative; display: block; padding: 0.5rem 1rem; color: #333; background: #fff; border: 1px solid #e4e5e7; border-radius: 0.25rem; z-index: 1;}
+.popFullmenu .depth02 > ul > li > a:after {position: absolute; top: 0.35rem; right: 0.5rem; font-family: 'xeicon'; font-size: 1rem;}
+.popFullmenu .depth02 > ul > li.dep > a:after {content: '\e942';}
+.popFullmenu .depth02 > ul > li > a[target="_blank"]:after {content:"\e980";}
+.popFullmenu .depth03 {position: relative; margin-top: 0.5rem; padding: 0.5rem 0.75rem; background: #f6f6f6; border-radius: 0 0 0.25rem 0.25rem;}
+.popFullmenu .depth03 > ul > li > a {position: relative; display: block; padding: 0.25rem 0 0.25rem 0.5rem; font-size: 0.75rem; color: #555;}
+.popFullmenu .depth03 > ul > li > a:before {position: absolute; top: 0.75rem; left: 0; width: 3px; height: 3px; background: #606060; content: "";}
+.popFullmenu .depth03 > ul > li > a:after {position: absolute; top: 0; right: -0.25rem; font-family: 'xeicon'; font-size: 1rem;}
+.popFullmenu .depth03 > ul > li.dep > a:after {content: '\e914';}
+.popFullmenu .depth04 {display: none; padding: 0.5rem; background: #fff; border: 1px solid #e3e3e3; border-radius: 0.25rem;}
+.popFullmenu .depth04 > ul > li > a {position: relative; display: block; padding: 0.15rem 0 0.15rem 0.5rem; font-size: 0.7rem; color: #666;}
+.popFullmenu .depth04 > ul > li > a:before {position: absolute; top: 0.65rem; left: 0; width: 0.25rem; height: 2px; background: #a0a0a0; content: "";}
+.popFullmenu .depth04 > ul > li > a[target="_blank"]:after {position: absolute; top: 0; right: -0.25rem; font-family: 'xeicon'; font-size: 0.8rem; content: '\e980';}
+/* active */
+.popFullmenu .depth01 a {transition: all 0.2s; }
+.popFullmenu .active > .depth03,
+.popFullmenu .active > .depth04 {display: block;}
+.popFullmenu .depth02 > ul > li.active > a,
+.popFullmenu .depth02 > ul > li > a:hover {font-weight: 700; color: #265eb6;}
+.popFullmenu .depth02 > ul > li:not(.active) > a:focus,
+.popFullmenu .depth02 > ul > li:not(.active) > a:hover {color: #1756b3; border-color: #1756b3;}
+.popFullmenu .depth02 > ul > li.dep.active > a {color: #fff; background: #1756b3; border-color: #1756b3; box-shadow: 2px 2px 6px rgba(0,0,0,0.3);}
+.popFullmenu .depth02 > ul > li.dep.active > a:after {content: '\e945';}
+.popFullmenu .depth03 > ul > li.dep.active > a,
+.popFullmenu .depth03 > ul > li > a:focus,
+.popFullmenu .depth03 > ul > li > a:hover {font-weight: 600; color: #000;}
+.popFullmenu .depth03 > ul > li.dep.active > a:after {content: '\e91b';}
+.popFullmenu .depth04 > ul > li > a:focus,
+.popFullmenu .depth04 > ul > li > a:hover {font-weight: 600; color: #000;}
+
+/* quickMenu */
+.quickMenu {position: fixed; top: calc(100vh / 2); right: -8rem; margin-top: -13.5rem; width: 8rem; height: 27rem; color: #fff; z-index: 102; transition: right 0.2s; }
+.quickMenu .toggleBtn {position: absolute; top: 1.5rem; left: -3.5rem; padding-left: 1.75rem; width: 5rem; height: 2rem; line-height: 2rem; background: #464d5d; border-radius: 0 0 1rem 1rem; transform: rotate(90deg); z-index: -1;}
+.quickMenu .toggleBtn:before {position: absolute; top: 0; left: 0; display: inline-block; width: 2rem; line-height: 2rem; text-align: center; font-family: 'xeicon'; font-size: 1.2rem; color: #fff; content: "\e942";}
+.quickMenu .inner {position: relative; padding: 1rem 0.5rem 1rem 0.75rem; background: #464d5d; border-radius: 0 0 0 0.75rem;}
+.quickMenu h4 {font-size: 0.85rem; font-weight: 700;}
+.quickMenu h4 + * {margin-top: 0.25rem;}
+.quickMenu .list {padding-right: 0.25rem; max-height: 26rem; overflow: hidden; overflow-y: auto;}
+.quickMenu .list > li {padding: 0.75rem 0;}
+.quickMenu .list > li:first-of-type {padding-top: 0;}
+.quickMenu .list > li:last-of-type {padding-bottom: 0;}
+.quickMenu .list > li + li {border-top: 1px dashed #6b717d;}
+.quickMenu .list > li a {word-break: keep-all;}
+.quickMenu .list .weather {margin: 0.25rem 0;}
+.quickMenu .list .weather i {margin-right: 0.5rem;}
+.quickMenu .list .small {font-size: 0.7rem;}
+.quickMenu .list ul {font-size: 0.7rem;}
+.quickMenu .list ul > li > a {position: relative; display: block; padding-left: 0.5rem;}
+.quickMenu .list ul > li > a:before {position: absolute; top: 0.5rem; left: 0; width: 0.25rem; height: 2px; background: #fff; content: "";}
+.wrap .quickMenu ::-webkit-scrollbar-thumb {background-color: #000;}
+.wrap .quickMenu ::-webkit-scrollbar-track {background-color: #313641;}
+/* active */    
+.quickMenu.active {right: 0;}
+.quickMenu.active .toggleBtn:before {content: "\e945";}
+
+@media screen and (min-width: 1401px){
+	/* header */
+	.header h1 a img {max-height: 2.5rem;}
+
+	/* 검색 */
+	.box_search {width: 15rem;}
+	.header .topUtil {min-width: calc(50% - 7.5rem);}
+}
+@media screen and (min-width: 1241px) and (max-width: 1400px){
+	/* header */
+	.header h1 a img {max-height: 1.5rem;}
+
+	/* header - 유틸리티 */
+	.header .topUtil {min-width: calc(50% - 5.75rem);}
+
+	/* 검색 */
+	.box_search {width: 11.5rem;}
+	.box_search input {font-size: 0.75rem;}
+}
+@media screen and (min-width: 1241px){
+	/* header */
+	.header .top {display: flex; justify-content: space-between; align-items: center; padding: 0; width: 98%; text-align: left;}
+	.header h1 {flex: 1; position: relative; top: auto; left: auto;}
+	/* 검색 */
+	.box_search {position: relative; top: auto; left: auto; transform: none;}
+	/* header - 유틸리티 */
+	.header .topUtil {position: relative; display: flex; justify-content: flex-end; margin-left: 1rem; right: auto !important; top: auto; transform: none;}
+	.header .topUtil .util_wrap {height: 1.5rem;}
+	.header .topUtil .util_wrap li a {font-size: 0.7rem; word-break: break-all;}
+	/* header - 유틸리티 - 글자크기 */
+	.header .topUtil .font_size {height: 1.5rem;}
+	.header .topUtil .font_size p {padding: 0 0.35rem 0 0;}
+
+	/* 전체메뉴 */
+	.popFullmenu .fullmenu_wrap{ max-width: 72rem; padding: 0 1rem;}
+	.fullmenu {display: inline-block; width: 5rem; height: 1.5rem; line-height: 1.5rem; text-align: center; color: #fff; background: #124ea8; border-radius: 0.75rem;}
+	.fullmenu i {margin-right: 0.15rem;}
+	.fullmenuClose {position: absolute; top: 1.25rem; right: 1rem; width: 2.25rem; height: 2.25rem; line-height: 2.25rem; text-align: center; font-size: 1.2rem; color: #000; transition: all 0.2s;}
+	.fullmenuClose:focus,
+	.fullmenuClose:hover {color: #fff; background: #1756b3; border-radius: 0.25rem;}
+
+	
+}
+/* ========== 2023.09.14 CHo,SY 지원청 top 유틸영역 틀어짐 수정 추가작업 */
+
+/* media query mobile */
+@media screen and (max-width: 1440px){
+	/* gnb */
+	/* gnb : oneFull */
+	.nav.oneFull .depth02 .titBox {left: 0; padding: 1.5rem 1rem;}
+
+	/* gnb : oneDown */
+	.nav.oneDown .depth01 > ul > li:first-child > .depth02{ left: 0;}
+	.nav.oneDown .depth01 > ul > li:last-child > .depth02{ left:auto; right: 0;}
+
+	
+}
+
+@media screen and (max-width: 1280px){   
+    .quickMenu {display: none;}
+}
+
+@media screen and (max-width: 1240px){ 
+	/* 상단(로고 및 메뉴) */
+	.header {width: 100%; height: 4rem; border-bottom: 1px solid #ddd;}
+	.header:before {display: none;}
+	.header h1 {position: relative; top: auto; left: auto; line-height: 4rem;}
+	.header h1 a {display: flex; max-width: calc(100% - 7rem); height: 4rem; align-items: center;}
+	.header h1 a img {max-width: 100%; height: auto; max-height: 2rem;}
+	
+	.header .top {padding: 0 1rem; width: 100%; height: 100%;}
+	.header .top:before {display: none;}
+	/* header - 유틸리티 */
+	.header .topUtil {top: 0; transform: none;}
+	/* header - 유틸리티 - 글자크기 */
+	.header .topUtil .util_wrap,
+	.header .topUtil .font_size {display: none;}
+
+	/* 검색 */
+	.box_search {top: 4rem; left: 0; width: 100%; height: auto; padding: 1rem 0.75rem; background: #fff; border: none; border-radius: 0; transform: none; }
+	.box_search:before {position: fixed; top: 8rem; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.4); content: "";}
+	.box_search form {height: 2rem; background: #f2f2f2; border-radius: 0.25rem; overflow: hidden;}
+	.box_search input {float: left; width: calc(100% - 2rem); height: 2rem;}
+	.box_search .srch_btn {float: right; margin: 0; padding: 0; width: 2rem; height: 2rem; line-height: 2rem; font-size: 1.2rem; border-radius: 0;}
+
+	/* 웹네비게이션 */
+	/* gnb common */
+	.nav {display: none;}
+
+	/* 전체메뉴 */
+	.fullmenu {position: absolute; top: 0; bottom: auto; right: 0; display: inline-block; width: 4rem; height: 4rem; line-height: 4rem; text-align: center; font-size: 0; color: #fff; background: #124ea8; border-radius: 0;}
+	.fullmenu i {line-height: 4rem; font-size: 1.5rem;}
+	.fullmenuClose {position: absolute; top: 0; right: 0; width: 3rem; height: 3rem; line-height: 3rem; text-align: center; font-size: 1.2rem; color: #fff;}
+	.popFullmenu h2 {padding: 0 1rem; height: 3rem; line-height: 3rem; background: #383f59; border-bottom: none;}
+	.popFullmenu .popUntil {display: block; background: #e6e6e6; border-bottom: 1px solid #d0d0d0;}
+	.popFullmenu .popUntil li {display: inline-block;}
+	.popFullmenu .popUntil li a {display: inline-block; padding: 0.25rem 0.75rem; line-height: 1.4; font-size: 0.85rem;}
+	.popFullmenu .popUntil .user {display: flex; align-items: center;}
+	.popFullmenu .popUntil .user > li.name {flex: 1; padding: 0 0.75rem; font-weight: 600; color: #00508f;}
+	.popFullmenu .popUntil .user > li + li > a {border-left: 1px solid #fff;}
+	.popFullmenu .popUntil .user > li > a {padding: 0.75rem; color: #fff; background: #00508f;}
+	.popFullmenu .popUntil .util > li > a {position: relative;}
+	.popFullmenu .popUntil .util > li + li > a:before{position: absolute; top: calc(50% - 2px); left: 0; width: 4px; height: 4px; border-radius: 50%; background: #aaa; content: "";}
+	.popFullmenu .fullmenu_group {position: relative; padding: 0 0 3rem; width: 100%;}
+	.popFullmenu .depth01 {max-height: 100%;}
+	.popFullmenu .depth01:before {position: absolute; top: 0; left: 0; width: 40%; height: 100%; background: #f6f6f6; content: "";}
+	.popFullmenu .depth01 a {display: block; color: #000;}
+	.popFullmenu .depth01 > ul {position: relative; width: 100%;}
+	.popFullmenu .depth01 > ul > li {display: block; padding-bottom: 0;}
+	.popFullmenu .depth01 > ul > li + li {padding-top: 0; border-top: none;}
+	.popFullmenu .depth01 > ul > li > a {position: relative; display: flex; align-items: center; padding: 0 1rem; width: 40%; min-height: 2.5rem; font-size: 0.85rem; font-weight: 400; background: #f6f6f6;}
+	.popFullmenu .depth01 > ul > li > a:before {position: absolute; bottom: 0; left: 1rem; width: calc(100% - 2rem); height: 1px; background: #e3e3e3; content: "";}
+	.popFullmenu .depth02 {display: none; position: absolute; top: 0; left: 40%; padding: 0 1rem; width: 60%;}
+	.popFullmenu .depth02 > ul {display: block;}
+	.popFullmenu .depth02 > ul > li {padding: 0; width: 100%; border-right: none;}
+	.popFullmenu .depth02 > ul > li:nth-of-type(n+5) {padding: 0;}
+	.popFullmenu .depth02 > ul > li > a {padding: 0.55rem 0 0.6rem 0; font-size: 0.85rem; border: none; border-bottom: 1px solid #ddd; border-radius: 0;}
+	.popFullmenu .depth03 {padding: 0; background: transparent;}
+	.popFullmenu .depth03 > ul {border-top: 2px solid #000;}
+	.popFullmenu .depth03 > ul > li > a {padding: 0.55rem 0 0.6rem 0.5rem; border-bottom: 1px dashed #ddd;}
+	.popFullmenu .depth03 > ul > li > a:before {top: 1rem; width: 4px; height: 4px; border-radius: 0;}
+	.popFullmenu .depth03 > ul > li > a:after {top: 0.35rem; right: 0.5rem;}
+	.popFullmenu .depth04 {background: #f6f6f6;}
+	.popFullmenu .depth04 > ul > li > a:before {top: 0.6rem;}
+	.popFullmenu .depth04 > ul > li > a[target="_blank"]:after {right: 0;}
+	.popFullmenu li.active > .depth02,
+	.popFullmenu li.active > .depth03,
+	.popFullmenu li.active > .depth04 {display: block;}
+	.popFullmenu .depth01 > ul > li.active > a {font-weight: 700; background: #fff;}
+	.popFullmenu .depth01 > ul > li.active > a:before {display: none;}
+	.popFullmenu .depth02 > ul > li:not(.active) > a:focus,
+	.popFullmenu .depth02 > ul > li:not(.active) > a:hover {color: #000; border-color: #ddd;}
+	.popFullmenu .depth02 > ul > li.dep.active > a {font-weight: 600; color: inherit; background: #fff; border: none; box-shadow: none;}
+	.popFullmenu .depth03 > ul > li.active > a {border: none;}
+
+
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 380px) {
+
+}
+
+
+  /* header - 유틸리티 */
+  .header .topUtil .util_wrap > a.alarm {color: #fff; background: #8852C2;}
+  .header .topUtil .util_wrap > a.alarm.new:before {color: #fff; background: #8852C2;}
+  
+  /* 검색 */
+  .box_search_0 .srch_btn {color: #fff; background: #8852C2;}
+  .box_search_0 .btnSearchClose {color: #fff; background: #8852C2;}
+  
+  .gnb:before {background: ##8852C2;}
+
+  .gnb .depth01 > ul > li.on > a {color: #343BBD;}
+  .gnb .depth01 > ul > li > a > span:before {background: #8852C2;}
+  /* active */
+  .gnb .depth02 > ul > li.active > a,
+  .gnb .depth02 > ul > li > a:hover,
+  .gnb .depth02 > ul > li > a:focus{color: #343BBD;}
+  
+  /* gnb : oneDown */
+  .nav.oneDown .depth01 > ul > li.on > a {color: #343BBD;}
+  .nav.oneDown .depth02 {border-color: #8852C2;}
+  
+  /* gnb : fullDown */
+  .nav.fullDown .depth01 > ul > li.on > a {color: #343BBD;}
+  .nav.fullDown .depth03 > ul {border-top-color: #8852C2;}
+  
+  /* gnb : oneFull */
+  /** oneFull:active **/
+  .nav.oneFull .depth02 > ul > li:not(.active) > a:focus,
+  .nav.oneFull .depth02 > ul > li:not(.active) > a:hover {color: #343BBD; border-color: #8852C2;}
+  .nav.oneFull .depth02 > ul > li.dep.active > a {color: #fff; background: #8852C2; border-color: #8852C2;}
+  .nav.oneFull .depth03 > ul > li > a:hover,
+  .nav.oneFull .depth03 > ul > li > a:focus {color: #343BBD;}
+  
+  
+  
+  @media screen and (min-width: 1241px){
+	  /* 전체메뉴 */
+	  .fullmenu {color: #fff; background: #8852C2;}
+	  .fullmenuClose:focus,
+	  .fullmenuClose:hover {color: #fff; background: #8852C2;}
+  
+	  /* 전체메뉴 */
+	  /* active */
+	  .popFullmenu .depth02 > ul > li.active > a,
+	  .popFullmenu .depth02 > ul > li > a:hover {color: #343BBD;}
+	  .popFullmenu .depth02 > ul > li:not(.active) > a:focus,
+	  .popFullmenu .depth02 > ul > li:not(.active) > a:hover {color: #343BBD; border-color: #8852C2;}
+	  .popFullmenu .depth02 > ul > li.dep.active > a {color: #fff; background: #8852C2; border-color: #8852C2;}
+  
+	
+  }
+  
+  @media screen and (max-width: 1240px){
+	  /* 전체메뉴 */
+	  .fullmenu {color: #fff; background: #8852C2;}
+  }

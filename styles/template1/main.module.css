@@ -1,8 +1,8 @@
 /* 메인 컨테이너 */
-.container_wrap { position:relative; z-index:2; width:100%; max-width: 70rem; margin: 0 auto;}
-.MC_wrap1 {background:var(--main-bg-color);}
-.container {display:flex; flex-wrap:wrap; height:890px; max-width: 70rem;}
-.con_wrap1 {flex:1 1 calc(100% - 410px); width:100%; height:100%; overflow:hidden; position:relative; display:flex; flex-wrap:wrap;}
+.container_wrap { position:relative; z-index:2; width:100%;}
+.MC_wrap1 {background: #f7ebff;}
+.container {display:flex; flex-wrap:wrap; height:890px; max-width: 70rem; margin: 0 auto;}
+.con_wrap1 {flex:1 1 calc(100% - 410px); width:100%; height:100%; overflow:hidden; position:relative; display:flex; flex-wrap:wrap; }
 .con_wrap2 {flex:1 1 410px; width:100%; height:100%; position:relative; overflow:hidden; display:flex; flex-wrap:wrap;}
 .con_content {width: 100%; height:100%; display:flex; flex-wrap:wrap; gap:0;}
 .con_content > div {display:inline-block; flex:1 1; overflow:hidden; position:relative;}

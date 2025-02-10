@@ -119,7 +119,19 @@ h2.heading span:before {content:''; position:absolute; top:-14px; height:2px; wi
 .pop_schedule0030 .btn_more:before {background:#ece2f7;}
 .pop_schedule0030 .btn_more i {color:#7334ba;}
 .pop_schedule0030 .sche_wrap {width: 100%;}
+.pop_schedule0030 .reactCalendar {width: 100%; max-width: calc(100% - 1rem); background: transparent; border: none; color: #fff !important;}
+.pop_schedule0030 .reactCalendar .react-Calendar__month-view__weekdays__weekday {color: #fff;}
+.pop_schedule0030 .reactCalendar .react-Calendar__tile {color: #fff;}
+.pop_schedule0030 .reactCalendar .react-Calendar__tile.event {position:relative;}
+.pop_schedule0030 .reactCalendar .react-Calendar__tile.event:before {content:''; position:absolute; width:4px; height:4px; border-radius:50%; background:#fd7727; bottom:0.15rem; left:calc(50% - 2px);}
+.pop_schedule0030 .reactCalendar .react-Calendar__tile--active {color: #fff; background: transparent;}
+.pop_schedule0030 .reactCalendar .react-Calendar__tile--now {color: #fff; background: #7536bb !important; border-radius:50%;}
 
+/** 행사일정 : active **/
+.pop_schedule0030 .reactCalendar .react-Calendar__tile:enabled:hover,
+.pop_schedule0030 .reactCalendar .react-Calendar__tile:enabled:focus {text-decoration: underline;}
+.pop_schedule0030 .reactCalendar .react-Calendar__tile:not(.reactCalendar__tile--now):enabled:hover,
+.pop_schedule0030 .reactCalendar .react-Calendar__tile:not(.reactCalendar__tile--now):enabled:focus {background-color: transparent;}
 
 .pop_schedule0030 .lst {position:relative; border-top:1px solid #9a6dcc; height: 100%; overflow-y: auto; padding:0 1.5rem; height: 3.5rem;}
 .pop_schedule0030 .lst li {display: flex; align-items: flex-start; width: 100%; height: 100%; flex-direction:column;}

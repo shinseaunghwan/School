@@ -72,14 +72,15 @@ export default function MainSchedule() {
     return (
       <div className={widget.sche_list}>
         <Calendar
+          className={widget.reactCalendar}
           value={value}
           onChange={onChange}
           showNavigation={false}
           formatDay={formatDay} // 날짜를 숫자로만 표시
           onClickDay={onClickDay}
           tileClassName={({ date, view }) => {
-            if (view === 'month' && hasSchedule(date)) {
-              return 'event';
+            if (view === widget.month && hasSchedule(date)) {
+              return widget.event;
             } else {
               return null;
             }
@@ -88,6 +89,7 @@ export default function MainSchedule() {
       </div>
     );
   };
+  
 
   function ScheList() {
     const scheduleItems = selectedDate ? selectedDateItems : currentMonthItems;
