@@ -91,7 +91,7 @@ const CustomSlider = ({ className, items, controlButtonsOrder, sliderName }) => 
             <Slider ref={slider => (sliderRef = slider)} {...settings}>
                 {items.map((item) => (
                     <div className={widget.item} key={item.id}>
-                        <img src={item.src} alt={item.alt} />
+                        <img className={widget.img} src={item.src} alt={item.alt} />
                     </div>
                 ))}
             </Slider>
