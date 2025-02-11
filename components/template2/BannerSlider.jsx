@@ -105,7 +105,7 @@ const BannerSlider = ({ className, items, controlButtonsOrder, sliderName }) => 
               <Slider className={widget.bnWrap} ref={slider => (sliderRef = slider)} {...settings}>
                   {items.map((item) => (
                       <p className={widget.item} key={item.id}>
-                          <a href=''><img src={item.src} alt={item.alt} /></a>
+                          <a href={item.url}><img src={item.src} alt={item.alt} /></a>
                       </p>
                   ))}
               </Slider>

@@ -5,23 +5,23 @@ import styles from '../../styles/header.module.css';
 const CreateMenu = ({ menuType, selectMenuType }) => {
     
     const Items = [
-        { href: '#', depth: 1, menuId: 'menu1', order: 1, name: "1뎁스 메뉴명1", id: 1342378571 },
-        { href: '#', depth: 1, menuId: 'menu2', order: 2, name: "1뎁스 메뉴명2", id: 29867314365 },
-        { href: '#', depth: 1, menuId: 'menu5', order: 5, name: "1뎁스 메뉴명5", id: 39867314365 },
-        { href: '#', depth: 1, menuId: 'menu4', order: 4, name: "1뎁스 메뉴명4", id: 49867314365 },
-        { href: '#', depth: 1, menuId: 'menu3', order: 3, name: "1뎁스 메뉴명3", id: 59867314365 },
-        { href: '#', depth: 2, menuId: 'menu1', order: 1, name: "2뎁스 메뉴명1", id: 69867314365 },
-        { href: '#', depth: 2, menuId: 'menu2', order: 1, name: "2뎁스 메뉴명1", id: 79867314365 },
-        { href: '#', depth: 2, menuId: 'menu3', order: 1, name: "2뎁스 메뉴명1", id: 89867314365 },
-        { href: '#', depth: 2, menuId: 'menu3', order: 2, name: "2뎁스 메뉴명2", id: 99867314365 },
-        { href: '#', depth: 2, menuId: 'menu3', order: 3, name: "2뎁스 메뉴명3", id: 198673143650 },
-        { href: '#', depth: 3, menuId: 'menu2', order: 2, name: "3뎁스 메뉴명2", id: 198673143651 },
-        { href: '#', depth: 3, menuId: 'menu1', order: 1, name: "3뎁스 메뉴명1", id: 198673143652 },
-        { href: '#', depth: 3, menuId: 'menu3', order: 1, name: "3뎁스 메뉴명3", id: 198673143653 },
-        { href: '#', depth: 3, menuId: 'menu2', order: 1, name: "3뎁스 메뉴명2", id: 198673143654 },
-        { href: '#', depth: 2, menuId: 'menu4', order: 1, name: "2뎁스 메뉴명1", id: 198673143655 },
-        { href: '#', depth: 2, menuId: 'menu4', order: 2, name: "2뎁스 메뉴명2", id: 198673143656 },
-        { href: '#', depth: 2, menuId: 'menu4', order: 3, name: "2뎁스 메뉴명3", id: 198673143657 }
+        { href: '#', depth: 1, menuId: 'menu1', order: 1, name: "1뎁스 메뉴명1", id: 1},
+        { href: '#', depth: 1, menuId: 'menu2', order: 2, name: "1뎁스 메뉴명2", id: 2 },
+        { href: '#', depth: 1, menuId: 'menu5', order: 5, name: "1뎁스 메뉴명5", id: 3 },
+        { href: '#', depth: 1, menuId: 'menu4', order: 4, name: "1뎁스 메뉴명4", id: 4 },
+        { href: '#', depth: 1, menuId: 'menu3', order: 3, name: "1뎁스 메뉴명3", id: 5 },
+        { href: '#', depth: 2, menuId: 'menu1', order: 1, name: "2뎁스 메뉴명1", id: 6 },
+        { href: '#', depth: 2, menuId: 'menu2', order: 1, name: "2뎁스 메뉴명1", id: 7 },
+        { href: '#', depth: 2, menuId: 'menu3', order: 1, name: "2뎁스 메뉴명1", id: 8 },
+        { href: '#', depth: 2, menuId: 'menu3', order: 2, name: "2뎁스 메뉴명2", id: 9 },
+        { href: '#', depth: 2, menuId: 'menu3', order: 3, name: "2뎁스 메뉴명3", id: 10 },
+        { href: '#', depth: 3, menuId: 'menu2', order: 2, name: "3뎁스 메뉴명2", id: 11 },
+        { href: '#', depth: 3, menuId: 'menu1', order: 1, name: "3뎁스 메뉴명1", id: 12 },
+        { href: '#', depth: 3, menuId: 'menu3', order: 1, name: "3뎁스 메뉴명3", id: 13 },
+        { href: '#', depth: 3, menuId: 'menu2', order: 1, name: "3뎁스 메뉴명2", id: 14 },
+        { href: '#', depth: 2, menuId: 'menu4', order: 1, name: "2뎁스 메뉴명1", id: 15 },
+        { href: '#', depth: 2, menuId: 'menu4', order: 2, name: "2뎁스 메뉴명2", id: 16 },
+        { href: '#', depth: 2, menuId: 'menu4', order: 3, name: "2뎁스 메뉴명3", id: 17 }
     ];
 
     const [selectDepth1Index, setSelectDepth1Index] = useState(null);
@@ -42,16 +42,27 @@ const CreateMenu = ({ menuType, selectMenuType }) => {
         setSelectDepth2Id(null);
     }
 
+    const [activeId, setActiveId] = useState(1);
+    
+        const handleClick = (id) => {
+            setActiveId(id);
+        };
+
     if (menuType === styles.fullMenu) {
         return (
             <div className={styles.depth01}>
                 <ul>
-                    {Items.sort((a, b) => a.order - b.order).filter((itemDepth1) => itemDepth1.depth === 1).map((itemDepth1, index) => {
-                        const hasDepth2Items = Items.sort((a, b) => a.order - b.order).some((itemDepth2) => itemDepth2.menuId === itemDepth1.menuId && itemDepth2.depth === 2);
-                        const hasDepth3Items = Items.sort((a, b) => a.order - b.order).some((itemDepth3) => itemDepth3.menuId === itemDepth1.menuId && itemDepth3.depth === 3);
+                    {Items.sort((a, b) => a.order - b.order).filter((itemDepth1) => itemDepth1.depth === 1).map((itemDepth1) => {
+                        const hasDepth2Items = Items.some((itemDepth2) => itemDepth2.menuId === itemDepth1.menuId && itemDepth2.depth === 2);
+                        const hasDepth3Items = Items.some((itemDepth3) => itemDepth3.menuId === itemDepth1.menuId && itemDepth3.depth === 3);
 
                         return (
-                            <li key={itemDepth1.id}><a href={itemDepth1.href}><span>{itemDepth1.name}</span></a>
+                            <li
+                                className={activeId === itemDepth1.id ? styles.active : ''}
+                                key={itemDepth1.id}
+                                onClick={() => handleClick(itemDepth1.id)}
+                            >
+                                <a href={itemDepth1.href}><span>{itemDepth1.name}</span></a>
                                 {hasDepth2Items && (
                                     <div className={styles.depth02}>
                                         <ul className={styles.group}>
@@ -61,7 +72,7 @@ const CreateMenu = ({ menuType, selectMenuType }) => {
                                                     {hasDepth3Items && (
                                                         <div className={styles.depth03}>
                                                             <ul className={styles.group}>
-                                                                {Items.filter((itemDepth3) => itemDepth3.menuId === itemDepth1.menuId && itemDepth3.depth === 3).map((itemDepth3, index) => (
+                                                                {Items.filter((itemDepth3) => itemDepth3.menuId === itemDepth1.menuId && itemDepth3.depth === 3).map((itemDepth3) => (
                                                                     <li key={itemDepth3.id}>
                                                                         <a href={itemDepth3.href}><span>{itemDepth3.name}</span></a>
                                                                     </li>
@@ -79,9 +90,11 @@ const CreateMenu = ({ menuType, selectMenuType }) => {
                     })}
                 </ul>
             </div>
-        )
+        );
     }
+    
 
+    
     return (
         <div className={`${styles.gnb} ${(selectMenuType === styles.fullDown && fullDownState) ? styles.active : ''}`} onMouseEnter={() => setFullDownState(true)} onMouseLeave={() => { setFullDownState(false); handleDepth2MouseLeave(); }}>
             <div className={styles.depth01}>

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
-import "react-calendar/dist/Calendar.css";
+// import "react-calendar/dist/Calendar.css";
 import NoData from "./NoData"
 import IconBtnMore from "./IconBtnMore"
 import widget from "../../styles/template1/widget.module.css"
@@ -11,11 +11,12 @@ export default function MainSchedule() {
   const [selectedDate, setSelectedDate] = useState(null); // 선택된 날짜 상태
 
   const Items = [
-    { date: "2024.04.20", text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", id: 1 },
-    { date: "2024.05.24", text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", id: 2 },
-    { date: "2024.06.02", text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", id: 3 },
-    { date: "2024.03.15", text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", id: 4 },
-    { date: "2024.03.27", text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", id: 5 }
+    { date: "2025.04.20", text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", id: 1 },
+    { date: "2025.05.24", text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", id: 2 },
+    { date: "2025.06.02", text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", id: 3 },
+    { date: "2025.03.15", text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", id: 4 },
+    { date: "2025.03.27", text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", id: 5 },
+    { date: "2025.02.27", text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", id: 6 }
   ];
 
   // 현재 달의 스케줄 필터링
@@ -86,6 +87,7 @@ export default function MainSchedule() {
             }
           }}
         />
+        
       </div>
     );
   };
