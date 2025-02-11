@@ -27,7 +27,7 @@ const Footer = () => {
                 <a href="#" className={`${footer.btn_top} ${footer.pulse}`}><i className="xi-arrow-top" aria-hidden="true"></i><span className={footer.hid}>상단으로 이동</span></a>
             </div>
 
-            <a href="#allPopupSlider" className={`${footer.btn_popup} ${footer.hash}`}>NOTICE<br /><strong>POPUP</strong></a>
+            <a href="#" className={`${footer.btn_popup} ${footer.hash}`}>NOTICE<br /><strong>POPUP</strong></a>
         </footer>
     )
 }
