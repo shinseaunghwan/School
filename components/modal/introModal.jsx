@@ -1,14 +1,15 @@
 "use client"
 import React, { useState } from "react";
 import Modal from "react-modal";
-import NoticePopup from "../footer/NoticePopup";
+import Button from "../button/Button"
 import modalPop from "../../styles/modalPop.module.css";
+import intro from "../../styles/intro.module.css";
 
 Modal.setAppElement('body');
 
-const ModalPop = ({ tit, text }) => {
+const IntroModalPop = ({ tit, text }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
 
   const openModal = (event) => {
     event.preventDefault(); 
@@ -25,7 +26,7 @@ const ModalPop = ({ tit, text }) => {
 
   return (
     <>
-      <NoticePopup onClick={openModal} />
+      <Button text="메모" className={intro.button} onClick={openModal} />
       {showModal && (
         <Modal
           isOpen={modalIsOpen}
@@ -64,4 +65,4 @@ const ModalPop = ({ tit, text }) => {
   );
 };
 
-export default ModalPop;
+export default IntroModalPop;

@@ -106,7 +106,6 @@
 }
 
 @media screen and (max-width: 1240px){ 
-	.btn_popup {display: none; }
 	/* footer */
 	.footer .f_info {padding: 1.5rem 0;}
 	.footer .footer_link {padding: 0; height: auto;}
