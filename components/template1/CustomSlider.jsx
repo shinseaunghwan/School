@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import widget from "../../styles/template1/widget.module.css"
+import Image from 'next/image';
 
 const CustomSlider = ({ className, items, controlButtonsOrder, sliderName }) => {
 
@@ -91,7 +92,8 @@ const CustomSlider = ({ className, items, controlButtonsOrder, sliderName }) => 
             <Slider ref={slider => (sliderRef = slider)} {...settings}>
                 {items.map((item) => (
                     <div className={widget.item} key={item.id}>
-                        <img className={widget.img} src={item.src} alt={item.alt} />
+                        {/* <img className={widget.img} src={item.src} alt={item.alt} /> */}
+                        <Image width={1000} height={1000} quality={100} layout='responsive' className={widget.img} src={item.src} alt={item.alt} />
                     </div>
                 ))}
             </Slider>

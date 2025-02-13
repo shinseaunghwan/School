@@ -11,11 +11,11 @@ export default function MainNotice() {
     { part: 'notice3', name: "자료실", id: 3, text1:'등교 전 준비사항 안내3', text2:'123456' }
   ];
   const TabDatas = [
-    { part: 'notice1', url: '#', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2024. 05. 24", id: 176589 },
-    { part: 'notice1', url: '#', text: '현장체험학습(야영교육) 대전 교육 연수원 설문 조사', date: "2024. 05. 22", id: 236 },
-    { part: 'notice1', url: '#', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2024. 05. 24", id: 9254 },
-    { part: 'notice2', url: '#', text: '현장체험학습(야영교육) 대전 교육 연수원 설문 조사', date: "2024. 05. 22", id: 10477464762543 },
-    { part: 'notice2', url: '#', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2024. 05. 24", id: 11738536 },
+    { part: 'notice1', url: '#', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2024. 05. 24", id: 1 },
+    { part: 'notice1', url: '#', text: '현장체험학습(야영교육) 대전 교육 연수원 설문 조사', date: "2024. 05. 22", id: 2 },
+    { part: 'notice1', url: '#', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2024. 05. 24", id: 3 },
+    { part: 'notice2', url: '#', text: '현장체험학습(야영교육) 대전 교육 연수원 설문 조사', date: "2024. 05. 22", id: 4 },
+    { part: 'notice2', url: '#', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2024. 05. 24", id: 5 },
   ];
 
   const [currentTab, setCurrentTab] = useState("notice1"); // 현재 선택된 탭의 상태
@@ -56,18 +56,30 @@ export default function MainNotice() {
     return result
   }
 
+  const TabNotice = ({ tabpart }) => {
+    const result = Tabs.filter((tab) => tab.part === tabpart).map((tab) => (
+      <dl className={widget.new} key={tab.id}>
+        <dt>{tab.text1}</dt>
+        <dd>{tab.text2}</dd>
+        </dl>
+    ))
+
+    if (result.length === 0) {
+      return <NoData />
+    }
+
+    return result
+  }
+
   const TabDataWrap = () => {
     const currentTabData = Tabs.find(tab => tab.part === currentTab);
 
     return (
       <div className={widget.tabWrap}>
-        <div className={`${widget.list_box} ${widget.on}`} id={currentTabData.part}>
-          <a href="" className={widget.topList}>
+        <div className={`${widget.list_box} ${widget.on}`}>
+          <a href="#" className={widget.topList}>
             <img src="./../images/template/T0002/main/0002_notice_ico.png" alt="" />
-            <dl className={widget.new}>
-              <dt>{currentTabData.text1}</dt>
-              <dd>{currentTabData.text2}</dd>
-            </dl>
+            <TabNotice tabpart={currentTabData.part} />
           </a>
           <ul>
             <TabDataList tabpart={currentTabData.part} />

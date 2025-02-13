@@ -1,5 +1,7 @@
 import React from 'react';
 import footer from "../../../../styles/Layout.module.css"
+import ModalPop from "../../../../components/modal/modal"
+import BtnTop from '../../../../components/footer/btnTop';
 
 const Footer = () => {
     return (
@@ -12,7 +14,7 @@ const Footer = () => {
                         <li><a href="#">영상정보처리방침</a></li>
                         <li><a href="#">이메일주소무단수집거부</a></li>
                     </ul>
-                    <a href="#visitPop" className={`${footer.visitant} ${footer.hash}`}>방문자통계보기<i className="xi-signal-4" aria-hidden="true"></i></a>
+                    <a href="#visitPop" className={footer.visitant}>방문자통계보기<i className="xi-signal-4" aria-hidden="true"></i></a>
                 </div>
 
                 <div className={footer.f_info}>
@@ -24,11 +26,12 @@ const Footer = () => {
                     </p>
                     <p className={footer.copyright}>Copyright © 사이트명, All Right Reserved.</p>
                 </div>
-                <a href="#" className={`${footer.btn_top} ${footer.pulse}`}><i className="xi-arrow-top" aria-hidden="true"></i><span className={footer.hid}>상단으로 이동</span></a>
+                <BtnTop />
             </div>
 
-            <a href="#" className={`${footer.btn_popup} ${footer.hash}`}>NOTICE<br /><strong>POPUP</strong></a>
+            <ModalPop tit="제목" text="내용"/>
         </footer>
     )
 }
 export default Footer;
+

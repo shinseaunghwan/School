@@ -3,6 +3,8 @@
 import React from 'react';
 import Title from "./Title"
 import widget from "../../styles/template1/widget.module.css"
+import Image from 'next/image';
+
 export default function MainLink01() {
   const Items = [
     { url: '#', src: './../images/template/T0030/main/0030_link01_01.png', name: "교육목표", id: 1 },

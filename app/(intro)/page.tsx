@@ -18,7 +18,7 @@ export default function MainPage () {
       src="/images/intro/intro_img.png" 
       layout='responsive'
       width={100}
-      height={50}
+      height={100}
       quality={100}
       alt="인트로"
       />
