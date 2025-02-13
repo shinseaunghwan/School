@@ -4,10 +4,9 @@ import React from 'react';
 import Title from "./Title"
 import IconBtnMore from "./IconBtnMore"
 import widget from "../../styles/template1/widget.module.css"
-import Image from 'next/image';
 export default function MainGallery() {
   const Items = [
-    { url: '#', src: '/images/template/T0030/main/0030_thumb01.png', text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", date: "05. 24", open: true, id: 1 }
+    { url: '#', src: '../../images/template/T0030/main/0030_thumb01.png', text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", date: "05. 24", open: true, id: 1 }
   ];
 
   const NoData = () => {
@@ -27,7 +26,7 @@ export default function MainGallery() {
       <li className={item.open === false ? widget.no_mber : ""} key={item.id}>
         <a href={item.url}>
           <div className={widget.img}>
-            <Image width={100} height={100} quality={100} layout='responsive' src={item.src} alt={item.text} />
+            <img src={item.src} alt={item.text} />
           </div>
           <p className={widget.txt}><span>{item.text}</span>{item.date}</p>
         </a>

@@ -3,7 +3,6 @@
 import React from 'react';
 import Title from "./Title"
 import widget from "../../styles/template1/widget.module.css"
-import Image from 'next/image';
 
 export default function MainLink01() {
   const Items = [

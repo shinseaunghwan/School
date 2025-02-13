@@ -4,7 +4,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import widget from "../../styles/template2/T0002_widget.module.css"
-import Image from 'next/image';
 const PopupSlider = ({ className, items, controlButtonsOrder, sliderName }) => {
 
     const [currentSlide, setCurrentSlide] = useState(0); // 현재 슬라이드 인덱스 상태
@@ -103,7 +102,7 @@ const PopupSlider = ({ className, items, controlButtonsOrder, sliderName }) => {
             <Slider className={widget.pop_img} ref={slider => (sliderRef = slider)} {...settings}>
                 {items.map((item) => (
                     <p className={widget.item} key={item.id}>
-                        <a href=''><Image width={1000} height={1000} quality={100} layout='responsive' src={item.src} alt={item.alt} /></a>
+                        <a href=''><img src={item.src} alt={item.alt} /></a>
                     </p>
                 ))}
             </Slider>
