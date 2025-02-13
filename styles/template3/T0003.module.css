@@ -1,8 +1,8 @@
 /* 메인 컨테이너 */
-.container_wrap { position:relative; z-index:2; width:100%; }
+.container_wrap { position:relative; z-index:2; width:100%; min-height: 600px;}
 .container {position: relative; margin: 0 auto; width: 100%; max-width: 70rem;}
 .container:after {clear: both; display: block; content: "";}
-
+.noContent {line-height: 600px; text-align: center; font-size: 3rem; font-weight: 700;}
 
 .MC_wrap1 { position:relative;}
 .MC_wrap2 { position:relative; padding: 3.5rem 0 0;}

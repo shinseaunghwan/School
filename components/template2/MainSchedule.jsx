@@ -12,16 +12,16 @@ export default function MainSchedule() {
   const [selectedDate, setSelectedDate] = useState(null); // 선택된 날짜 상태
 
   const Items = [
-    { date: "04.20", text: "중요한 날1", id: 13412341 },
-    { date: "05.24", text: "중요한 날2", id: 16688888888482 },
-    { date: "06.02", text: "중요한 날3", id: 341831154534 },
-    { date: "02.15", text: "중요한 날4", id: 4164575854863 },
-    { date: "02.27", text: "중요한 날5", id: 2354234766746578 },
-    { date: "05.20", text: "중요한 날6", id: 1234523453245 },
-    { date: "03.24", text: "중요한 날7", id: 22534224 },
-    { date: "02.02", text: "중요한 날8", id: 352452351 },
-    { date: "01.15", text: "중요한 날9", id: 424647345 },
-    { date: "02.27", text: "중요한 날10", id: 51234241234 }
+    { date: "04.20", text: "중요한 날1", id: 1 },
+    { date: "05.24", text: "중요한 날2", id: 2 },
+    { date: "06.02", text: "중요한 날3", id: 3},
+    { date: "02.15", text: "중요한 날4", id: 4},
+    { date: "02.27", text: "중요한 날5", id: 5},
+    { date: "05.20", text: "중요한 날6", id: 6},
+    { date: "03.24", text: "중요한 날7", id: 7},
+    { date: "02.02", text: "중요한 날8", id: 8},
+    { date: "01.15", text: "중요한 날9", id: 9},
+    { date: "02.27", text: "중요한 날10", id: 10 }
   ];
 
   // 현재 달의 스케줄 필터링

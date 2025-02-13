@@ -14,7 +14,7 @@ export default function MainVisual() {
   const controlButtonsOrder = ['play', 'prev', 'pager', 'next'];
 
   return (
-    <div className={`${widget.MVisual0030} ${widget.visual}`}>
+    <div className={widget.MVisual0030}>
       <CustomSlider items={Items} controlButtonsOrder={controlButtonsOrder} sliderName={'비주얼'} />
     </div>
   );
