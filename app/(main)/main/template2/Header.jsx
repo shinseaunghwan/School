@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react';
-import styles from '../../../../styles/header.module.css'; 
+import styles from '../../../../styles/header/header.module.css'; 
 import layout from '../../../../styles/Layout.module.css'; 
 import HeaderTitle from '../../../../components/header/HeaderTitle';
 import Search from '../../../../components/header/Search';

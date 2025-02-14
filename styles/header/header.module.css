@@ -1,6 +1,7 @@
 .menuTypeWrap {position: absolute; top: 0rem; right: -7rem; width: 5rem; z-index: 999;}
 .menuTypeWrap button {margin: 0.15rem 0;}
 
+
 /* header */
 .header {position: relative; margin: 0 auto; height: 7.5rem; background: #fff; z-index: 102;}
 .header:before {position: absolute; top: 4.5rem; left: 0; width: 100%; height: 1px; background: #eeeff1; content: ""; z-index: 100;}
@@ -12,8 +13,8 @@
 /* header - 유틸리티 */
 .header .topUtil {position: absolute; right: 0; top: 50%; display: flex; align-items: center; transform: translateY(-50%); }
 .header .topUtil .util_wrap {display: flex; align-items: center;}
-.header .topUtil .util_wrap > a.alarm {position: relative; padding: 0.25rem 0.5rem; font-size: 0.65rem; color: #fff; background: #124ea8; border-radius: 1rem;}
-.header .topUtil .util_wrap > a.alarm.new:before {position: absolute; top: -0.5rem; left: -0.5rem; width: 1rem; height: 1rem; line-height: 1rem; text-align: center; font-size: 0.6rem; color: #fff; background: #004fba; border: 1px solid #fff; border-radius: 50%; content: "N";}
+.header .topUtil .util_wrap > a.alarm {position: relative; padding: 0.25rem 0.5rem; font-size: 0.65rem; color: #fff; background: #8852C2; border-radius: 1rem;}
+.header .topUtil .util_wrap > a.alarm.new:before {position: absolute; top: -0.5rem; left: -0.5rem; width: 1rem; height: 1rem; line-height: 1rem; text-align: center; font-size: 0.6rem; color: #fff; background: #8852C2; border: 1px solid #fff; border-radius: 50%; content: "N";}
 .header .topUtil .util_wrap > a,
 .header .topUtil .util_wrap li {position: relative; display: block; padding: 0 0.625rem; line-height: 1rem; font-size: 0.75rem; color: #333; font-weight: 600;}
 .header .topUtil .util_wrap ul {display: flex; align-items: center;}
@@ -54,8 +55,8 @@
 .gnb .depth01 > ul {display: flex; width: 100%; text-align: center;}
 .gnb .depth01 > ul > li {flex: 1; line-height: 1.6; vertical-align: top;}
 .gnb .depth01 > ul > li > a {display: flex; justify-content: center; align-items: center; width: 100%; height: 3rem; font-size: 1rem; font-weight: 700;}
-.gnb .depth01 > ul > li.on > a {color: #1756b3;}
-.gnb .depth01 > ul > li > a > span:before {position: absolute; bottom: 0; left: 50%; width: 0; height: 0.5rem; background: #1756b3; border-radius: 0.25rem; opacity: 0.2; content: "";}
+.gnb .depth01 > ul > li.on > a {color: #8852C2;}
+.gnb .depth01 > ul > li > a > span:before {position: absolute; bottom: 0; left: 50%; width: 0; height: 0.5rem; background: #8852C2; border-radius: 0.25rem; opacity: 0.2; content: "";}
 .gnb .depth01 > ul > li.on > a > span:before {left: 0; width: 100%;}
 .gnb .depth02 {padding: 1rem 0.75rem; width: 100%; height: auto; text-align: left;}
 .gnb .depth02 > ul > li > a {padding: 0.35rem 0; font-size: 0.8rem; color: #444;}
@@ -86,8 +87,8 @@
 .nav.oneDown .depth01 > ul {display: table;}
 .nav.oneDown .depth01 > ul > li {position: relative; display: table-cell;}
 .nav.oneDown .depth01 > ul > li > a {display: flex; justify-content: center; align-items: center; width: 100%; height: 3rem;}
-.nav.oneDown .depth01 > ul > li.on > a {font-weight: 700; color: #1756b3;}
-.nav.oneDown .depth02 {position: absolute; top: calc(3rem - 1px); left: calc(50% - 5.5rem); width:11rem; background: #fff; border: 2px solid #1756b3; border-top: 0; border-radius: 0 0 0.5rem 0.5rem; opacity: 0; visibility: hidden; transition-delay: 0s; z-index: 1;}
+.nav.oneDown .depth01 > ul > li.on > a {font-weight: 700; color: #8852C2;}
+.nav.oneDown .depth02 {position: absolute; top: calc(3rem - 1px); left: calc(50% - 5.5rem); width:11rem; background: #fff; border: 2px solid #8852C2; border-top: 0; border-radius: 0 0 0.5rem 0.5rem; opacity: 0; visibility: hidden; transition-delay: 0s; z-index: 1;}
 .nav.oneDown .depth02:before{ display: none; content: ""; position: absolute; left: calc(50% - 0.25rem); top: -0.25rem; width: 0.5rem; height: 0.5rem; transform: rotate(45deg); background: #fff; z-index: 1;}
 .nav.oneDown .depth02 > ul > li.dep > a:before {right: 0; top: 0.35rem;}
 .nav.oneDown .depth03 {margin: 0 calc(-1rem + 6px); padding: 0 0.75rem; background: #f6f6f6;}
@@ -104,10 +105,10 @@
 .nav.fullDown .depth01 > ul > li:before {position: absolute; top: 3rem; left: 0; width: 100%; height: calc(100% - 3rem); border-right: 1px solid #e0e2e6; opacity: 0; content: "";}
 .nav.fullDown .depth01 > ul > li:first-of-type:before {border-left: 1px solid #e0e2e6;}
 .nav.fullDown .depth01 > ul > li > a {display: flex; justify-content: center; align-items: center; width: 100%; height: 3rem;}
-.nav.fullDown .depth01 > ul > li.on > a {font-weight: 700; color: #1756b3;}
+.nav.fullDown .depth01 > ul > li.on > a {font-weight: 700; color: #8852C2;}
 .nav.fullDown .depth02 {opacity: 0; visibility: hidden;}
 .nav.fullDown .depth02 > ul > li.dep > a:before {right: 0; top: 0.35rem;}
-.nav.fullDown .depth03 > ul {padding: 0.5rem 0; border-top: 2px solid #1756b3; border-bottom: 1px solid #c5c9d6;}
+.nav.fullDown .depth03 > ul {padding: 0.5rem 0; border-top: 2px solid #8852C2; border-bottom: 1px solid #c5c9d6;}
 /** fullDown:active **/
 .nav.fullDown .gnb.active {height: auto;}
 .nav.fullDown .gnb.active:after {opacity: 1;}/* 2뎁스 메뉴 전체영역 열림용 */
@@ -135,12 +136,12 @@
 /** oneFull:active **/
 .nav.oneFull .gnb.active {height: auto;}
 .nav.oneFull .depth02 > ul > li:not(.active) > a:focus,
-.nav.oneFull .depth02 > ul > li:not(.active) > a:hover {color: #1756b3; border-color: #1756b3;}
-.nav.oneFull .depth02 > ul > li.dep.active > a {color: #fff; background: #1756b3; border-color: #1756b3; box-shadow: 2px 2px 6px rgba(0,0,0,0.3);}
+.nav.oneFull .depth02 > ul > li:not(.active) > a:hover {color: #8852C2; border-color: #8852C2;}
+.nav.oneFull .depth02 > ul > li.dep.active > a {color: #fff; background: #8852C2; border-color: #8852C2; box-shadow: 2px 2px 6px rgba(0,0,0,0.3);}
 .nav.oneFull .depth01 > ul > li.on > .depth02 {display:block;}
 .nav.oneFull .depth01 > ul > li.on > .depth02:before {height:100%; opacity: 1; transition-delay: 0s;}
 .nav.oneFull .depth03 > ul > li > a:hover,
-.nav.oneFull .depth03 > ul > li > a:focus {font-weight: 600; color: #1756b3;}
+.nav.oneFull .depth03 > ul > li > a:focus {font-weight: 600; color: #8852C2;}
 
 /* 전체메뉴 */
 .popFullmenu {position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #fff; z-index: 999;}
@@ -182,8 +183,8 @@
 .popFullmenu .depth02 > ul > li.active > a,
 .popFullmenu .depth02 > ul > li > a:hover {font-weight: 700; color: #265eb6;}
 .popFullmenu .depth02 > ul > li:not(.active) > a:focus,
-.popFullmenu .depth02 > ul > li:not(.active) > a:hover {color: #1756b3; border-color: #1756b3;}
-.popFullmenu .depth02 > ul > li.dep.active > a {color: #fff; background: #1756b3; border-color: #1756b3; box-shadow: 2px 2px 6px rgba(0,0,0,0.3);}
+.popFullmenu .depth02 > ul > li:not(.active) > a:hover {color: #8852C2; border-color: #8852C2;}
+.popFullmenu .depth02 > ul > li.dep.active > a {color: #fff; background: #8852C2; border-color: #8852C2; box-shadow: 2px 2px 6px rgba(0,0,0,0.3);}
 .popFullmenu .depth02 > ul > li.dep.active > a:after {content: '\e945';}
 .popFullmenu .depth03 > ul > li.dep.active > a,
 .popFullmenu .depth03 > ul > li > a:focus,
@@ -252,11 +253,11 @@
 
 	/* 전체메뉴 */
 	.popFullmenu .fullmenu_wrap{ max-width: 72rem; padding: 0 1rem;}
-	.fullmenu {display: inline-block; width: 5rem; height: 1.5rem; line-height: 1.5rem; text-align: center; color: #fff; background: #124ea8; border-radius: 0.75rem;}
+	.fullmenu {display: inline-block; width: 5rem; height: 1.5rem; line-height: 1.5rem; text-align: center; color: #fff; background: #8852C2; border-radius: 0.75rem;}
 	.fullmenu i {margin-right: 0.15rem;}
 	.fullmenuClose {position: absolute; top: 1.25rem; right: 1rem; width: 2.25rem; height: 2.25rem; line-height: 2.25rem; text-align: center; font-size: 1.2rem; color: #000; transition: all 0.2s;}
 	.fullmenuClose:focus,
-	.fullmenuClose:hover {color: #fff; background: #1756b3; border-radius: 0.25rem;}
+	.fullmenuClose:hover {color: #fff; background: #8852C2; border-radius: 0.25rem;}
 
 	
 }
@@ -307,7 +308,7 @@
 	.nav {display: none;}
 
 	/* 전체메뉴 */
-	.fullmenu {position: absolute; top: 0; bottom: auto; right: 0; display: inline-block; width: 4rem; height: 4rem; line-height: 4rem; text-align: center; font-size: 0; color: #fff; background: #124ea8; border-radius: 0;}
+	.fullmenu {position: absolute; top: 0; bottom: auto; right: 0; display: inline-block; width: 4rem; height: 4rem; line-height: 4rem; text-align: center; font-size: 0; color: #fff; background: #8852C2; border-radius: 0;}
 	.fullmenu i {line-height: 4rem; font-size: 1.5rem;}
 	.fullmenuClose {position: absolute; top: 0; right: 0; width: 3rem; height: 3rem; line-height: 3rem; text-align: center; font-size: 1.2rem; color: #fff;}
 	.popFullmenu h2 {padding: 0 1rem; height: 3rem; line-height: 3rem; background: #383f59; border-bottom: none; color: #fff;}
@@ -362,60 +363,3 @@
 @media (max-width: 380px) {
 
 }
-
-  
-  @media screen and (min-width: 1241px){
-	  /* 전체메뉴 */
-	  .fullmenu {color: #fff; background: #8852C2;}
-	  .fullmenuClose:focus,
-	  .fullmenuClose:hover {color: #fff; background: #8852C2;}
-  
-	  /* 전체메뉴 */
-	  /* active */
-	  .popFullmenu .depth02 > ul > li.active > a,
-	  .popFullmenu .depth02 > ul > li > a:hover {color: #343BBD;}
-	  .popFullmenu .depth02 > ul > li:not(.active) > a:focus,
-	  .popFullmenu .depth02 > ul > li:not(.active) > a:hover {color: #343BBD; border-color: #8852C2;}
-	  .popFullmenu .depth02 > ul > li.dep.active > a {color: #fff; background: #8852C2; border-color: #8852C2;}
-  
-	
-  }
-  
-  @media screen and (max-width: 1240px){
-	  /* 전체메뉴 */
-	  .fullmenu {color: #fff; background: #8852C2;}
-  }
-
-  /* 색상 */
-    /* header - 유틸리티 */
-	.header .topUtil .util_wrap > a.alarm {color: #fff; background: #8852C2;}
-	.header .topUtil .util_wrap > a.alarm.new:before {color: #fff; background: #8852C2;}
-	
-	/* 검색 */
-	.box_search_0 .srch_btn {color: #fff; background: #8852C2;}
-	.box_search_0 .btnSearchClose {color: #fff; background: #8852C2;}
-	
-	.gnb:before {background: ##8852C2;}
-  
-	.gnb .depth01 > ul > li.on > a {color: #343BBD;}
-	.gnb .depth01 > ul > li > a > span:before {background: #8852C2;}
-	/* active */
-	.gnb .depth02 > ul > li.active > a,
-	.gnb .depth02 > ul > li > a:hover,
-	.gnb .depth02 > ul > li > a:focus{color: #343BBD;}
-	
-	/* gnb : oneDown */
-	.nav.oneDown .depth01 > ul > li.on > a {color: #343BBD;}
-	.nav.oneDown .depth02 {border-color: #8852C2;}
-	
-	/* gnb : fullDown */
-	.nav.fullDown .depth01 > ul > li.on > a {color: #343BBD;}
-	.nav.fullDown .depth03 > ul {border-top-color: #8852C2;}
-	
-	/* gnb : oneFull */
-	/** oneFull:active **/
-	.nav.oneFull .depth02 > ul > li:not(.active) > a:focus,
-	.nav.oneFull .depth02 > ul > li:not(.active) > a:hover {color: #343BBD; border-color: #8852C2;}
-	.nav.oneFull .depth02 > ul > li.dep.active > a {color: #fff; background: #8852C2; border-color: #8852C2;}
-	.nav.oneFull .depth03 > ul > li > a:hover,
-	.nav.oneFull .depth03 > ul > li > a:focus {color: #343BBD;}

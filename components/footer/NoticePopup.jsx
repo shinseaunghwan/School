@@ -1,10 +1,9 @@
 import React from 'react';
-import footer from "../../styles/Layout.module.css"
 
-const NoticePopup = ({onClick}) => {
+const NoticePopup = ({onClick, styles}) => {
     
     return (
-            <a onClick={onClick} href="#" className={footer.btn_popup}>NOTICE<br /><strong>POPUP</strong></a>
+            <a onClick={onClick} href="#" className={styles.btn_popup}>NOTICE<br /><strong>POPUP</strong></a>
     )
 }
 export default NoticePopup;

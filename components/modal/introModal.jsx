@@ -7,7 +7,7 @@ import intro from "../../styles/intro.module.css";
 
 Modal.setAppElement('body');
 
-const IntroModalPop = ({ tit, text }) => {
+const IntroModalPop = ({ tit, texts }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [showModal, setShowModal] = useState(true);
 
@@ -34,25 +34,27 @@ const IntroModalPop = ({ tit, text }) => {
           contentLabel="Notice Popup"
           style={{
             overlay: {
-              backgroundColor: 'rgba(0, 0, 0, 0.5)',
-              zIndex: '99999',
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              zIndex: "99999",
             },
             content: {
-              maxWidth: '1000px',
-              width: '90%',
-              color: 'lightsteelblue',
-              top: '30%',
-              left: '50%',
-              right: 'auto',
-              bottom: 'auto',
-              marginRight: '-50%',
-              transform: 'translate(-50%, -50%)',
+              maxWidth: "1000px",
+              width: "90%",
+              color: "lightsteelblue",
+              top: "30%",
+              left: "50%",
+              right: "auto",
+              bottom: "auto",
+              marginRight: "-50%",
+              transform: "translate(-50%, -50%)",
             },
           }}
         >
           <div className={modalPop.modal}>
             <h2 className={modalPop.tit}>{tit}</h2>
-            <p className={modalPop.txt}>{text}</p>
+            {texts.map((text, index) => (
+              <p key={index}>{text}</p>
+            ))}
             <div className={modalPop.button_wrap}>
               <button className={modalPop.button} onClick={closeModal}>
                 닫기

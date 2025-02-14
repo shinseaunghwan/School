@@ -6,7 +6,7 @@ import modalPop from "../../styles/modalPop.module.css";
 
 Modal.setAppElement('body');
 
-const ModalPop = ({ tit, text }) => {
+const ModalPop = ({ tit, text, styles }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -25,7 +25,7 @@ const ModalPop = ({ tit, text }) => {
 
   return (
     <>
-      <NoticePopup onClick={openModal} />
+      <NoticePopup styles={styles} onClick={openModal} />
       {showModal && (
         <Modal
           isOpen={modalIsOpen}
