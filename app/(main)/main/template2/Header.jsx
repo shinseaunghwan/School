@@ -15,12 +15,12 @@ const Header = () => {
         <div className={styles.header}>
             <div className={`${styles.top} ${layout.container}`}>
                 <HeaderTitle url={'/'} src={'./../images/template/T0030/main/logo.png'} schoolName={'학교명'} />
-                <Search />
-                <Util setIsMenuOpen={setIsMenuOpen} setSelectMenuType={setSelectMenuType} />
+                <Search styles={styles} />
+                <Util styles={styles} setIsMenuOpen={setIsMenuOpen} setSelectMenuType={setSelectMenuType} />
             </div>
-            <MainNavigation selectMenuType={selectMenuType} />
+            <MainNavigation styles={styles} selectMenuType={selectMenuType} />
 
-            <PopFullmenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}  />
+            <PopFullmenu styles={styles} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}  />
         </div>
 
     )

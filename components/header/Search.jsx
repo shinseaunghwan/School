@@ -1,9 +1,9 @@
 "use client"
 import React, { useState, useEffect, Fragment } from 'react';
-import styles from '../../styles/header.module.css'; 
+// import styles from '../../styles/header.module.css'; 
 
 
-const Search = () => {
+const Search = ({styles}) => {
     const [windowWidth, setWindowWidth] = useState(0); // 초기값을 0으로 설정하여 SSR 방지
     const [toggleBtn, setToggleBtn] = useState(false);
     const [showSearch, setShowSearch] = useState(false);

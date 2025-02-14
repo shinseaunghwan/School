@@ -2,11 +2,11 @@
 import { useState } from 'react';
 import styles from '../../../../styles/header2.module.css'; 
 import layout from '../../../../styles/Layout.module.css'; 
-import HeaderTitle from '../../../../components/header2/HeaderTitle';
-import Search from '../../../../components/header2/Search';
-import Util from '../../../../components/header2/Util';
-import MainNavigation from '../../../../components/header2/MainNavigation';
-import PopFullmenu from '../../../../components/header2/PopFullmenu';
+import HeaderTitle from '../../../../components/header/HeaderTitle';
+import Search from '../../../../components/header/Search';
+import Util from '../../../../components/header/Util';
+import MainNavigation from '../../../../components/header/MainNavigation';
+import PopFullmenu from '../../../../components/header/PopFullmenu';
 
 const Header = () => {
     const [selectMenuType, setSelectMenuType] = useState(styles.oneDown);
@@ -15,12 +15,12 @@ const Header = () => {
         <div className={styles.header}>
             <div className={`${styles.top} ${layout.container}`}>
                 <HeaderTitle url={'/'} src={'./../images/template/T0030/main/logo.png'} schoolName={'학교명'} />
-                <Search />
-                <Util setIsMenuOpen={setIsMenuOpen} setSelectMenuType={setSelectMenuType} />
+                <Search styles={styles} />
+                <Util styles={styles} setIsMenuOpen={setIsMenuOpen} setSelectMenuType={setSelectMenuType} />
             </div>
-            <MainNavigation selectMenuType={selectMenuType} />
+            <MainNavigation styles={styles} selectMenuType={selectMenuType} />
 
-            <PopFullmenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}  />
+            <PopFullmenu styles={styles} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}  />
         </div>
 
     )

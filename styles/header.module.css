@@ -363,41 +363,6 @@
 
 }
 
-
-  /* header - 유틸리티 */
-  .header .topUtil .util_wrap > a.alarm {color: #fff; background: #8852C2;}
-  .header .topUtil .util_wrap > a.alarm.new:before {color: #fff; background: #8852C2;}
-  
-  /* 검색 */
-  .box_search_0 .srch_btn {color: #fff; background: #8852C2;}
-  .box_search_0 .btnSearchClose {color: #fff; background: #8852C2;}
-  
-  .gnb:before {background: ##8852C2;}
-
-  .gnb .depth01 > ul > li.on > a {color: #343BBD;}
-  .gnb .depth01 > ul > li > a > span:before {background: #8852C2;}
-  /* active */
-  .gnb .depth02 > ul > li.active > a,
-  .gnb .depth02 > ul > li > a:hover,
-  .gnb .depth02 > ul > li > a:focus{color: #343BBD;}
-  
-  /* gnb : oneDown */
-  .nav.oneDown .depth01 > ul > li.on > a {color: #343BBD;}
-  .nav.oneDown .depth02 {border-color: #8852C2;}
-  
-  /* gnb : fullDown */
-  .nav.fullDown .depth01 > ul > li.on > a {color: #343BBD;}
-  .nav.fullDown .depth03 > ul {border-top-color: #8852C2;}
-  
-  /* gnb : oneFull */
-  /** oneFull:active **/
-  .nav.oneFull .depth02 > ul > li:not(.active) > a:focus,
-  .nav.oneFull .depth02 > ul > li:not(.active) > a:hover {color: #343BBD; border-color: #8852C2;}
-  .nav.oneFull .depth02 > ul > li.dep.active > a {color: #fff; background: #8852C2; border-color: #8852C2;}
-  .nav.oneFull .depth03 > ul > li > a:hover,
-  .nav.oneFull .depth03 > ul > li > a:focus {color: #343BBD;}
-  
-  
   
   @media screen and (min-width: 1241px){
 	  /* 전체메뉴 */
@@ -420,3 +385,37 @@
 	  /* 전체메뉴 */
 	  .fullmenu {color: #fff; background: #8852C2;}
   }
+
+  /* 색상 */
+    /* header - 유틸리티 */
+	.header .topUtil .util_wrap > a.alarm {color: #fff; background: #8852C2;}
+	.header .topUtil .util_wrap > a.alarm.new:before {color: #fff; background: #8852C2;}
+	
+	/* 검색 */
+	.box_search_0 .srch_btn {color: #fff; background: #8852C2;}
+	.box_search_0 .btnSearchClose {color: #fff; background: #8852C2;}
+	
+	.gnb:before {background: ##8852C2;}
+  
+	.gnb .depth01 > ul > li.on > a {color: #343BBD;}
+	.gnb .depth01 > ul > li > a > span:before {background: #8852C2;}
+	/* active */
+	.gnb .depth02 > ul > li.active > a,
+	.gnb .depth02 > ul > li > a:hover,
+	.gnb .depth02 > ul > li > a:focus{color: #343BBD;}
+	
+	/* gnb : oneDown */
+	.nav.oneDown .depth01 > ul > li.on > a {color: #343BBD;}
+	.nav.oneDown .depth02 {border-color: #8852C2;}
+	
+	/* gnb : fullDown */
+	.nav.fullDown .depth01 > ul > li.on > a {color: #343BBD;}
+	.nav.fullDown .depth03 > ul {border-top-color: #8852C2;}
+	
+	/* gnb : oneFull */
+	/** oneFull:active **/
+	.nav.oneFull .depth02 > ul > li:not(.active) > a:focus,
+	.nav.oneFull .depth02 > ul > li:not(.active) > a:hover {color: #343BBD; border-color: #8852C2;}
+	.nav.oneFull .depth02 > ul > li.dep.active > a {color: #fff; background: #8852C2; border-color: #8852C2;}
+	.nav.oneFull .depth03 > ul > li > a:hover,
+	.nav.oneFull .depth03 > ul > li > a:focus {color: #343BBD;}

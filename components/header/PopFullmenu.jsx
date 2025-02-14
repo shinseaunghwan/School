@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from '../../styles/header.module.css'; 
+// import styles from '../../styles/header.module.css'; 
 import CreateMenu from './CreateMenu';
 import FullMnBtn from './FullMnBtn';
 
-const PopFullmenu = ({isMenuOpen, setIsMenuOpen}) => {
+const PopFullmenu = ({isMenuOpen, setIsMenuOpen, styles}) => {
     
     return (
         isMenuOpen && (
@@ -15,7 +15,7 @@ const PopFullmenu = ({isMenuOpen, setIsMenuOpen}) => {
                         <ul className={styles.util}></ul>
                     </div>
                     <div className={styles.fullmenu_group}>
-                        <CreateMenu menuType={styles.fullMenu} />{/* NAV : fullMenu */}
+                        <CreateMenu styles={styles} menuType={styles.fullMenu} />{/* NAV : fullMenu */}
                     </div>
                     <FullMnBtn onClick={() => setIsMenuOpen(!isMenuOpen)} LinkClassName={styles.fullmenuClose} IconClassName={'xi-close'} LinkTitle={''} LinkTitleHide={'전체메뉴 닫힘'} />
                 </div>

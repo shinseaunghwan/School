@@ -1,8 +1,7 @@
 "use client"
 import React, { useState} from 'react';
-import styles from '../../styles/header.module.css'; 
 
-const CreateMenu = ({ menuType, selectMenuType }) => {
+const CreateMenu = ({ menuType, selectMenuType, styles }) => {
     
     const Items = [
         { href: '#', depth: 1, menuId: 'menu1', order: 1, name: "1뎁스 메뉴명1", id: 1},
@@ -47,6 +46,7 @@ const CreateMenu = ({ menuType, selectMenuType }) => {
         const handleClick = (id) => {
             setActiveId(id);
         };
+// import styles from '../../styles/header.module.css'; 
 
     if (menuType === styles.fullMenu) {
         return (

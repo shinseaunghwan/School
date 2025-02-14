@@ -1,9 +1,9 @@
 "use client"
 import React, { useState, useEffect, Fragment } from 'react';
-import styles from '../../styles/header.module.css'; 
+// import styles from '../../styles/header.module.css'; 
 import FullMnBtn from './FullMnBtn';
 
-const Util = ({setSelectMenuType, setIsMenuOpen}) => {
+const Util = ({setSelectMenuType, setIsMenuOpen, styles}) => {
     
     const [infoLogin, setInfoLogin] = useState([null, null]); // 로그인 상태
 
