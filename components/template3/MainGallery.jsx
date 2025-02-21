@@ -7,9 +7,10 @@ import IconBtnMore from "./IconBtnMore"
 
 export default function MainGallery({widget}) {
   const Items = [
-    { url: '#', src: './../images/template/T0002/main/0002_story_img01.jpg', text: "에펠탑을 만들어요", open: true, id: 12643735673, show:false },
-    { url: '#', src: './../images/template/T0002/main/0002_story_img02.jpg', text: "즐거운 수업시간", open: true, id: 12512432782, show:true },
-    { url: '#', src: './../images/template/T0002/main/0002_story_img03.jpg', text: "책과 친구가 됐어요", open: true, id: 59567856393 ,show:true }
+    { url: '#', src: './../images/template/T0002/main/0002_story_img01.jpg', text: "에펠탑을 만들어요", date: "2025.03.01", open: true, id: 1, show:true },
+    { url: '#', src: './../images/template/T0002/main/0002_story_img02.jpg', text: "즐거운 수업시간", date: "2025.03.01", open: true, id: 2, show:true },
+    { url: '#', src: './../images/template/T0002/main/0002_story_img03.jpg', text: "책과 친구가 됐어요", date: "2025.03.01", open: true, id: 3 ,show:true },
+    { url: '#', src: './../images/template/T0002/main/0002_story_img03.jpg', text: "책과 친구가 됐어요", date: "2025.03.01", open: true, id: 4 ,show:true }
   ];
 
   const NoData = () => {
@@ -36,6 +37,7 @@ export default function MainGallery({widget}) {
                 <img src={item.src} alt={item.text} />
               </p>
               <p className={widget.txt}>{item.text}</p>
+              <p className={widget.date}>{item.date}</p>
             </a>
           </li>
         );
@@ -63,10 +65,8 @@ export default function MainGallery({widget}) {
 
   return (
     <div className={widget.gallery0003}>
-      <div className={widget.tit_wrap}>
         <Title className={widget.heading}>우리들 이야기</Title>
         <IconBtnMore LinkHref={'#'} LinkClassName={`${widget.btn_more} ${widget.ty}`} IconClassName={'xi-plus'} LinkTitle={'우리들 이야기'} />
-      </div>
       <div className={widget.list_box}>
         <ul>
           <GalleryList />

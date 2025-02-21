@@ -7,8 +7,8 @@ import MainMeal from "../../../../components/template3/MainMeal"
 import MainLink01 from "../../../../components/template3/MainLink01"
 import MainNotice from '../../../../components/template3/MainNotice';
 import MainSchedule from '../../../../components/template3/MainSchedule';
-// import MainGallery from "../../../../components/template3/MainGallery"
-// import Banner from "../../../../components/template3/Banner"
+import MainGallery from "../../../../components/template3/MainGallery"
+import Banner from "../../../../components/banner/Banner"
 // import layout from "../../../../styles/Layout.module.css"
 
 
@@ -45,6 +45,13 @@ function App() {
           <MainSchedule widget={widget} />
         </div>
       </div>
+
+      <div className={`${ui.MC_wrap5} ${ui.container}`}>
+      <div className={ui.MC_box7}>
+          <MainGallery widget={widget} />
+        </div>
+      </div>
+      <Banner/>
     </div>
   );
 }

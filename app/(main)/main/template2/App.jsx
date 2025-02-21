@@ -6,7 +6,7 @@ import MainNotice from "../../../../components/template2/MainNotice"
 import MainMeal from "../../../../components/template2/MainMeal"
 import MainLink01 from "../../../../components/template2/MainLink01"
 import MainGallery from "../../../../components/template2/MainGallery"
-import Banner from "../../../../components/template2/Banner"
+import Banner from "../../../../components/banner/Banner"
 import main from '../../../../styles/template2/T0002.module.css';
 import widget from '../../../../styles/template2/T0002_widget.module.css';
 import layout from "../../../../styles/Layout.module.css"
@@ -46,7 +46,7 @@ function App() {
           <MainSchedule widget={widget} />
         </div>
       </div>
-      <Banner widget={widget} />
+      <Banner/>
     </div>
   );
 }

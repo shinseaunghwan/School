@@ -116,7 +116,7 @@ export default function MainSchedule({widget}) {
   return (
     <div className={widget.pop_schedule0003}>
         <div className={widget.tit_box}>
-          <Title className={widget.tit}>행사일정</Title>
+          <Title className={widget.tit}>학사일정</Title>
           <CalendarHeader value={date} onChange={setDate} />
         </div>
         
