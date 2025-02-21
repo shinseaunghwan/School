@@ -40,7 +40,7 @@ const IntroModalPop = ({ tit, texts }) => {
             content: {
               maxWidth: "1000px",
               width: "90%",
-              color: "lightsteelblue",
+              color: "#111",
               top: "30%",
               left: "50%",
               right: "auto",

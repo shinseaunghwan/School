@@ -3,9 +3,9 @@ import React, { useState, useEffect, useRef, Fragment } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import widget from "../../styles/template1/widget.module.css"
+// import widget from "../../styles/template1/widget.module.css"
 
-const CustomSlider = ({ className, items, controlButtonsOrder, sliderName }) => {
+const CustomSlider = ({ className, items, controlButtonsOrder, sliderName, widget }) => {
 
     const [currentSlide, setCurrentSlide] = useState(0); // 현재 슬라이드 인덱스 상태
     const [totalSlides, setTotalSlides] = useState(items.length); // 전체 슬라이드 수 상태

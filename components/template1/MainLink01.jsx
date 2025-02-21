@@ -2,9 +2,9 @@
 
 import React from 'react';
 import Title from "./Title"
-import widget from "../../styles/template1/widget.module.css"
+// import widget from "../../styles/template1/widget.module.css"
 
-export default function MainLink01() {
+export default function MainLink01({widget}) {
   const Items = [
     { url: '#', src: './../images/template/T0030/main/0030_link01_01.png', name: "교육목표", id: 1 },
     { url: '#', src: './../images/template/T0030/main/0030_link01_02.png', name: "학교알리미", id: 2 },

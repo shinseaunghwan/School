@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import NoData from "./NoData"
 import IconBtnMore from "./IconBtnMore"
-import widget from "../../styles/template1/widget.module.css"
+// import widget from "../../styles/template1/widget.module.css"
 
-export default function MainNotice() {
+export default function MainNotice({widget}) {
   const Tabs = [
     { url: '#notice1', part: 'notice1', name: "공지사항", id: 1 },
     { url: '#notice2', part: 'notice2', name: "가정통신문", id: 2 },
@@ -67,7 +67,7 @@ export default function MainNotice() {
 
   const TabDataList = () => {
     if (loading) return <p>Loading...</p>;
-    if (tabData.length === 0) return <NoData />;
+    if (tabData.length === 0) return <NoData widget={widget} />;
 
     return tabData.map((tabdata) => (
       <li key={tabdata.id}>

@@ -3,9 +3,9 @@
 import React from 'react';
 import Title from "./Title"
 import IconBtnMore from "./IconBtnMore"
-import widget from "../../styles/template2/T0002_widget.module.css"
+// import widget from "../../styles/template2/T0002_widget.module.css"
 
-export default function MainGallery() {
+export default function MainGallery({widget}) {
   const Items = [
     { url: '#', src: './../images/template/T0002/main/0002_story_img01.jpg', text: "에펠탑을 만들어요", open: true, id: 12643735673, show:false },
     { url: '#', src: './../images/template/T0002/main/0002_story_img02.jpg', text: "즐거운 수업시간", open: true, id: 12512432782, show:true },

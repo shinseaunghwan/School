@@ -6,8 +6,8 @@ import Calendar from 'react-calendar';
 import NoData from "./NoData"
 import IconBtnMore from "./IconBtnMore"
 import Title from "./Title"
-import widget from "../../styles/template2/T0002_widget.module.css"
-export default function MainSchedule() {
+// import widget from "../../styles/template2/T0002_widget.module.css"
+export default function MainSchedule({widget}) {
   const [date, setDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null); // 선택된 날짜 상태
 
@@ -99,7 +99,7 @@ export default function MainSchedule() {
     const scheduleItems = selectedDate ? selectedDateItems : currentMonthItems;
 
     if (scheduleItems.length === 0) {
-      return <NoData />;
+      return <NoData widget={widget} />;
     }
 
     return scheduleItems.map((item) => (
