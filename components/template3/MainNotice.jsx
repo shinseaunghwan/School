@@ -11,14 +11,14 @@ export default function MainNotice({widget}) {
     { part: 'notice3', name: "자료실", id: 3, text1:'등교 전 준비사항 안내3', text2:'123456' }
   ];
   const TabDatas = [
-    { part: 'notice1', url: '#', tit:'제목이에요', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2024. 05. 24", id: 1 },
-    { part: 'notice1', url: '#', tit:'제목이에요', text: '현장체험학습(야영교육) 대전 교육 연수원 설문 조사', date: "2024. 05. 22", id: 2 },
-    { part: 'notice1', url: '#', tit:'제목이에요', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2024. 05. 24", id: 3 },
-    { part: 'notice1', url: '#', tit:'제목이에요', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2024. 05. 24", id: 4 },
-    { part: 'notice2', url: '#', tit:'제목이에요', text: '현장체험학습(야영교육) 대전 교육 연수원 설문 조사', date: "2024. 05. 22", id: 5 },
-    { part: 'notice2', url: '#', tit:'제목이에요', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2024. 05. 24", id: 6 },
-    { part: 'notice2', url: '#', tit:'제목이에요', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2024. 05. 24", id: 7 },
-    { part: 'notice2', url: '#', tit:'제목이에요', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2024. 05. 24", id: 8 },
+    { part: 'notice1', url: '#', tit:'제목이에요', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2025. 05. 24", id: 1 },
+    { part: 'notice1', url: '#', tit:'제목이에요', text: '현장체험학습(야영교육) 대전 교육 연수원 설문 조사', date: "2025. 05. 22", id: 2 },
+    { part: 'notice1', url: '#', tit:'제목이에요', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2025. 05. 24", id: 3 },
+    { part: 'notice1', url: '#', tit:'제목이에요', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2025. 05. 24", id: 4 },
+    { part: 'notice2', url: '#', tit:'제목이에요', text: '현장체험학습(야영교육) 대전 교육 연수원 설문 조사', date: "2025. 05. 22", id: 5 },
+    { part: 'notice2', url: '#', tit:'제목이에요', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2025. 05. 24", id: 6 },
+    { part: 'notice2', url: '#', tit:'제목이에요', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2025. 05. 24", id: 7 },
+    { part: 'notice2', url: '#', tit:'제목이에요', text: '프로젝트 봉사활동 계획서 및 보고서 양식', date: "2025. 05. 24", id: 8 },
   ];
 
   const [currentTab, setCurrentTab] = useState("notice1"); // 현재 선택된 탭의 상태

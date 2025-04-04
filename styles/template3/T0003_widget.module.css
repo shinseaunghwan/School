@@ -9,12 +9,12 @@ a.btn_more.ty:hover i { transform: rotate(90deg); }
 .slogun {width: calc(100% - 24rem); float: left; margin-top: 3rem;}
 .slogun h2{font-size: 2.1rem; line-height: 2.8rem; color: #253956; font-family: 'Pretendard'; font-weight: 700;}
 .slogun p{font-size: 1rem; margin-top: 1rem;}
-.MVisual0003 { position: relative; width: 24rem; height: 100%; max-height: 27rem; overflow:hidden; border-radius: 5rem 0 0 0; }
+.MVisual0003 { position: relative; width: 24rem; height: 100%; max-height: 27rem; overflow:hidden; border-radius: 5rem 0 0 0;  float: right;}
 .MVisual0003 .slider{ position:relative; }
 .MVisual0003 .slick-track {overflow:hidden;}
 .MVisual0003 .item { font-size: 0; line-height: 0; text-align: center; }
 .MVisual0003 .item img { width: 100%; max-width: 1920px; }
-.MVisual0003 .control {display: flex; justify-content: center; align-items: center; position: absolute; right: 0;  bottom: 0; z-index:1; background: rgba(0, 0, 0, .7); border-top-left-radius: 1rem; color: #fff; width: 11.25rem; height: 2.4rem;}
+.MVisual0003 .control {display: flex; justify-content: center; align-items: center; position: absolute; right: 0;  bottom: 0; z-index:1; background: rgba(0, 0, 0, .7); border-top-left-radius: 1rem; color: #fff; width: 10.75rem; height: 2.4rem;}
 .MVisual0003 .control > button {display:inline-block; width:1.6rem; height:1.6rem;  text-align: center; border-radius:50%; -webkit-transition:all 0.15s; transition:all 0.15s; }
 .MVisual0003 .control > button.stop, .MVisual0003 .control > button.play {border-radius: 50%; border: 2px solid rgba(255, 255, 255, .5);}
 .MVisual0003 .control > * + * {margin-left:.75rem}
@@ -26,8 +26,8 @@ a.btn_more.ty:hover i { transform: rotate(90deg); }
 
 /* 바로가기1 */
 .M_link0003 { position: relative; z-index: 2;}
-.M_link0003 ul{ display: table; table-layout: fixed; width: 100%; }
-.M_link0003 li { position: relative; display: table-cell; vertical-align: top; padding: 0 0.3rem; }
+.M_link0003 ul{ display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; width: 100%; }
+.M_link0003 li { position: relative; vertical-align: top; padding: 0 0.3rem; }
 .M_link0003 li a { position: relative; }
 .M_link0003 li a .img_box {position: relative; display: flex; justify-content: center; align-items: center;  width: 5rem; height: 5rem; margin: 0 auto;  box-shadow: 0px 0px 20px rgba(94, 148, 255, .2); }
 .M_link0003 li a .img_box::before { content: ""; position: absolute; top: 0; left: 0; border-top-right-radius: .5rem; border-bottom-left-radius: .5rem; background-color: rgba(94, 148, 255, .3); width: 100%; height: 100%; transition: 0.15s; -webkit-transition: 0.15s;}
@@ -46,12 +46,12 @@ a.btn_more.ty:hover i { transform: rotate(90deg); }
 .notice0003 .titTab li a { display: block; white-space: nowrap; overflow: hidden; }
 .notice0003 .titTab li a span { font-size: 1rem;  color: #555; transition: 0.15s; -webkit-transition: 0.15s; display: inline-block;}
 .notice0003 .list_box { width:100%; height:100%; }
-.notice0003 .list_box ul { margin-top: 1rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;}
-.notice0003 .list_box ul li {position: relative; }
-.notice0003 .list_box ul li + li { }
-.notice0003 .list_box ul li a { display: flex; width: 14.25rem; height: 7.3rem; flex-wrap: wrap; flex-direction: column;}
+.notice0003 .list_box ul { margin-top: 1rem; display: flex; align-items: center; justify-content: space-between; }
+.notice0003 .list_box ul li {position: relative;}
+.notice0003 .list_box ul li:nth-of-type(n+5) {display: none; }
+.notice0003 .list_box ul li a { display: flex; width: 100%; max-width: 14.25rem; height: 7.3rem; flex-wrap: wrap; flex-direction: column;}
 .notice0003 .list_box ul li a span.tit {display: block; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: .9rem; font-weight: 600;}
-.notice0003 .list_box ul li a span.text {display: block; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: .8rem; font-weight: 400; margin-top: 1.25rem;}
+.notice0003 .list_box ul li a span.text {display: block; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: .8rem; font-weight: 400; margin-top: 1rem;}
 .notice0003 .list_box ul li a span.date {display: block; margin-top: auto; font-size: .75rem; font-weight: 300;}
 
 /* 게시판 : active */
@@ -70,7 +70,7 @@ a.btn_more.ty:hover i { transform: rotate(90deg); }
 .meal_menu0003 .inner li + li { margin-top: 1rem; }
 .meal_menu0003 .inner li.no_data { margin-top: 0; display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; }
 .meal_menu0003 .inner li dl { text-align: center; }
-.meal_menu0003 .inner li dl .kcal { display: inline-block; padding: 0.25rem 1rem; border-radius: 2.5rem; background: #1246ae; }
+.meal_menu0003 .inner li dl .kcal { display: inline-block; width:100%; padding: 0.25rem 1rem; border-radius: 0.25rem; background: #1D9B94; }
 .meal_menu0003 .inner li dl .kcal span { font-size: 0.8rem; color: #fff; font-weight: 700; }
 .meal_menu0003 .inner li dl .meal_list { margin-top: 0.7rem; font-weight: 600; text-align: left; line-height: 1.5; word-break: keep-all; }
 .meal_menu0003 .inner img {position:absolute; right:1rem; bottom:0; width: calc(100% - 7.95rem); max-width:7.95rem; }
@@ -97,8 +97,9 @@ a.btn_more.ty:hover i { transform: rotate(90deg); }
 .gallery0003 .heading { }
 .gallery0003 .tit_wrap .btn_more { border: 0; }
 .gallery0003 .list_box { padding: 1.2rem 0; }
-.gallery0003 .list_box ul { display: flex; justify-content: space-between; width: 100%;  }
-.gallery0003 .list_box ul li { width: 15.25rem; }
+.gallery0003 .list_box ul { display: flex; justify-content: space-between; width: 100%;}
+.gallery0003 .list_box ul li {flex:1}
+.gallery0003 .list_box ul li:nth-of-type(n+5) {display: none;}
 .gallery0003 .list_box ul li + li { margin-left: 2rem; }
 .gallery0003 .list_box ul li a { display: block; }
 .gallery0003 .list_box ul li a .img { height: 10rem; background: #fafafa; font-size: 0; line-height: 0; overflow: hidden; transition: 0.2s; -webkit-transition: 0.2s; }
@@ -133,12 +134,13 @@ a.btn_more.ty:hover i { transform: rotate(90deg); }
 .pop_schedule0003 .month .prev {padding: 0; }
 .pop_schedule0003 .month .next {padding: 0;}
 .pop_schedule0003 .sche_wrap { width: calc(100% - 15rem); }
-.pop_schedule0003 .sche_wrap .lst ul { display: flex; flex-wrap: wrap; height: 2.25rem; overflow-y: auto; }
-.pop_schedule0003 .sche_wrap .lst ul li { width: calc(100% / 3); padding: 0.5rem 0; padding-right: 1rem; }
-.pop_schedule0003 .sche_wrap .lst ul li a { display: flex; align-items: center; }
-.pop_schedule0003 .sche_wrap .lst ul li a .dt { display: block; width: 3.75rem; padding-left: 0.75rem; font-size: 0.9rem; font-weight: 700; position: relative; }
-.pop_schedule0003 .sche_wrap .lst ul li a .dt:before { content: ""; display: block; width: 0.3rem; height: 0.3rem; border-radius: 50%; background: #1246ae; position: absolute; left: 0; top: 0.475rem; margin-right: 0.8rem; }
-.pop_schedule0003 .sche_wrap .lst ul li a .dsc { display: block; width: calc(100% - 3.75rem); white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.pop_schedule0003 .sche_wrap .lst ul { display: flex; flex-wrap: wrap; height: 3rem; overflow-y: auto; }
+.pop_schedule0003 .sche_wrap .lst ul li { width: calc(100% / 4); padding: 0.5rem 0; padding-right: 1rem; }
+.pop_schedule0003 .sche_wrap .lst ul li a { display: flex; align-items: center; flex-wrap: wrap; border-right: 2px dotted #A8ADB6;}
+.pop_schedule0003 .sche_wrap .lst ul li:nth-of-type(4n) a {border-right: none;}
+.pop_schedule0003 .sche_wrap .lst ul li a .dt {display: flex; align-items: center; font-size: 0.8rem; font-weight: 700; position: relative; color: #5E94FF;}
+.pop_schedule0003 .sche_wrap .lst ul li a .dt i {margin-right:.3rem}
+.pop_schedule0003 .sche_wrap .lst ul li a .dsc { display: block; margin-top:.3rem; width: 100%; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; font-size: .8rem; color: #000; font-weight: 400;}
 .pop_schedule0003 .sche_wrap .lst ul li.sche_list_type2 a .dt { width: 5rem; font-size: 0.85rem; }
 .pop_schedule0003 .sche_wrap .lst ul li.sche_list_type2 a .dsc { width: calc(100% - 5rem); }
 .pop_schedule0003 .sche_wrap .lst ul li.no_data { display: flex; justify-content: center; align-items: center; width: 100%; }
@@ -147,3 +149,81 @@ a.btn_more.ty:hover i { transform: rotate(90deg); }
 .pop_schedule0003 .month .prev:hover:before,
 .pop_schedule0003 .month .next:hover:before { background: rgba(214,78,127,0.25); transform: scale(1.5); }
 .pop_schedule0003 .sche_wrap .lst ul li a:hover .dsc { text-decoration: underline; }
+
+
+@media (max-width: 1240px) {
+/* 메인 */
+.MVisual0003 .control {display: none;}
+
+/* 팝업존 */
+.pop0003 .pop_img {height: 11rem;}
+.pop0003 .pop_img .item a { display: block; height: 11rem; }
+
+/* 식단 */
+.meal_menu0003 {height:11rem;}
+.meal_menu0003 .inner {height: 8.5rem; padding: 0;}
+.meal_menu0003 .inner ul {width: calc(100% - 10rem); float: left;}
+.meal_menu0003 .inner li + li { margin-top: 3rem; }
+.meal_menu0003 .inner li.no_data {width:100%;}
+.meal_menu0003 .inner img {position:absolute; right:1rem; bottom:0; width: calc(100% - 7.95rem); max-width:7.95rem; }
+
+/* 게시판 */
+.notice0003 .list_box ul li {width:calc(100% / 3)}
+.notice0003 .list_box ul li:nth-of-type(n+4) {display: none; }
+.notice0003 .list_box ul li a {max-width: 100%;}
+
+/* 학사일정 */
+.pop_schedule0003 .sche_wrap .lst ul li {width:calc(100% / 3)}
+.pop_schedule0003 .sche_wrap .lst ul li:nth-of-type(3n) a {border-right: none;}
+.pop_schedule0003 .sche_wrap .lst ul li:nth-of-type(4n) a {border-right: 2px dotted #A8ADB6;}
+
+/* 포토갤러리 */
+.gallery0003 .list_box ul li:nth-of-type(n+4) {display: none;}
+}
+
+
+@media (max-width: 1024px){
+    /* 바로가기 */
+    .M_link0003 li { flex: 0 0 25%;}
+    .M_link0003 li:nth-of-type(n+5) {margin-top: 1rem;}
+
+}
+
+@media (max-width: 840px) {
+
+    /* 비주얼 */
+    .slogun {width:50%}
+    .MVisual0003 {width:50%; height:auto;}
+
+/* 게시판 */
+.notice0003 .list_box ul li {width:calc(100% / 2)}
+.notice0003 .list_box ul li:nth-of-type(n+3) {display: none; }
+
+}
+
+@media (max-width: 768px) {
+    
+
+}
+
+@media (max-width: 640px) {	
+/* 게시판 */
+.notice0003 .list_box ul li {width:100%}
+
+.notice0003 .list_box ul li:nth-of-type(n+2) {display: none; }
+}
+
+@media (max-width: 560px) {	
+    
+
+}
+
+@media (max-width: 460px) {
+    
+
+}
+
+@media (max-width: 380px) {
+
+
+}

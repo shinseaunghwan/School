@@ -11,12 +11,12 @@ export default function MainSchedule({widget}) {
   const [date, setDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null); // 선택된 날짜 상태
 
-  const Items = [
+  const Items = [ 
     { date: "04.20", text: "중요한 날1", id: 1 },
-    { date: "05.24", text: "중요한 날2", id: 2 },
-    { date: "06.02", text: "중요한 날3", id: 3},
-    { date: "02.15", text: "중요한 날4", id: 4},
-    { date: "02.27", text: "중요한 날5", id: 5},
+    { date: "04.21", text: "중요한 날2", id: 2 },
+    { date: "04.23", text: "중요한 날3", id: 3},
+    { date: "04.24", text: "중요한 날4", id: 4},
+    { date: "04.26", text: "중요한 날5", id: 5},
     { date: "05.20", text: "중요한 날6", id: 6},
     { date: "03.24", text: "중요한 날7", id: 7},
     { date: "02.02", text: "중요한 날8", id: 8},
@@ -106,7 +106,7 @@ export default function MainSchedule({widget}) {
     return scheduleItems.map((item) => (
       <li key={item.id}>
         <a href={item.url}>
-          <span className={widget.dt}>{item.date}</span>
+          <span className={widget.dt}><i class="xi-calendar-check" aria-hidden="true"></i> {item.date}</span>
           <span className={widget.dsc}>{item.text}</span>
           </a>
       </li>

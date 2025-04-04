@@ -65,8 +65,8 @@ export default function MainGallery({widget}) {
 
   return (
     <div className={widget.gallery0003}>
-        <Title className={widget.heading}>우리들 이야기</Title>
-        <IconBtnMore LinkHref={'#'} LinkClassName={`${widget.btn_more} ${widget.ty}`} IconClassName={'xi-plus'} LinkTitle={'우리들 이야기'} />
+        <Title className={widget.heading}>포토갤러리</Title>
+        <IconBtnMore LinkHref={'#'} LinkClassName={`${widget.btn_more} ${widget.ty}`} IconClassName={'xi-plus'} LinkTitle={'포토갤러리'} />
       <div className={widget.list_box}>
         <ul>
           <GalleryList />
