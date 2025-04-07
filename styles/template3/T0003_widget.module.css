@@ -221,8 +221,14 @@ a.btn_more.ty:hover i { transform: rotate(90deg); }
     .M_link0003 li:nth-of-type(n+4) {margin-top: 1rem;}
 
 /* 게시판 */
+.notice0003 .list_box ul {flex-wrap: wrap;}
 .notice0003 .list_box ul li {width:100%}
-.notice0003 .list_box ul li:nth-of-type(n+2) {display: none; }
+.notice0003 .list_box ul li + li {margin-top: 1rem;}
+.notice0003 .list_box ul li:nth-of-type(-n+3) {display: block;}
+.notice0003 .list_box ul li a {height:auto;}
+.notice0003 .list_box ul li a span.tit {}
+.notice0003 .list_box ul li a span.text {margin-top: .5rem;}
+.notice0003 .list_box ul li a span.date {margin-top: .5rem;}
 
 /* 학사일정 */
 .pop_schedule0003 .sche_wrap .lst ul li {width:100%;}
