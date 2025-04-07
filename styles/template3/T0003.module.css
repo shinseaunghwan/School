@@ -45,6 +45,18 @@
     
 }
 
+@media (max-width: 840px) {
+    /* .MC_box1::before {bottom: -2.3rem; left: 50%; transform: translateX(-50%);} */
+}
+
+
+@media (max-width: 768px) {
+    
+    .MC_box2 {width: 100%; height:auto;  float: none;} /* 팝업존 */
+    .MC_box3 {  width:100%; height: auto; float: none;} /* 식단 */
+}
+
+
 /* 
 
 
@@ -56,13 +68,6 @@
 	.MC_box5 { width: 18rem; } 
 }
 
-@media (max-width: 768px) {
-    
-    .MC_wrap4:before,
-    .MC_wrap4:after { display: none; }
-
-	.MC_wrap5 { margin: 0 auto; }
-}
 
 @media (max-width: 640px) {	
 

@@ -156,7 +156,7 @@ a.btn_more.ty:hover i { transform: rotate(90deg); }
 .MVisual0003 .control {display: none;}
 
 /* 팝업존 */
-.pop0003 .pop_img {height: 11rem;}
+.pop0003 .pop_img {height: 100%;}
 .pop0003 .pop_img .item a { display: block; height: 11rem; }
 
 /* 식단 */
@@ -195,6 +195,11 @@ a.btn_more.ty:hover i { transform: rotate(90deg); }
     .slogun {width:50%}
     .MVisual0003 {width:50%; height:auto;}
 
+/* 학사일정 */
+.pop_schedule0003 .sche_wrap .lst ul li {width:calc(100% / 2);}
+.pop_schedule0003 .sche_wrap .lst ul li:nth-of-type(2n) a {border-right: none;}
+.pop_schedule0003 .sche_wrap .lst ul li:nth-of-type(3n) a {border-right: 2px dotted #A8ADB6;}
+
 /* 게시판 */
 .notice0003 .list_box ul li {width:calc(100% / 2)}
 .notice0003 .list_box ul li:nth-of-type(n+3) {display: none; }
@@ -203,14 +208,28 @@ a.btn_more.ty:hover i { transform: rotate(90deg); }
 
 @media (max-width: 768px) {
     
-
+/* 팝업존 */
+.pop0003 .pop_img {height: 100%;}
+.pop0003 .pop_img .item a {height: 100%; }
+.pop0003 .pop_img .item a img {transform: translateY(0);}
 }
 
 @media (max-width: 640px) {	
+    /* 바로가기 */
+    .M_link0003 ul {justify-content: flex-start;}
+    .M_link0003 li { flex: 0 0 calc(100% / 3);}
+    .M_link0003 li:nth-of-type(n+4) {margin-top: 1rem;}
+
 /* 게시판 */
 .notice0003 .list_box ul li {width:100%}
-
 .notice0003 .list_box ul li:nth-of-type(n+2) {display: none; }
+
+/* 학사일정 */
+.pop_schedule0003 .sche_wrap .lst ul li {width:100%;}
+.pop_schedule0003 .sche_wrap .lst ul li a {border-right: none;}
+
+/* 포토갤러리 */
+.gallery0003 .list_box ul li:nth-of-type(n+3) {display: none;}
 }
 
 @media (max-width: 560px) {	
@@ -219,7 +238,16 @@ a.btn_more.ty:hover i { transform: rotate(90deg); }
 }
 
 @media (max-width: 460px) {
-    
+        /* 바로가기 */
+        .M_link0003 li { flex: 0 0 50%;}
+        .M_link0003 li a {display: flex; align-items: center;}
+        .M_link0003 li a .img_box {position: relative; display: flex; justify-content: center; align-items: center;  width: 2.5rem; height: 2.5rem; margin: 0;}
+        .M_link0003 li a .img_box .img img{width: 50%; height: auto;}
+        .M_link0003 li a p {margin-top: 0; margin-left: .5rem;}
+        .M_link0003 li:nth-of-type(n+3) {margin-top: 1rem;}
+
+    /* 포토갤러리 */
+.gallery0003 .list_box ul li:nth-of-type(n+2) {display: none;}
 
 }
 
