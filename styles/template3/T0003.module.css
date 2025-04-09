@@ -10,7 +10,7 @@
 .MC_wrap4 { position:relative; margin-top: 3rem;}
 .MC_wrap5 { position:relative; margin-top: 3rem;}
 .MC_box1 { position:relative; width: 47rem; float: left;} /* 메인비주얼 */
-.MC_box1::before {content: ""; position: absolute; bottom: -2.3rem; left: 1.5rem; width: 35.8rem; height: 20.55rem;  background: url('../../public/images/template/T0003/main/visual_deco2.png') no-repeat; z-index: 1;}
+.MC_box1::before {content: ""; position: absolute; bottom: -2rem; left: 2.5rem; width: 35.8rem; height: 20.55rem;  background: url('../../public/images/template/T0003/main/visual_deco2.png') no-repeat; z-index: 1;}
 .MC_box1::after {content: ""; position: absolute; top: -1rem; left: -10rem; width: 35.7rem; height: 6.4rem;  background: url('../../public/images/template/T0003/main/visual_deco.png') no-repeat; z-index: 0;}
 .MC_cont {position: relative; width: calc(100% - 50rem); float: right;}
 .MC_box2 {position: relative; width: 100%; margin-bottom: 3rem;} /* 팝업존 */
@@ -23,14 +23,13 @@
 
 @media (max-width: 1240px) {
     .container { padding:0 1rem;}
-    .MC_wrap1{padding: 0 0 0 1rem !important;}
     .MC_wrap2::before {position: absolute; top: -20rem; left: 0; width: 100%; height: calc(100% + 20rem); }
     .MC_wrap3 {margin-top: 2rem;}
     .MC_wrap4 {margin-top: 2rem;}
     .MC_wrap5 {margin-top: 2rem;}
-    .MC_box1 { width: 100%; } /* 메인비주얼 */
-    .MC_box1::before {bottom: -2.3rem; left: calc(100% - 45rem);}
-    .MC_cont {width:100%; margin-top: 2.5rem;}
+    .MC_box1 { width: 100%; margin-left: 1rem; } /* 메인비주얼 */
+    .MC_box1::before {left: 50%; transform: translateX(-50%);}
+    .MC_cont {width:100%; margin-top: 2rem;}
     .MC_box2 {width: 16rem; margin-bottom: 0rem; float: left;} /* 팝업존 */
     .MC_box3 {  width: calc(100% - 18rem); padding-top: 0rem; float: right;} /* 식단 */
     .MC_box4 {padding: 1.5rem 0 2rem; } /* 바로가기1 */
@@ -46,14 +45,14 @@
 }
 
 @media (max-width: 840px) {
-    /* .MC_box1::before {bottom: -2.3rem; left: 50%; transform: translateX(-50%);} */
+    .MC_box1::before {width: 100%;height: 70%;left: 58%;background-size: contain;}
 }
 
 
 @media (max-width: 768px) {
     
     .MC_box2 {width: 100%; height:auto;  float: none;} /* 팝업존 */
-    .MC_box3 {  width:100%; height: auto; float: none;} /* 식단 */
+    .MC_box3 {  width:100%; height: auto; float: none; margin-top: 1rem;} /* 식단 */
 }
 
 
