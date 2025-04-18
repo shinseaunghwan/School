@@ -1,11 +1,12 @@
-.area {font-size: 1rem; color: #000; margin-top: 3rem;}
+.area {font-size: 1rem; color: #000; padding: 3rem 0;}
 .area h3 {font-size: 1.5rem; font-weight: 700; }
 .area h4 {font-size: 1.2rem; font-weight: 500;}
 .area h5 {font-size: 1rem; font-weight: 400;}
 .area h3 + * {margin-top: .5rem;}
 .area h4 + * {margin-top: .5rem;}
 .area h5 + * {margin-top: .5rem;}
-.area ul > li {list-style-type:decimal; margin-left: 1rem;}
+.area ul > li {list-style-type:decimal; margin-left: 1rem; word-break: auto-pharas;}
+.area ul > li p {word-break: keep-all;}
 .area li + li {margin-top: .25rem;}
 .area ul > li > ul > li {list-style-type:disc;}
 
