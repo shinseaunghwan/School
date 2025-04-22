@@ -125,7 +125,7 @@ useEffect(() => {
     {
       title: "React의 주요 Hooks",
       language: "javascript",
-      aos: "fade-right",
+      aos: "fade-left",
       steps: [
         {
           description:"useState",
@@ -341,10 +341,22 @@ function ChildComponent({ onClick }) {
 
       ],
     },
+    {
+      title: "설치가이드",
+      language: "bash",
+      aos: "fade-up",
+      steps: [
+        {
+          description: "",
+          code: null,
+        },
+      
+      ],
+    }
   ];
 
   return (
-    <div className={`${layout.container} ${sub.area}`}>
+    <div className={`${layout.container} ${sub.area}`}> 
       <h3>React</h3>
       {guideList.map((guide, index) => (
         <Toggle

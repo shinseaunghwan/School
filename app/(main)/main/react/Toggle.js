@@ -19,11 +19,12 @@ function Toggle({ title, steps, language, aos }) {
 
   return (
     <>
-      <h4 onClick={toggleVisibility} style={{ cursor: "pointer" }}>{title}</h4>
+
+   <h4 onClick={toggleVisibility} style={{ cursor: "pointer" }}>{title}</h4>
       {isVisible && (
-        <ul data-aos={aos}>
+        <ul>
           {steps.map((step, index) => (
-            <li key={index}>
+            <li data-aos={aos} key={index}>
               <p>{step.description}</p>
               <p>{step.text}</p>
               {step.code && <CodeBlock language={language} code={step.code} />}
