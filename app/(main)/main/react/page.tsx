@@ -1,8 +1,9 @@
+import { Metadata } from "next";
 import App from "./App";
 import layout from "../../../../styles/Layout.module.css"
 
-export const metadata = {
-  title: "React",
+export const metadata: Metadata = {
+  title: "리액트 공부",
 };
 
 export default function MainPage() {

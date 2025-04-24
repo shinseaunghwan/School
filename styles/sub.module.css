@@ -6,7 +6,7 @@
 .area h4 + * {margin-top: .5rem;}
 .area h5 + * {margin-top: .5rem;}
 .area ul > li {list-style-type:decimal; margin-left: 1rem; word-break: auto-pharas;}
-.area ul > li p {word-break: keep-all;}
+.area ul > li p {word-break: keep-all; line-height: 1.8;}
 .area li + li {margin-top: .25rem;}
 .area ul > li > ul > li {list-style-type:disc;}
 
