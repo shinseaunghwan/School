@@ -10,3 +10,8 @@
 .area li + li {margin-top: .25rem;}
 .area ul > li > ul > li {list-style-type:disc;}
 
+.imgBox {display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-top: 1rem; gap: 2rem;}
+.imgBox p{flex:1 0 40%; text-align: center;}
+.imgBox p.w100 {flex:1 0 100%;}
+.imgBox p span{width:100%; display: block; font-size: .8rem;}
+.imgBox p img{max-width: 100%;}

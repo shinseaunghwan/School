@@ -3,6 +3,7 @@ import layout from "../../../../styles/Layout.module.css";
 import sub from "../../../../styles/sub.module.css";
 import Toggle from "./Toggle";
 
+
 function App() {
   const guideList = [
     {
@@ -195,7 +196,7 @@ function Profile() {
         },
         {
           description:"useReducer",
-          text: "useReducer는 React에서 복잡한 상태 관리를 더 쉽게 처리할 수 있도록 도와주는 Hook이며 상태와 상태를 바꾸는 방법(로직)을 깔끔하게 정리할 수 있습니다.",
+          text: "useReducer는 React에서 복잡한 상태 관리를 더 쉽게 처리할 수 있도록 도와주는 Hook",
           code: `import React, { useReducer } from 'react';
 
 // reducer 함수: 상태 변경 로직
@@ -342,17 +343,145 @@ function ChildComponent({ onClick }) {
       ],
     },
     {
-      title: "설치가이드",
-      language: "bash",
+      title: "실무",
+      language: "javascript",
       aos: "fade-up",
       steps: [
         {
-          description: "",
+          description: "CSS 모듈 사용",
+          text: [
+           `css 모듈을 사용하는 이유는 리엑트는 한 페이지에 모든 내용을 담기때문에 클래스명 등등 겹칠 위험이 있음.`,
+           `그래서 css.module을 사용하면 클래스명을 랜덤한 변수값으로 지정하여 겹칠 위험도를 낮추어줌`,
+           `현재 페이지를 구성하는 코드를 예시를 들면`],          
           code: null,
+          images:[
+            {
+              src: "/images/react/img_01.png",
+              text:"xxx.module.css 형식의 css 파일을 만들고 해당 클래스를 넣고 싶은 곳에 입력 (xxx 부분은 원하는 변수값으로 지정, 리엑트의 기본은 사용하고 싶은 파일을 임폴트하는것이 기본)",
+            },
+            {
+              src: "/images/react/img_02.png",
+              text:"xxx.(해당 css안의 클래스명)의 형식으로 클래스명을 넣어주면 클래스를 2개 이상 3개 이상 무제한으로 넣을 수 있음",
+            },
+            {
+              src: "/images/react/img_03.png",
+              text:"클래스명이 랜덤한 변수 처리 된 것을 확인 가능",
+            }
+          ]
         },
-      
+        {
+          description: "자바스크립트 map() 사용",
+          text: [`리액트(React)에서 JavaScript의 map() 메서드는 리액트에서 동적이고 효율적인 UI 구현을 위한 핵심이며 이를 통해 데이터를 기반으로 반복적인 컴포넌트를 간결하고 직관적으로 생성하며, 유지보수성과 성능 최적화를 동시에 이룰 수 있습니다.`],          
+          code: `//데이터 배열을 활용한 동적 렌더링
+const items = ['사과', '바나나', '체리'];
+
+const ItemList = () => {
+  return (
+    <ul>
+      {items.map((item, index) => (
+        <li key={index}>{item}</li>
+      ))}
+    </ul>
+  );
+};
+
+//가독성과 간결함
+// for 반복문 사용
+for (let i = 0; i < items.length; i++) {
+  // 비슷한 컴포넌트 생성 논리
+}
+
+// map 사용
+items.map(item => <Component key={item.id} value={item} />);
+
+//키(key) 속성을 통한 효율적인 DOM 업데이트
+{data.map((item) => (
+  <div key={item.id}>{item.name}</div>
+))}
+
+//재사용성과 컴포넌트화
+const Item = ({ name }) => <li>{name}</li>;
+
+const ItemList = () => (
+  <ul>
+    {items.map((item, index) => (
+      <Item key={index} name={item} />
+    ))}
+  </ul>
+);
+
+//조건부 렌더링과 결합
+{items.map((item) =>
+  item.isAvailable ? <p key={item.id}>{item.name}</p> : null
+)}
+`,images:[
+  {
+    src: "/images/react/img_04.png",
+    text:"컴포넌트에 props를 지정하고 데이터값을 통해 컴포넌트를 완성",
+  },
+  {
+    src: "/images/react/img_05.png",
+    text:"JSON 파일 이나 해당 변수값에 데이터를 입력하여 컴포넌트를 재활용할수있음",
+    imgWidth: true,
+  },
+]
+        },
+        {
+          description: "삼향 연산자",
+          text: [`리액트(React)에서 삼항 연산자를 사용하는 주된 이유는 간결하고 직관적인 조건부 렌더링을 위해서입니다.
+`],          
+          code: `조건부 렌더링을 단순화
+return (
+  <div>
+    {isLoggedIn ? <p>환영합니다!</p> : <p>로그인이 필요합니다.</p>}
+  </div>
+);
+보통 useState를 사용해서 기능을 만들면 편함
+`,images:[
+  {
+    src: "/images/react/img_06.png",
+    text:"h4태그를 누르면 isVisible의 값이 true, false로 변경 되며 true일 때 해당 ul 태그가 나오는 아코디언 컴포넌트로 삼향자를 활용하면 많은 기능을 만들 수 있음",
+    imgWidth: true,
+  },
+]
+        },
       ],
-    }
+
+      
+    },
+    {
+      title: "NextJs",
+      language: "javascript",
+      aos: "fade-up",
+      steps: [
+        {
+          description: "프레임워크",
+          text: [
+`NextJs는 기존 리엑트의 불편한점을 보완 및 편리성으로 인해 사용하며 클릭웍스도 nextJs로 만듬`,
+`서버사이드렌더링이 가능해서 백엔드영역까지 수정 가능`,
+`**SSR(서버 사이드 렌더링)**: Next.js는 서버 사이드 렌더링을 기본적으로 지원하여 SEO 최적화와 초기 로딩 속도 개선에 도움을 줍니다. 이는 특히 검색 엔진에 노출이 중요한 웹사이트에 매우 유용합니다.`,
+
+`**손쉬운 라우팅**: Next.js는 파일 기반 라우팅 시스템을 제공하여, 파일을 생성하기만 하면 자동으로 라우트가 설정됩니다. 복잡한 라우팅 설정 없이 간단하게 사용할 수 있어 개발 효율이 높아집니다.`,
+
+`**최적화된 빌드 도구**: 웹팩(Webpack) 및 바벨(Babel)을 내장하여 개발자가 별도로 설치하거나 설정하지 않아도 되는 간단함을 제공합니다. 최신 기술을 활용해 웹 애플리케이션 성능을 극대화할 수 있습니다.`,
+
+`**API 구축 기능**: Next.js는 API 라우트를 제공하여 서버 사이드에서 데이터를 처리하고 API를 생성할 수 있습니다. 이를 통해 백엔드와 프론트엔드를 통합적으로 관리할 수 있습니다.`,
+
+`**리액트(React)와의 통합**: Next.js는 React를 기반으로 만들어져 있어 React의 컴포넌트 기반 개발 방식과 호환이 좋습니다. 기존 React 프로젝트를 Next.js로 쉽게 마이그레이션할 수 있습니다.`,
+
+`**이미지 및 폰트 최적화**: Next.js는 이미지 최적화 및 폰트 로드 기능을 제공하여 웹사이트의 성능을 더욱 향상시킵니다.`],          
+          code: null,
+          // images:[
+          //   {
+          //     src: "",
+          //     text:"",
+          //   }
+          // ]
+        },
+      ],
+
+      
+    },
   ];
 
   return (
@@ -365,7 +494,6 @@ function ChildComponent({ onClick }) {
           language={guide.language}
           title={guide.title}
           steps={guide.steps}
-          text={guide.text}
         />
       ))}
     </div>
@@ -373,3 +501,5 @@ function ChildComponent({ onClick }) {
 }
 
 export default App;
+
+
