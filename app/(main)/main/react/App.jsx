@@ -66,6 +66,8 @@ return (
 // 모든 태그 / 닫아줘야 함
 <img ~~ />   <br /> <input />등등 html에서 안 닫아도 되는 부분은 리엑트에서 무조건 닫아줘야함
 );
+
+//class 대신 className을 사용해야 합니다.
           `,
         },
         {
@@ -455,28 +457,37 @@ return (
       aos: "fade-up",
       steps: [
         {
-          description: "프레임워크",
-          text: [
-`NextJs는 기존 리엑트의 불편한점을 보완 및 편리성으로 인해 사용하며 클릭웍스도 nextJs로 만듬`,
-`서버사이드렌더링이 가능해서 백엔드영역까지 수정 가능`,
-`SSR(서버 사이드 렌더링): Next.js는 서버 사이드 렌더링을 기본적으로 지원하여 SEO 최적화와 초기 로딩 속도 개선에 도움을 줍니다. 이는 특히 검색 엔진에 노출이 중요한 웹사이트에 매우 유용합니다.`,
-
-`손쉬운 라우팅: Next.js는 파일 기반 라우팅 시스템을 제공하여, 파일을 생성하기만 하면 자동으로 라우트가 설정됩니다. 복잡한 라우팅 설정 없이 간단하게 사용할 수 있어 개발 효율이 높아집니다.`,
-
-`최적화된 빌드 도구: 웹팩(Webpack) 및 바벨(Babel)을 내장하여 개발자가 별도로 설치하거나 설정하지 않아도 되는 간단함을 제공합니다. 최신 기술을 활용해 웹 애플리케이션 성능을 극대화할 수 있습니다.`,
-
-`API 구축 기능: Next.js는 API 라우트를 제공하여 서버 사이드에서 데이터를 처리하고 API를 생성할 수 있습니다. 이를 통해 백엔드와 프론트엔드를 통합적으로 관리할 수 있습니다.`,
-
-`리액트(React)와의 통합: Next.js는 React를 기반으로 만들어져 있어 React의 컴포넌트 기반 개발 방식과 호환이 좋습니다. 기존 React 프로젝트를 Next.js로 쉽게 마이그레이션할 수 있습니다.`,
-
-`이미지 및 폰트 최적화: Next.js는 이미지 최적화 및 폰트 로드 기능을 제공하여 웹사이트의 성능을 더욱 향상시킵니다. ---------> 알아보니 이미지 장사로 인해.. 기업 구독 정액권 필요함`],          
+          description: `NextJs는 기존 리엑트의 불편한점을 보완 및 편리성으로 인해 사용하는 프레임워크로 클릭웍스도 nextJs로 만듬`,
           code: null,
-          // images:[
-          //   {
-          //     src: "",
-          //     text:"",
-          //   }
-          // ]
+        },
+
+        {
+          description: `서버사이드렌더링이 가능해서 백엔드영역까지 수정 가능`,
+          code: null,
+        },
+        {
+          description: `SSR(서버 사이드 렌더링): Next.js는 서버 사이드 렌더링을 기본적으로 지원하여 SEO 최적화와 초기 로딩 속도 개선에 도움을 줍니다. 이는 특히 검색 엔진에 노출이 중요한 웹사이트에 매우 유용합니다.`,
+          code: null,
+        },
+        {
+          description: `손쉬운 라우팅: Next.js는 파일 기반 라우팅 시스템을 제공하여, 파일을 생성하기만 하면 자동으로 라우트가 설정됩니다. 복잡한 라우팅 설정 없이 간단하게 사용할 수 있어 개발 효율이 높아집니다.`,
+          code: null,
+        },
+        {
+          description: `최적화된 빌드 도구: 웹팩(Webpack) 및 바벨(Babel)을 내장하여 개발자가 별도로 설치하거나 설정하지 않아도 되는 간단함을 제공합니다. 최신 기술을 활용해 웹 애플리케이션 성능을 극대화할 수 있습니다.`,
+          code: null,
+        },
+        {
+          description: `API 구축 기능: Next.js는 API 라우트를 제공하여 서버 사이드에서 데이터를 처리하고 API를 생성할 수 있습니다. 이를 통해 백엔드와 프론트엔드를 통합적으로 관리할 수 있습니다.`,
+          code: null,
+        },
+        {
+          description: `리액트(React)와의 통합: Next.js는 React를 기반으로 만들어져 있어 React의 컴포넌트 기반 개발 방식과 호환이 좋습니다. 기존 React 프로젝트를 Next.js로 쉽게 마이그레이션할 수 있습니다.`,
+          code: null,
+        },
+        {
+          description: `이미지 및 폰트 최적화: Next.js는 이미지 최적화 및 폰트 로드 기능을 제공하여 웹사이트의 성능을 더욱 향상시킵니다. ---------> 알아보니 이미지 장사로 인해.. 기업 구독 정액권 필요함`,          
+          code: null,
         },
       ],
 
@@ -486,7 +497,15 @@ return (
 
   return (
     <div className={`${layout.container} ${sub.area}`}> 
-      <h3>React</h3>
+    <div className={sub.tit_wrap}>
+      <h3>React 기초</h3>
+       <div className={sub.button_wrap}>
+            <a className={sub.button} href="https://ko.legacy.reactjs.org/">리액트 공식 홈페이지</a>
+            <a className={sub.button} href="https://nomadcoders.co/nextjs-for-beginners/lectures/4687">nextJs 강의</a>
+        </div>
+    </div>
+      
+      
       {guideList.map((guide, index) => (
         <Toggle
           aos={guide.aos}
@@ -496,6 +515,7 @@ return (
           steps={guide.steps}
         />
       ))}
+     
     </div>
   );
 }

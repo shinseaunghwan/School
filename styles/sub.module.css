@@ -3,6 +3,7 @@
 .area h4 {font-size: 1.2rem; font-weight: 500;}
 .area h5 {font-size: 1rem; font-weight: 400;}
 .area h3 + * {margin-top: .5rem;}
+.area h3 + .button_wrap {margin-top: 0rem;}
 .area h4 + * {margin-top: .5rem;}
 .area h5 + * {margin-top: .5rem;}
 .area ul > li {list-style-type:decimal; margin-left: 1rem; word-break: auto-pharas;}
@@ -15,3 +16,8 @@
 .imgBox p.w100 {flex:1 0 100%;}
 .imgBox p span{width:100%; display: block; font-size: .8rem;}
 .imgBox p img{max-width: 100%;}
+
+.tit_wrap {display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between;}
+
+.button_wrap{display: inline-flex; justify-content: flex-start; align-items: center; flex-wrap: wrap; gap: .5rem; margin-top: 0;}
+.button {display: inline-block; padding:.2rem .5rem; background-color: #fff; border-radius: 10px; font-family:'SCDream'; font-weight: 700; color: #111; font-size: 1rem; border: 1px solid #111;}
