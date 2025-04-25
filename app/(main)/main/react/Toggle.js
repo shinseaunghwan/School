@@ -19,9 +19,7 @@ function Toggle({ title, steps, language, aos}) {
 
   return (
     <>
-      <h4 onClick={toggleVisibility} style={{ cursor: "pointer" }}>
-        {title}
-      </h4>
+      <h4><a onClick={toggleVisibility}>{title}</a></h4>
       {isVisible ? (
         <ul>
           {steps.map((step, index) => (

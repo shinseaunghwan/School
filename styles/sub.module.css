@@ -1,6 +1,8 @@
 .area {font-size: 1rem; color: #000; padding: 2rem 1rem;}
 .area h3 {font-size: 1.5rem; font-weight: 700; }
 .area h4 {font-size: 1.2rem; font-weight: 500;}
+.area h4 a{cursor: pointer;}
+.area h4 a:hover {transition: .35s all; text-decoration: underline;}
 .area h5 {font-size: 1rem; font-weight: 400;}
 .area h3 + * {margin-top: .5rem;}
 .area h3 + .button_wrap {margin-top: 0rem;}

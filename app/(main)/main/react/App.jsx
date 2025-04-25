@@ -2,6 +2,7 @@ import React from "react";
 import layout from "../../../../styles/Layout.module.css";
 import sub from "../../../../styles/sub.module.css";
 import Toggle from "./Toggle";
+import Link from "next/link";
 
 
 function App() {
@@ -502,6 +503,8 @@ return (
        <div className={sub.button_wrap}>
             <a className={sub.button} href="https://ko.legacy.reactjs.org/">리액트 공식 홈페이지</a>
             <a className={sub.button} href="https://nomadcoders.co/nextjs-for-beginners/lectures/4687">nextJs 강의</a>
+            <a className={sub.button} href="https://seaunghwan.vercel.app/">Api 사용</a>
+            <Link className={sub.button} href="/">이전 페이지</Link>
         </div>
     </div>
       
