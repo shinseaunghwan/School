@@ -1,9 +1,10 @@
+"use client";
+
 import React from "react";
 import layout from "../../../../styles/Layout.module.css";
 import sub from "../../../../styles/sub.module.css";
 import Toggle from "./Toggle";
 import Link from "next/link";
-
 
 function App() {
   const guideList = [
@@ -91,7 +92,8 @@ function ChildComponent(props) {
         },
         {
           description: "State",
-          code: `import React, { useState } from 'react';
+          live: true,
+          code: `//import React, { useState } from 'react';
 
 function Counter() {
   const [count, setCount] = useState(0);
@@ -101,16 +103,24 @@ function Counter() {
       <button onClick={() => setCount(count + 1)}>Increment</button>
     </div>
   );
-}`,
+}
+`,
         },
         {
           description: "이벤트 핸들링",
+          live: true,
           code: ` //컴포넌트 함수와 다르게 Camel Case로 변수명 지정
-function handleClick() {
-  alert('Button clicked!');
-}
+() => {
+    const [count, setCount] = useState(0);
 
-<button onClick={handleClick}>클릭</button>`,
+    return (
+      <div>
+        <p>Count: {count}</p>
+        <button onClick={() => setCount(count + 1)}>Increment</button>
+      </div>
+    );
+  };
+`,
         },
         {
           description: "React의 라이프사이클 (LifeCycle)",
@@ -518,11 +528,8 @@ return (
           steps={guide.steps}
         />
       ))}
-     
     </div>
   );
 }
 
 export default App;
-
-

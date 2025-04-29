@@ -6,6 +6,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import CodeBlock from './CodeBlock';
 import sub from "../../../../styles/sub.module.css";
+import LiveCode from './LiveCode';
 
 function Toggle({ title, steps, language, aos}) {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,7 +31,7 @@ function Toggle({ title, steps, language, aos}) {
                     <p key={textIndex}>{textItem}</p>
                   ))
                 : null}
-              {step.code && <CodeBlock language={language} code={step.code} />}
+           {step.code && (step.live ? (<LiveCode initialCode={step.code} language={language} />) : (<CodeBlock language={language} code={step.code} />))}
               {step.images && step.images.length > 0 && (
                 <div className={sub.imgBox}>
                   {step.images.map((img, idx) => (

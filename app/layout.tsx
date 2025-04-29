@@ -7,10 +7,10 @@ import '../styles/global.css';
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | 학교통합",
-    default: "학교통합",
+    template: "%s | nextJs",
+    default: "nextJs",
   },
-  description: "학교통합",
+  description: "nextJs",
 };
 
 

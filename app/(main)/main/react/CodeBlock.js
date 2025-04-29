@@ -19,9 +19,11 @@ export default function CodeBlock({ language, code}) {
 
   return (
     <pre>
-      <code className={`language-${language}`}>
+      <code className={`language-${language}`} style={{fontFamily:'Pretendard'}}>
         {code}
       </code>
     </pre>
   );
 }
+
+
