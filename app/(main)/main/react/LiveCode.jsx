@@ -30,14 +30,22 @@ export default function LiveCode({ initialCode, language }) {
 
   return (
     <div className={sub.LiveCode}>
-
       <LiveProvider
         code={code}
         theme={customTheme}
-        scope={{ React, useState: React.useState, useEffect: React.useEffect }}
+        scope={{
+          React,
+          useState: React.useState,
+          useEffect: React.useEffect,
+          createContext: React.createContext,
+          useContext: React.useContext,
+          useReducer: React.useReducer,
+          useRef: React.useRef,
+          useMemo: React.useMemo,
+          useCallback: React.useCallback,
+        }}
         onChange={(newCode) => setCode(newCode)}
       >
-
         <LiveEditor
           value={code}
           onChange={(newCode) => setCode(newCode)}

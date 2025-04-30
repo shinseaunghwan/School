@@ -143,48 +143,52 @@ useEffect(() => {
       steps: [
         {
           description:"useState",
-          text: "React에서는 일반 변수처럼 값을 바꿔도 화면이 자동으로 업데이트되지 않습니다. 그래서 useState를 사용하면 React가 값의 변경을 감지하고 화면을 새로 고쳐줍니다.",
-          code: `import React, { useState } from 'react';
+          text: ["React에서는 일반 변수처럼 값을 바꿔도 화면이 자동으로 업데이트되지 않습니다. 그래서 useState를 사용하면 React가 값의 변경을 감지하고 화면을 새로 고쳐줍니다."],
+          live: true,
+          code: `//import React, { useState } from 'react';
 
 function Counter() {
   const [count, setCount] = useState(0); // 초기값은 0
-//count => 변수, setCount => 함수값
+  // count => 변수, setCount => 함수값
   return (
     <div>
       <p>현재 카운트: {count}</p>
       <button onClick={() => setCount(count + 1)}>증가</button>
+      <button onClick={() => setCount(count > 0 ? count - 1 : 0)}>감소</button>
+      <button onClick={() => setCount(0)}>리셋</button>
     </div>
   );
 }`,
         },
         {
           description:"useEffect",
-          text: `useEffect는 React에서 컴포넌트가 화면에 나타날 때, 업데이트될 때, 또는 사라질 때 특정 작업을 수행할 수 있게 해주는 Hook이며 컴포넌트의 라이프사이클과 관련된 일을 처리합니다.`,
+          text: [`useEffect는 React에서 컴포넌트가 화면에 나타날 때, 업데이트될 때, 또는 사라질 때 특정 작업을 수행할 수 있게 해주는 Hook이며 컴포넌트의 라이프사이클과 관련된 일을 처리합니다.`],
+          live: true,
           code: `//주요 사용 예
-1. API 데이터 가져오기: 서버에서 데이터를 불러와 화면에 표시할 때.
-2. 타이머 시작: 일정한 간격으로 업데이트하거나 시간이 흐르는 작업 처리.
-3. 구독 관리: 예를 들어 이벤트를 구독하거나 연결을 해제할 때.
+//1. API 데이터 가져오기: 서버에서 데이터를 불러와 화면에 표시할 때.
+//2. 타이머 시작: 일정한 간격으로 업데이트하거나 시간이 흐르는 작업 처리.
+//3. 구독 관리: 예를 들어 이벤트를 구독하거나 연결을 해제할 때.
 
-import React, { useEffect, useState } from 'react';
+//import React, { useEffect, useState } from 'react';
 
 function Timer() {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setSeconds(prevSeconds => prevSeconds + 1);
+      setSeconds(prevSeconds => (prevSeconds < 100 ? prevSeconds + 1 : 0));
     }, 1000);
 
     return () => clearInterval(interval); // 컴포넌트가 사라질 때 정리(cleanup)
   }, []); // 빈 배열은 처음 렌더링 시 딱 한 번만 실행!
-// 배열 안에 변수를 넣을 시 변수의 값이 변경 될때마다 실행됨
+
   return <p>{seconds}초</p>;
 }`,
         },
         {
           description:"useContext",
-          text: "useContext는 React에서 컴포넌트 간에 데이터를 쉽게 공유할 수 있도록 해며 부모-자식 관계가 깊어져도 데이터를 편리하게 전달할 수 있습니다. 간단히 말해, 복잡한 props 전달 없이 데이터나 상태를 공유할 수 있게 해주는 Hook",
-          code: `import React, { createContext, useContext } from 'react';
+          text: ["useContext는 React에서 컴포넌트 간에 데이터를 쉽게 공유할 수 있도록 해며 부모-자식 관계가 깊어져도 데이터를 편리하게 전달할 수 있습니다. 간단히 말해, 복잡한 props 전달 없이 데이터나 상태를 공유할 수 있게 해주는 Hook"],
+          code: `//import React, { createContext, useContext } from 'react';
 
 // 1. Context 생성
 const UserContext = createContext();
@@ -209,7 +213,7 @@ function Profile() {
         },
         {
           description:"useReducer",
-          text: "useReducer는 React에서 복잡한 상태 관리를 더 쉽게 처리할 수 있도록 도와주는 Hook",
+          text: ["useReducer는 React에서 복잡한 상태 관리를 더 쉽게 처리할 수 있도록 도와주는 Hook"],
           code: `import React, { useReducer } from 'react';
 
 // reducer 함수: 상태 변경 로직
@@ -224,7 +228,7 @@ function reducer(state, action) {
   }
 }
 
-function Counter() {
+export default function Counter() { 
   const [state, dispatch] = useReducer(reducer, { count: 0 }); // 초기 상태: { count: 0 }
   return (
     <div>
@@ -237,11 +241,12 @@ function Counter() {
         },
         {
           description:"useRef",
-          text: "useRef는 React에서 특정 값이나 DOM 요소에 접근하고 유지하기 위해 사용하는 Hook이며 변경이 필요한 값을 저장하거나 특정 HTML 요소를 직접 조작할 때 사용할 수 있습니다.",
+          text: ["useRef는 React에서 특정 값이나 DOM 요소에 접근하고 유지하기 위해 사용하는 Hook이며 변경이 필요한 값을 저장하거나 특정 HTML 요소를 직접 조작할 때 사용할 수 있습니다."],
+          live: true,
           code: `//DOM 요소 조작 예제
-          사용 이유: 버튼 클릭 시 입력창에 바로 포커스를 줄 수 있습니다.
+          //사용 이유: 버튼 클릭 시 입력창에 바로 포커스를 줄 수 있습니다.
 
-import React, { useRef } from 'react';
+//import React, { useRef } from 'react';
 
 function FocusInput() {
   const inputRef = useRef(null); // input 요소를 참조하기 위한 Ref 생성
@@ -257,26 +262,32 @@ function FocusInput() {
     </div>
   );
 }
-  
-//값 저장 예제
-useRef는 컴포넌트가 리렌더링되더라도 값을 유지할 수 있습니다. 상태(state)와 달리 화면에 영향을 주지 않으므로 렌더링 성능 최적화에 유용합니다.
-
-import React, { useRef } from 'react';
-
+`,
+        },
+                {
+                  description:"useRef 값 저장 예제",
+                  text: ["useRef는 컴포넌트가 리렌더링되더라도 값을 유지할 수 있습니다. 상태(state)와 달리 화면에 영향을 주지 않으므로 렌더링 성능 최적화에 유용합니다."],
+          live: true,
+          code: `
+//import React, { useRef } from 'react';
 function Counter() {
   const countRef = useRef(0); // 초기값 설정
 
   const handleClick = () => {
     countRef.current += 1; // Ref 값 변경
-    console.log('현재 카운트:', countRef.current); // 화면에는 업데이트되지 않음
+    alert('현재 카운트:', countRef.current); // 화면에는 업데이트되지 않음
   };
 
   return <button onClick={handleClick}>클릭</button>;
 }
-
-//이전 값 추적
-useRef는 컴포넌트의 이전 상태를 추적하는 데 사용할 수 있습니다. 상태를 저장하거나, 변화 전후를 비교할 때도 활용됩니다.
-import React, { useEffect, useRef, useState } from 'react';
+`,
+        },
+        {
+          description:"useRef 이전 값 추적",
+          text: ["useRef는 컴포넌트의 이전 상태를 추적하는 데 사용할 수 있습니다. 상태를 저장하거나, 변화 전후를 비교할 때도 활용됩니다."],
+          live: true,
+          code: `
+//import React, { useEffect, useRef, useState } from 'react';
 
 function PreviousValue() {
   const [currentValue, setCurrentValue] = useState(0);
@@ -295,9 +306,14 @@ function PreviousValue() {
   );
 }
 
-//애니메이션 또는 스크롤 관리
-useRef는 DOM 요소의 위치를 조작하거나 애니메이션을 적용할 때 자주 사용됩니다. 예를 들어, 특정 요소를 화면에 보이도록 스크롤을 조작할 수 있습니다.
-import React, { useRef } from 'react';
+`,
+        },
+        {
+          description:"useRef 애니메이션 또는 스크롤 관리",
+          live: true,
+          text: ["useRef는 DOM 요소의 위치를 조작하거나 애니메이션을 적용할 때 자주 사용됩니다. 예를 들어, 특정 요소를 화면에 보이도록 스크롤을 조작할 수 있습니다."],
+          code: `
+//import React, { useRef } from 'react';
 
 function ScrollToElement() {
   const divRef = useRef(null);
@@ -309,7 +325,7 @@ function ScrollToElement() {
   return (
     <div>
       <button onClick={handleScroll}>이동</button>
-      <div style={{ height: '1000px' }}>위쪽 영역</div>
+      <div style={{ height: '300px' }}>위쪽 영역</div>
       <div ref={divRef} style={{ background: 'yellow', padding: '20px' }}>여기로 이동</div>
     </div>
   );
@@ -318,20 +334,36 @@ function ScrollToElement() {
         },
         {
           description:"useMemo",
-          code: `import React, { useMemo } from 'react';
+          live: true,
+          code: `//import React, { useMemo } from 'react';
 
-function ExpensiveCalculation({ num }) {
+function ExpensiveCalculation() {
+  const [num, setNum] = useState(0);
+
   const calculate = (n) => {
-    console.log('계산 중...');
+    console.log("계산 중...");
     return n * 2;
   };
 
   // useMemo를 사용하여 계산 결과를 메모이제이션
   const result = useMemo(() => calculate(num), [num]);
 
-  return <p>결과: {result}</p>;
-}`,
-          text: "성능 최적화를 위해 컴퓨팅된 값을 메모이징하는 Hook입니다. 의존성 배열에 따라 재계산을 최소화합니다."
+  return (
+    <div>
+      <p>
+        숫자 입력:{" "}
+        <input
+          type="number"
+          value={num}
+          onChange={(e) => setNum(Number(e.target.value))}
+        />
+      </p>
+      <p>결과: {result}</p>
+    </div>
+  );
+}
+`,
+          text: ["성능 최적화를 위해 컴퓨팅된 값을 메모이징하는 Hook입니다. 의존성 배열에 따라 재계산을 최소화합니다."]
         },
         {
           description:"useCallback",
@@ -347,10 +379,9 @@ function ParentComponent() {
 
 function ChildComponent({ onClick }) {
   return <button onClick={onClick}>클릭</button>;
-//- useMemo: 값(데이터)의 재계산을 최적화.
-- useCallback: 함수의 재생성을 최적화.
+
   }`,
-          text:"함수를 메모이징하여 불필요한 함수 재생성을 방지하는 데 사용됩니다."
+          text:["함수를 메모이징하여 불필요한 함수 재생성을 방지하는 데 사용됩니다.","useMemo: 값(데이터)의 재계산을 최적화","useCallback: 함수의 재생성을 최적화"]
         },
 
       ],
@@ -504,18 +535,55 @@ return (
 
       
     },
+    {
+      title: "NextJs 설치 및 빌드",
+      language: "bash",
+      aos: "fade-up",
+      steps: [
+        {
+          description: "프로젝트 폴더 만들기",
+          code: `npm create-next-app@latest`,
+        },
+        {
+          description: "개발 서버 실행",
+          code: `npm run dev`,
+        },
+        {
+          description: "프로젝트 빌드",
+          code: `npm run build`,
+        },
+        {
+          description: "깃허브를 예시로 들면",
+          code: `git init`,
+        },
+        {
+          description: "깃허브 추가",
+          code: `git add .`,
+        },
+        {
+          description: "깃허브 커밋",
+          code: `git commit -m "프로젝트 이름"`,
+        },
+        {
+          description: "깃허브 계정의 프로젝트에 파일이 빌드됨 (그 전에 깃허브 와 nextjs 아이디 연동 필수)",
+          code: `git push origin main`,
+        },
+      ],
+    },
   ];
 
   return (
+    <div>
+    <div className={sub.header_wrap}>
+    <a className={sub.button} href="https://ko.legacy.reactjs.org/" target="_blank">리액트 공식 홈페이지</a>
+    <a className={sub.button} href="https://nomadcoders.co/nextjs-for-beginners/lectures/4687" target="_blank">nextJs 강의</a>
+    <a className={sub.button} href="https://seaunghwan.vercel.app/" target="_blank">Api 사용</a>
+    <Link className={sub.button} href="/">이전 페이지</Link>
+</div>
     <div className={`${layout.container} ${sub.area}`}> 
     <div className={sub.tit_wrap}>
       <h3>React 기초</h3>
-       <div className={sub.button_wrap}>
-            <a className={sub.button} href="https://ko.legacy.reactjs.org/">리액트 공식 홈페이지</a>
-            <a className={sub.button} href="https://nomadcoders.co/nextjs-for-beginners/lectures/4687">nextJs 강의</a>
-            <a className={sub.button} href="https://seaunghwan.vercel.app/">Api 사용</a>
-            <Link className={sub.button} href="/">이전 페이지</Link>
-        </div>
+
     </div>
       
       
@@ -528,6 +596,7 @@ return (
           steps={guide.steps}
         />
       ))}
+    </div>
     </div>
   );
 }

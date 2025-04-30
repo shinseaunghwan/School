@@ -21,36 +21,15 @@
 
 .tit_wrap {display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between;}
 
-.button_wrap{display: inline-flex; justify-content: flex-start; align-items: center; flex-wrap: wrap; gap: .5rem; margin-top: 0;}
-.button {display: inline-block; padding:.2rem .5rem; background-color: #fff; border-radius: 10px; font-family:'SCDream'; font-weight: 700; color: #111; font-size: 1rem; border: 1px solid #111;}
-
-
+.header_wrap {max-width: 1400px; width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 1rem; margin: 0 auto; margin-bottom: .5rem; padding: .5rem;}
+.button {position: relative; display: inline-block; font-family:'SCDream'; font-weight: 500; color: #111; font-size: 1rem;}
+.button:hover {transition: .35s all; text-decoration: underline;}
  
   /* 전체 컨테이너 */
-.LiveCode {
-  width:100%;
-  }
-  
-
-
+.LiveCode {width:100%;}
   /* 코드 편집기 */
-  .LiveEditor {
-    width: 100%;
-  }
-  
+  .LiveEditor {width: 100%;}
   /* 코드 미리보기 */
-  .LivePreview {
-    background-color: #ffffff; /* 흰색 배경 */
-    border: 1px solid #ddd; /* 얇은 테두리 */
-    border-radius: 5px; /* 둥근 모서리 */
-    margin-top: 20px;
-    padding: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 미리보기 그림자 */
-  }
-  
-
-  .LivePreview button{
-    display: inline-block;
-    border: 1px solid #111;
-    border-radius: 5px;
-    }
+  .LivePreview {background-color: #ffffff; border: 1px solid #ddd; border-radius: 5px; margin-top: 20px; margin-bottom: 20px; padding: 15px;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);}
+  .LivePreview button{display: inline-block;border: 1px solid #111;border-radius: 5px;}
+  .LivePreview button + button {margin-left:.5rem}
