@@ -4,8 +4,9 @@ import React from "react";
 import layout from "../../../../styles/Layout.module.css";
 import sub from "../../../../styles/sub.module.css";
 import Toggle from "./Toggle";
+import Toggle2 from "./Toggle2";
 import Link from "next/link";
-import SandCodePack from "./SandPack"
+
 
 function App() {
   const guideList = [
@@ -597,12 +598,7 @@ return (
           steps={guide.steps}
         />
       ))}
-
-      <SandCodePack code={`import React from 'react';
-
-export default function App() {
-  return <h1>Hello, React</h1>;
-}`}/>
+      <Toggle2 title="code 편집기"/>
     </div>
     </div>
   );
