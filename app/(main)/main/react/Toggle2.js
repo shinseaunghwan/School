@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import SandCodePack from "./SandPack"
+import sub from "../../../../styles/sub.module.css";
 
-
-function Toggle({ title}) {
+function Toggle({title}) {
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => {
     setIsVisible((prev) => !prev);
@@ -12,7 +12,7 @@ function Toggle({ title}) {
 
   return (
     <>
-      <h4><a onClick={toggleVisibility}>{title}</a></h4>
+      <h4 className={sub.codeBox}><a onClick={toggleVisibility}>{title}</a></h4>
       {isVisible ? (
       <SandCodePack code={`import React from 'react';
 
