@@ -1,7 +1,6 @@
 
 import React from 'react';
 import CustomSlider from "./CustomSlider";
-// import widget from "../../styles/template2/T0002_widget.module.css"
 // 메인비주얼
 export default function MainVisual({widget}) {
   

@@ -3,7 +3,6 @@
 import React from 'react';
 import Title from "./Title"
 import IconBtnMore from "./IconBtnMore"
-// import widget from "../../styles/template1/widget.module.css"
 export default function MainGallery({widget}) {
   const Items = [
     { url: '#', src: '../../images/template/T0030/main/0030_thumb01.png', text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", date: "05. 24", open: true, id: 1 }

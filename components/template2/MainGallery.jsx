@@ -3,7 +3,6 @@
 import React from 'react';
 import Title from "./Title"
 import IconBtnMore from "./IconBtnMore"
-// import widget from "../../styles/template2/T0002_widget.module.css"
 
 export default function MainGallery({widget}) {
   const Items = [

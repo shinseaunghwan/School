@@ -1,0 +1,46 @@
+/* 메인 컨테이너 */
+.container_wrap { position:relative; z-index:2; width:100%;}
+.container {position: relative; margin: 0 auto; width: 100%; max-width: 80rem; }
+.container:after {clear: both; display: block; content: "";}
+
+.MC_wrap1 {position: relative;background: #fff;}    
+.MC_wrap2 {position: relative;padding: 4rem 0 0;overflow: hidden;}
+.MC_wrap3 {position: relative;overflow: hidden;padding: 4rem 0;}
+.MC_wrap4 {position: relative;overflow: hidden;padding: 0 0 5rem;}
+
+.MC_box1 {width: 100%;max-width: 2560px;margin: 0 auto;}
+.MC_box2 {width: 100%;background: #25254E; background: linear-gradient(90deg,rgba(37, 37, 78, 1) 0%, rgba(40, 73, 157, 1) 100%);}
+.MC_box3 {width: 100%;}
+.MC_box4 {width: 55%;float: left;}
+.MC_box5 {width: 42.625%;float: right;}
+.MC_box6 {width: 42.625%;float: right;margin-top: 2rem;}
+.MC_box7 {width: 42.5%;float: left;}
+.MC_box8 {width: 55%;float:right;}
+
+@media (max-width:1640px) {
+    .container { width: 100%; padding: 0 1rem; }
+}
+@media (max-width: 1440px) {
+
+}
+
+@media (max-width: 1240px) {
+.MC_wrap2 {padding: 1.5rem 0 0;}
+.MC_wrap3 {padding: 1.5rem 0;}
+.MC_wrap4 {padding: 0 0 1.5rem;}
+
+.MC_box2 .container {padding: 0;}
+.MC_box6 {width: 100%;margin-top: 1.5rem;}
+.MC_box7 {width: 100%; float: none;}
+.MC_box8 {width: 100%;margin-top: 1.5rem;float: none;}
+}
+
+@media (max-width: 1024px) {
+.MC_box4 {width: 100%; float: none;}
+.MC_box5 {width: 100%; margin-top: 1.5rem; float: none;}
+
+}
+
+@media (max-width: 756px) {
+
+}

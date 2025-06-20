@@ -1,8 +1,8 @@
 "use client"
 import React, { useState, useEffect, useRef, Fragment } from 'react';
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 // import widget from "../../styles/template2/T0002_widget.module.css"
 
 const CustomSlider = ({ className, items, controlButtonsOrder, sliderName, widget }) => {

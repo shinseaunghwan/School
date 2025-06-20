@@ -10,7 +10,7 @@
 .MC_wrap4 { position:relative; margin-top: 3rem;}
 .MC_wrap5 { position:relative; margin-top: 3rem;}
 .MC_box1 { position:relative; width: 47rem; float: left;} /* 메인비주얼 */
-.MC_box1::before {content: ""; position: absolute; bottom: -2rem; left: 2.5rem; width: 35.8rem; height: 20.55rem;  background: url('../../public/images/template/T0003/main/visual_deco2.png') no-repeat; z-index: 1;}
+.MC_box1::before {content: ""; position: absolute; bottom: -2rem; left: 2.5rem; width: 35.8rem; height: 20.55rem;  background: url('../../public/images/template/T0003/main/visual_deco2.png') no-repeat; z-index: 1; display: none;}
 .MC_box1::after {content: ""; position: absolute; top: -1rem; left: -10rem; width: 35.7rem; height: 6.4rem;  background: url('../../public/images/template/T0003/main/visual_deco.png') no-repeat; z-index: 0;}
 .MC_cont {position: relative; width: calc(100% - 50rem); float: right;}
 .MC_box2 {position: relative; width: 100%; margin-bottom: 3rem;} /* 팝업존 */

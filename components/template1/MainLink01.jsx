@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Title from "./Title"
-// import widget from "../../styles/template1/widget.module.css"
 
 export default function MainLink01({widget}) {
   const Items = [

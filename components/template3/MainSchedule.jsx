@@ -1,13 +1,14 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Calendar from 'react-calendar';
 // import "react-calendar/dist/Calendar.css";
 import NoData from "./NoData"
 import IconBtnMore from "./IconBtnMore"
 import Title from "./Title"
-// import widget from "../../styles/template2/T0002_widget.module.css"
-export default function MainSchedule({widget}) {
+import { WidgetContext } from '../../app/(main)/main/template3/App';
+export default function MainSchedule() {
+  const widget = useContext(WidgetContext);
   const [date, setDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null); // 선택된 날짜 상태
 

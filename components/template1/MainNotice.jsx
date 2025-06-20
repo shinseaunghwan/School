@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import NoData from "./NoData"
 import IconBtnMore from "./IconBtnMore"
-// import widget from "../../styles/template1/widget.module.css"
 
 export default function MainNotice({widget}) {
   const Tabs = [

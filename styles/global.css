@@ -235,15 +235,15 @@ body {
   
 
 @media screen and (max-width: 1024px){
-	html {font-size: 19px;}
+	html {font-size: 19px !important;}
 }
 
 @media screen and (max-width: 768px){
-	html {font-size: 18px;}
+	html {font-size: 18px !important;}
 }
 
 @media screen and (max-width: 480px){
-	html {font-size: 17px;}
+	html {font-size: 17px !important;}
 }
 
 

@@ -1,8 +1,8 @@
 "use client"
-
-import React from 'react';
-// import widget from "../../styles/template2/T0002_widget.module.css"
-export default function MainLink01({widget}) {
+import React,{ useContext } from 'react';
+import { WidgetContext } from '../../app/(main)/main/template3/App';
+export default function MainLink01() {
+  const widget = useContext(WidgetContext);
   const Items = [
     { url: '#', src: './../images/template/T0003/main/0003_icn01_link01.png', name: "학교알리미", id: 1},
     { url: '#', src: './../images/template/T0003/main/0003_icn01_link02.png', name: "교육목표", id: 2},

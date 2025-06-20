@@ -1,9 +1,8 @@
 "use client"
 import React, { useState, useEffect, useRef, Fragment } from 'react';
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import widget from "../../styles/template2/T0002_widget.module.css"
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 const PopupSlider = ({ className, items, controlButtonsOrder, sliderName, widget }) => {
 
     const [currentSlide, setCurrentSlide] = useState(0); // 현재 슬라이드 인덱스 상태

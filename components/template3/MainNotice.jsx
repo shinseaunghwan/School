@@ -1,10 +1,11 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import NoData from "./NoData"
 import IconBtnMore from "./IconBtnMore"
-// import widget from "../../styles/template2/T0002_widget.module.css"
-export default function MainNotice({widget}) {
+import { WidgetContext } from '../../app/(main)/main/template3/App';
+export default function MainNotice() {
+  const widget = useContext(WidgetContext);
   const Tabs = [
     { part: 'notice1', name: "공지사항", id: 1, text1:'등교 전 준비사항 안내1', text2:'123456' },
     { part: 'notice2', name: "가정통신문", id: 2, text1:'등교 전 준비사항 안내2', text2:'123456' },

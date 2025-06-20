@@ -1,7 +1,6 @@
 "use client"
 
 import React from 'react';
-// import widget from "../../styles/template2/T0002_widget.module.css"
 export default function MainLink01({widget}) {
   const Items = [
     { url: '#', src: './../images/template/T0002/main/0002_icn01_link01.png', name: "교육목표", id: 1},
