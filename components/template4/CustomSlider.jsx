@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback, Fragment } from 'react';
 import Slider from "react-slick";
+import Image from 'next/image';
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 
@@ -193,7 +194,7 @@ const CustomSlider = ({ className, items, controlButtonsOrder, sliderName, widge
       <Slider className={widget.slider} ref={sliderRef} {...settings}>
         {items.map((item) => (
           <p className={widget.item} key={item.id}>
-            <img src={item.src} alt={item.alt} />
+            <Image src={item.src} alt={item.alt} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }}/>
           </p>
         ))}
       </Slider>

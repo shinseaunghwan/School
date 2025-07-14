@@ -3,6 +3,7 @@ import Link from "next/link";
 import intro from "../../styles/intro.module.css"
 import IntroModalPop from "../../components/modal/introModal"
 import LayerPopup from "../../components/layerPopup/layerPopup"
+import Image from "next/image";
 
 export const metadata: Metadata = {
     title: "인트로",
@@ -14,7 +15,15 @@ export default function MainPage () {
   <div className={intro.intro_page}>
     <div className={intro.tit}><h3>인트로 페이지</h3></div>
     <div className={intro.img}>
-      <img src="/images/intro/intro_img.png" alt="인트로"/>
+      <Image
+      src="/images/intro/intro_img.png"
+      alt="인트로"
+      width={0}
+      height={0}
+      sizes="100vw"
+      style={{ width: '100%', height: 'auto' }}
+          />
+
       </div>
     <div className={intro.button_wrap}>
       <IntroModalPop tit={"메모장"} texts={

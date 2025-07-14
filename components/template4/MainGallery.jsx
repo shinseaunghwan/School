@@ -4,12 +4,13 @@ import React, { useContext } from 'react';
 import Title from "./Title"
 import IconBtnMore from "./IconBtnMore"
 import { WidgetContext } from '../../app/(main)/main/template4/App';
+import Image from 'next/image';
 
 export default function MainGallery() {
   const widget = useContext(WidgetContext);
   const Items = [
-    { url: '#', src: './../images/template/T0004/main/gallery_01.png', text: "2024 재능나눔체험전", date: "2025.01.12", open: true, id: 1, show:true },
-    { url: '#', src: './../images/template/T0004/main/gallery_02.png', text: "2024 진로특강 19~20차 수강 안내", date: "2025.01.12", open: true, id: 2, show:true }
+    { url: '#', src: '/images/template/T0004/main/gallery_01.png', text: "2024 재능나눔체험전", date: "2025.01.12", open: true, id: 1, show:true },
+    { url: '#', src: '/images/template/T0004/main/gallery_02.png', text: "2024 진로특강 19~20차 수강 안내", date: "2025.01.12", open: true, id: 2, show:true }
   ];
 
   const NoData = () => {
@@ -28,7 +29,7 @@ export default function MainGallery() {
         return (
           <li className={item.open === false ? widget.no_mber : ""} key={item.id}>
             <a href={item.url}>
-              <span className={widget.img}><img src={item.src} alt={item.text} /></span>
+              <span className={widget.img}><Image src={item.src} alt={item.text} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }}/></span>
               <div class={widget.txtWrap}>
                 <span class={widget.tit}>{item.text}</span>
                 <span class={widget.date}>{item.date}</span>

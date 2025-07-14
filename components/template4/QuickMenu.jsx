@@ -2,13 +2,14 @@
 import React, { useContext } from 'react';
 import { WidgetContext } from '../../app/(main)/main/template4/App';
 import Title from './Title';
+import Image from 'next/image';
 
 export default function QuickMenu() {
   const widget = useContext(WidgetContext);
 
   const Items = [
-    { url: '#', src: './../images/template/T0004/main/Quick_ico01.png', name: "학사일정", type: "ico", id: 1 },
-    { url: '#', src: './../images/template/T0004/main/Quick_ico02.png', name: "오늘의 식단", type: "ico", id: 2 },
+    { url: '#', src: '/images/template/T0004/main/Quick_ico01.png', name: "학사일정", type: "ico", id: 1 },
+    { url: '#', src: '/images/template/T0004/main/Quick_ico02.png', name: "오늘의 식단", type: "ico", id: 2 },
     { url: '#', name: "DBpia", type: "link", id: 3 },
     { url: '#', name: "한국지식콘텐츠", type: "link", id: 4 },
     { url: '#', name: "교보전자도서관", type: "link", id: 5 },
@@ -30,7 +31,7 @@ export default function QuickMenu() {
                 <p>{item.name}</p>
                 {item.type === 'ico' && (
                   <span>
-                    <img src={item.src} alt={item.name} />
+                    <Image src={item.src} alt={item.name} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }}/>
                   </span>
                 )}
                 {item.type === 'link' && (
