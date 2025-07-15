@@ -8,9 +8,9 @@ export default function MainVisual() {
   
   const widget = useContext(WidgetContext);
   const Items = [
-    { src: './../images/template/T0003/main/m_visual3.png', alt: '비주얼이미지1', id: 1 },
-    { src: './../images/template/T0003/main/m_visual3.png', alt: '비주얼이미지2', id: 2 },
-    { src: './../images/template/T0003/main/m_visual3.png', alt: '비주얼이미지3', id: 3 }
+    { src: '/images/template/T0003/main/m_visual3.png', alt: '비주얼이미지1', id: 1 },
+    { src: '/images/template/T0003/main/m_visual3.png', alt: '비주얼이미지2', id: 2 },
+    { src: '/images/template/T0003/main/m_visual3.png', alt: '비주얼이미지3', id: 3 }
   ];
 
   const controlButtonsOrder = [ 'play', 'prev','pager','next'];

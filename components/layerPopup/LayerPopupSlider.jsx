@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import layerPopup from "../../styles/layerPopup.module.css"
+import Image from 'next/image';
 
 const LayerPopupSlider = ({ className, items, controlButtonsOrder, sliderName }) => {
 
@@ -116,7 +117,9 @@ const LayerPopupSlider = ({ className, items, controlButtonsOrder, sliderName })
             <Slider className={layerPopup.popup_list} ref={slider => (sliderRef = slider)} {...settings}>
                 {items.map((item) => (
                     <div className={layerPopup.item} key={item.id}>
-                        <a href='#'><img src={item.src} alt={item.alt} /></a>
+                        <a href='#'>
+                            <Image src={item.src} alt={item.alt} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }}/>
+                            </a>
                     </div>
                 ))}
             </Slider>

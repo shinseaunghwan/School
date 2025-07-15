@@ -3,12 +3,13 @@
 import React from 'react';
 import Title from "./Title"
 import IconBtnMore from "./IconBtnMore"
+import Image from 'next/image';
 
 export default function MainGallery({widget}) {
   const Items = [
-    { url: '#', src: './../images/template/T0002/main/0002_story_img01.jpg', text: "에펠탑을 만들어요", open: true, id: 12643735673, show:false },
-    { url: '#', src: './../images/template/T0002/main/0002_story_img02.jpg', text: "즐거운 수업시간", open: true, id: 12512432782, show:true },
-    { url: '#', src: './../images/template/T0002/main/0002_story_img03.jpg', text: "책과 친구가 됐어요", open: true, id: 59567856393 ,show:true }
+    { url: '#', src: '/images/template/T0002/main/0002_story_img01.jpg', text: "에펠탑을 만들어요", open: true, id: 12643735673, show:false },
+    { url: '#', src: '/images/template/T0002/main/0002_story_img02.jpg', text: "즐거운 수업시간", open: true, id: 12512432782, show:true },
+    { url: '#', src: '/images/template/T0002/main/0002_story_img03.jpg', text: "책과 친구가 됐어요", open: true, id: 59567856393 ,show:true }
   ];
 
   const NoData = () => {
@@ -32,7 +33,7 @@ export default function MainGallery({widget}) {
           <li className={item.open === false ? widget.no_mber : ""} key={item.id}>
             <a href={item.url}>
               <p className={widget.img}>
-                <img src={item.src} alt={item.text} />
+                <Image src={item.src} alt={item.text} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }}/>
               </p>
               <p className={widget.txt}>{item.text}</p>
             </a>

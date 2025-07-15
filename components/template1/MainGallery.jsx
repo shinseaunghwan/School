@@ -3,9 +3,10 @@
 import React from 'react';
 import Title from "./Title"
 import IconBtnMore from "./IconBtnMore"
+import Image from 'next/image';
 export default function MainGallery({widget}) {
   const Items = [
-    { url: '#', src: '../../images/template/T0030/main/0030_thumb01.png', text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", date: "05. 24", open: true, id: 1 }
+    { url: '#', src: '/images/template/T0030/main/0030_thumb01.png', text: "교과 연계 진로캠프 다함께 하는 교과 연계 진로캠프", date: "05. 24", open: true, id: 1 }
   ];
 
   const NoData = () => {
@@ -25,7 +26,7 @@ export default function MainGallery({widget}) {
       <li className={item.open === false ? widget.no_mber : ""} key={item.id}>
         <a href={item.url}>
           <div className={widget.img}>
-            <img src={item.src} alt={item.text} />
+            <Image src={item.src} alt={item.text} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }}/>
           </div>
           <p className={widget.txt}><span>{item.text}</span>{item.date}</p>
         </a>

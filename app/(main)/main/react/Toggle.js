@@ -7,7 +7,7 @@ import 'aos/dist/aos.css';
 import CodeBlock from './CodeBlock';
 import sub from "../../../../styles/sub.module.css";
 import LiveCode from './LiveCode';
-
+import Image from 'next/image';
 
 function Toggle({ title, steps, language, aos}) {
   const [isVisible, setIsVisible] = useState(false);
@@ -41,7 +41,7 @@ function Toggle({ title, steps, language, aos}) {
                       key={idx}
                       data-aos={aos}
                     >
-                      <img src={img.src} alt={img.alt || `image-${idx}`} />
+                      <Image src={img.src} alt={img.alt || `image-${idx}`} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }}/>
                       <span>{img.text}</span>
                     </p>
                   ))}

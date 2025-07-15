@@ -4,9 +4,9 @@ import { WidgetContext } from '../../app/(main)/main/template3/App';
 export default function MainPopup() {
   const widget = useContext(WidgetContext);
   const Items = [
-    { src: './../images/template/T0003/main/0003_popup_chr.png', alt: "홈페이지 개편 안내, 홈페이지를 새롭게 단장하였습니다. 많은 이용 부탁드립니다.", id: 1},
-    { src: './../images/template/T0003/main/0003_popup_chr.png', alt: "홈페이지 개편 안내, 홈페이지를 새롭게 단장하였습니다. 많은 이용 부탁드립니다.", id: 2},
-    { src: './../images/template/T0003/main/0003_popup_chr.png', alt: "홈페이지 개편 안내, 홈페이지를 새롭게 단장하였습니다. 많은 이용 부탁드립니다.", id: 3}
+    { src: '/images/template/T0003/main/0003_popup_chr.png', alt: "홈페이지 개편 안내, 홈페이지를 새롭게 단장하였습니다. 많은 이용 부탁드립니다.", id: 1},
+    { src: '/images/template/T0003/main/0003_popup_chr.png', alt: "홈페이지 개편 안내, 홈페이지를 새롭게 단장하였습니다. 많은 이용 부탁드립니다.", id: 2},
+    { src: '/images/template/T0003/main/0003_popup_chr.png', alt: "홈페이지 개편 안내, 홈페이지를 새롭게 단장하였습니다. 많은 이용 부탁드립니다.", id: 3}
   ];
 
   const controlButtonsOrder = [ 'prev', 'play', 'next', 'pager'];

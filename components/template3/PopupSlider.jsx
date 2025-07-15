@@ -102,7 +102,7 @@ const PopupSlider = ({ className, items, controlButtonsOrder, sliderName, widget
             <Slider className={widget.pop_img} ref={slider => (sliderRef = slider)} {...settings}>
                 {items.map((item) => (
                     <p className={widget.item} key={item.id}>
-                        <a href='#'><img src={item.src} alt={item.alt} /></a>
+                        <a href='#'><Image src={item.src} alt={item.alt} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }}/></a>
                     </p>
                 ))}
             </Slider>

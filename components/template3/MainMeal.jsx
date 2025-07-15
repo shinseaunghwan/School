@@ -2,6 +2,8 @@ import React,{ useContext } from 'react';
 import Title from "./Title"
 import IconBtnMore from "./IconBtnMore"
 import { WidgetContext } from '../../app/(main)/main/template3/App';
+import Image from 'next/image';
+
 export default function MainMeal() {
   const widget = useContext(WidgetContext);
   const Items = [
@@ -25,7 +27,7 @@ export default function MainMeal() {
             </li>
           ))}
         </ul>
-        <img src="../../images/template/T0003/main/0003_img_meal.png" alt=""/>
+        <Image src="/images/template/T0003/main/0003_img_meal.png" alt="" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }}/>
       </div>
       
       <IconBtnMore LinkHref={'#'} LinkClassName={`${widget.btn_more} ${widget.ty}`} IconClassName={'xi-plus'} LinkTitle={'식단'} />

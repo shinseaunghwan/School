@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, Fragment } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-// import widget from "../../styles/template2/T0002_banner.module.css"
+import Image from 'next/image';
 
 const BannerSlider = ({ className, items, controlButtonsOrder, sliderName, banner }) => {
         const [currentSlide, setCurrentSlide] = useState(0); // 현재 슬라이드 인덱스 상태
@@ -106,7 +106,9 @@ const BannerSlider = ({ className, items, controlButtonsOrder, sliderName, banne
               <Slider className={banner.bnWrap} ref={slider => (sliderRef = slider)} {...settings}>
                   {items.map((item) => (
                       <p className={banner.item} key={item.id}>
-                          <a href={item.url}><img src={item.src} alt={item.alt} /></a>
+                          <a href={item.url}>
+                            <Image src={item.src} alt={item.alt} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }}/>
+                            </a>
                       </p>
                   ))}
               </Slider>

@@ -1,9 +1,7 @@
 "use client"
 import React, { useState, useEffect, useRef, Fragment } from 'react';
 import Slider from "react-slick";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-// import widget from "../../styles/template2/T0002_widget.module.css"
+import Image from 'next/image';
 
 const CustomSlider = ({ className, items, controlButtonsOrder, sliderName, widget }) => {
 
@@ -91,7 +89,7 @@ const CustomSlider = ({ className, items, controlButtonsOrder, sliderName, widge
             <Slider ref={slider => (sliderRef = slider)} {...settings}>
                 {items.map((item) => (
                     <div className={widget.item} key={item.id}>
-                        <img src={item.src} alt={item.alt} />
+                        <Image src={item.src} alt={item.alt} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }}/>
                     </div>
                 ))}
             </Slider>

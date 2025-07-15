@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import NoData from "./NoData"
 import IconBtnMore from "./IconBtnMore"
-// import widget from "../../styles/template2/T0002_widget.module.css"
+import Image from 'next/image';
+
 export default function MainNotice({widget}) {
   const Tabs = [
     { part: 'notice1', name: "공지사항", id: 1, text1:'등교 전 준비사항 안내1', text2:'123456' },
@@ -78,7 +79,7 @@ export default function MainNotice({widget}) {
       <div className={widget.tabWrap}>
         <div className={`${widget.list_box} ${widget.on}`}>
           <a href="#" className={widget.topList}>
-            <img src="./../images/template/T0002/main/0002_notice_ico.png" alt="" />
+            <Image src="/images/template/T0002/main/0002_notice_ico.png" alt="" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }}/>
             <TabNotice tabpart={currentTabData.part} />
           </a>
           <ul>

@@ -20,10 +20,10 @@ const LayerPopup = ({ tit1, tit2 }) => {
     
   };
   const Items = [
-    { src: './../images/con_com/img.png', alt: '팝업이미지1', id: 1 },
-    { src: './../images/con_com/img.png', alt: '팝업이미지2', id: 2 },
-    { src: './../images/con_com/img.png', alt: '팝업이미지3', id: 3 },
-    { src: './../images/con_com/img.png', alt: '팝업이미지4', id: 4 }
+    { src: '/images/con_com/img.png', alt: '팝업이미지1', id: 1 },
+    { src: '/images/con_com/img.png', alt: '팝업이미지2', id: 2 },
+    { src: '/images/con_com/img.png', alt: '팝업이미지3', id: 3 },
+    { src: '/images/con_com/img.png', alt: '팝업이미지4', id: 4 }
   ];
 
   const controlButtonsOrder = ['pager'];

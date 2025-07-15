@@ -14,7 +14,7 @@ const Header = () => {
     return (
         <div className={styles.header}>
             <div className={`${styles.top} ${layout.container}`}>
-                <HeaderTitle url={'/'} src={'./../images/template/T0030/main/logo.png'} schoolName={'학교명'} />
+                <HeaderTitle url={'/'} src={'/images/template/T0030/main/logo.png'} schoolName={'학교명'} />
                 <Search styles={styles} />
                 <Util styles={styles} setIsMenuOpen={setIsMenuOpen} setSelectMenuType={setSelectMenuType} />
             </div>
