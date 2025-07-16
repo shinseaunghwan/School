@@ -36,7 +36,7 @@ export default function MainPage () {
 
       <div className={intro.button}><Link href="/main/template1">템플릿 페이지 1</Link></div>
       <div className={intro.button}><Link href="/main/template2">템플릿 페이지 2</Link></div>
-      {/* <div className={intro.button}><Link href="/main/template3">템플릿 페이지 3</Link></div> */}
+      <div className={intro.button}><Link href="/main/template3">템플릿 페이지 3</Link></div>
       <div className={intro.button}><Link href="/main/template4">템플릿 페이지 4</Link></div>
       <div className={intro.button}><Link href="/main/react">React</Link></div>
     </div>

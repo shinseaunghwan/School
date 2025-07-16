@@ -4,14 +4,15 @@ import React, { useContext } from 'react';
 import Title from "./Title"
 import IconBtnMore from "./IconBtnMore"
 import { WidgetContext } from '../../app/(main)/main/template3/App';
+import Image from 'next/image';
 
 export default function MainGallery() {
   const widget = useContext(WidgetContext);
   const Items = [
-    { url: '#', src: '/images/template/T0002/main/0002_story_img01.jpg', text: "에펠탑을 만들어요", date: "2025.03.01", open: true, id: 1, show:true },
-    { url: '#', src: '/images/template/T0002/main/0002_story_img02.jpg', text: "즐거운 수업시간", date: "2025.03.01", open: true, id: 2, show:true },
-    { url: '#', src: '/images/template/T0002/main/0002_story_img03.jpg', text: "책과 친구가 됐어요", date: "2025.03.01", open: true, id: 3 ,show:true },
-    { url: '#', src: '/images/template/T0002/main/0002_story_img03.jpg', text: "책과 친구가 됐어요", date: "2025.03.01", open: true, id: 4 ,show:true }
+    { url: '#', src: '/images/template/T0003/main/0002_story_img01.jpg', text: "에펠탑을 만들어요", date: "2025.03.01", open: true, id: 1, show:true },
+    { url: '#', src: '/images/template/T0003/main/0002_story_img02.jpg', text: "즐거운 수업시간", date: "2025.03.01", open: true, id: 2, show:true },
+    { url: '#', src: '/images/template/T0003/main/0002_story_img03.jpg', text: "책과 친구가 됐어요", date: "2025.03.01", open: true, id: 3 ,show:true },
+    { url: '#', src: '/images/template/T0003/main/0002_story_img03.jpg', text: "책과 친구가 됐어요", date: "2025.03.01", open: true, id: 4 ,show:true }
   ];
 
   const NoData = () => {
