@@ -61,7 +61,7 @@ a.btn_more.ty:hover i { transform: rotate(90deg); }
 .newsSlide a{position:relative;display:block;border-radius:1rem;overflow:hidden;background:#fff;height: 100%;font-family: 'Pretendard';border: 2px solid transparent;isolation: isolate;}
 .newsSlide a:before{content:"";position:absolute;left:0;top:0;width:100%;height:100%;border-radius:1rem;border: 1px solid #D5D5D5;z-index:1;}
 .newsSlide a .img{position:relative;display: block;width:100%;height: 11.25rem;overflow:hidden;background: #F3F3F3;}
-.newsSlide a .img img{position:relative;left:50%;width: auto;height: 100%;transform:translateX(-50%);-webkit-transform:translateX(-50%);}
+.newsSlide a .img img{position:relative;left:50%;width: auto;height: 100%;transform:translateX(-50%);-webkit-transform:translateX(-50%); max-width: 100%;}
 .newsSlide a .txtWrap{display: block;height: calc(100% - 11.25rem);padding: 1.5rem 1rem 1.75rem;letter-spacing: normal;}
 .newsSlide a .tit{position:relative;height: 3rem;font-size: 1rem;font-weight: 700;width: auto;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;color: #222;} 
 .newsSlide a .txt{font-size: 0.9rem;font-weight: 400;position:relative;margin: 0.5rem 0 1.5rem;word-break: break-all;height: 4rem;width: auto;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3; /* 5줄로 제한 */-webkit-box-orient: vertical;color: #222;letter-spacing: -1px;} 
