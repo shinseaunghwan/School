@@ -16,7 +16,7 @@ h2.heading span:before {content:''; position:absolute; top:-14px; height:2px; wi
 .MVisual0030 { position: relative; height: 100%; overflow:hidden;}
 .MVisual0030 .slider{ position:relative; z-index: 0;}
 .MVisual0030 .item{ overflow:hidden; line-height:0;}
-.MVisual0030 .item img{ position:relative; width:100%; height:auto; }
+.MVisual0030 .item img{ position:relative; max-width: 100%; width:100%; height:auto; }
 .MVisual0030 .control{ position:absolute; left:2.4rem; bottom:1.5rem; display: flex; align-items: center; padding: 0.5rem 0.5rem 0.5rem 1rem; background:rgb(0,0,0, 0.3); border-radius: 2rem; z-index:1;}
 .MVisual0030 .control .page strong{ position: relative; color: #fff; margin-right: 0.5rem; padding: 0 0.2rem;}
 .MVisual0030 .control .page strong::before{content: ''; position: absolute; bottom: -0.2rem; left: 50%; transform: translateX(-50%); width: 100%; height: 1px; background: #fff;}
@@ -163,6 +163,7 @@ h2.heading span:before {content:''; position:absolute; top:-14px; height:2px; wi
 .M_link0030 li a:hover:after {width:2.8rem;}
 .M_link0030 li a:hover i {color:var(--text-color);}
 .M_link0030 .title {position:relative; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.5rem; width:7rem; height:7rem; border-radius:50%; background:#fff; box-shadow:0px 0px 15px rgba(0,0,0,0.05);}
+.M_link0030 .title img {max-width: 2.75rem;}
 .M_link0030 .title em {display:block; font-size: 0.9rem; font-weight: 700; color: #000;}
 
 /* 식단 */

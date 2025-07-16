@@ -90,7 +90,7 @@ const MainNewsSlider = ({ className, items, controlButtonsOrder, sliderName, wid
                 {items.map((item) => (
                     <p className={widget.item} key={item.id}>
                         <a href='#'>
-                          <span className={widget.img}><Image src={item.src} alt={item.tit} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }}/></span>
+                          <span className={widget.img}><Image src={item.src} alt={item.tit} width={0} height={0} sizes="100vw"/></span>
                           <span className={widget.txtWrap}>
                             <span className={widget.tit}>{item.tit}</span>
                             <span className={widget.txt}>{item.txt}</span>

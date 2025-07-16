@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from 'next/image';
 
-const BannerSlider = ({ className, items, controlButtonsOrder, sliderName, banner }) => {
+const BannerSlider = ({ items, controlButtonsOrder, sliderName, banner }) => {
         const [currentSlide, setCurrentSlide] = useState(0); // 현재 슬라이드 인덱스 상태
         const [totalSlides, setTotalSlides] = useState(items.length); // 전체 슬라이드 수 상태
         const [isPlaying, setIsPlaying] = useState(true); // 재생 상태를 나타내는 상태
@@ -72,27 +72,28 @@ const BannerSlider = ({ className, items, controlButtonsOrder, sliderName, banne
           );
       
       const renderControlButtons = () => {
-        return controlButtonsOrder.map((buttonName) => {
-            switch (buttonName) {
-                case 'pager':
-                    return <SlideCounter currentSlide={currentSlide} totalSlides={totalSlides} />;
-                case 'play':
-                    return isPlaying ? (
-                        <ControlButton className={banner.stop} onClick={togglePlay} iconClass="xi-pause" text={sliderName + "정지"} />
-                    ) : (
-                        <ControlButton className={banner.play} onClick={togglePlay} iconClass="xi-play" text={sliderName + "재생"} />
-                    );
-                case 'prev':
-                    return <ControlButton className={banner.prev} onClick={prev} iconClass="xi-angle-left" text={sliderName + " 이전"} />;
-                case 'next':
-                    return <ControlButton className={banner.next} onClick={next} iconClass="xi-angle-right" text={sliderName + " 다음"} />;
-                    case 'list':
-                    return <ControlButton className={banner.list} onClick={list} iconClass="xi-bars" text={sliderName + " 목록"} />;
-                default:
-                    return null;
-            }
-        })
-    }
+    const buttons = controlButtonsOrder.map((buttonName, index) => {
+        switch (buttonName) {
+            case 'pager':
+                return <SlideCounter key={`pager-${index}`} currentSlide={currentSlide} totalSlides={totalSlides} />;
+            case 'play':
+                return isPlaying ? (
+                    <ControlButton key={`play-stop-${index}`} className={banner.stop} onClick={togglePlay} iconClass="xi-pause" text={sliderName + "정지"} />
+                ) : (
+                    <ControlButton key={`play-start-${index}`} className={banner.play} onClick={togglePlay} iconClass="xi-play" text={sliderName + "재생"} />
+                );
+            case 'prev':
+                return <ControlButton key={`prev-${index}`} className={banner.prev} onClick={prev} iconClass="xi-angle-left" text={sliderName + " 이전FLASH않음 이전"} />;
+            case 'next':
+                return <ControlButton key={`next-${index}`} className={banner.next} onClick={next} iconClass="xi-angle-right" text={sliderName + " 다음"} />;
+            case 'list':
+                return <ControlButton key={`list-${index}`} className={banner.list} onClick={list} iconClass="xi-bars" text={sliderName + " 목록"} />;
+            default:
+                return null;
+        }
+    });
+    return buttons.filter(button => button !== null); // Filter out null values
+};
       
 
     return (
@@ -107,7 +108,7 @@ const BannerSlider = ({ className, items, controlButtonsOrder, sliderName, banne
                   {items.map((item) => (
                       <p className={banner.item} key={item.id}>
                           <a href={item.url}>
-                            <Image src={item.src} alt={item.alt} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }}/>
+                            <Image src={item.src} alt={item.alt} width={0} height={0} sizes="100vw" style={{ width: '50%', height: 'auto' }}/>
                             </a>
                       </p>
                   ))}
