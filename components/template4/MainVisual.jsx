@@ -8,8 +8,8 @@ export default function MainVisual() {
   
   const widget = useContext(WidgetContext);
   const Items = [
-    { src: '/images/template/T0004/main/m_visual1.png', alt: '비주얼이미지1', id: 1 },
-    { src: '/images/template/T0004/main/m_visual2.png', alt: '비주얼이미지2', id: 2 }
+    { src: '/images/template/T0004/main/M_visual1.png', alt: '비주얼이미지1', id: 1 },
+    { src: '/images/template/T0004/main/M_visual2.png', alt: '비주얼이미지2', id: 2 }
   ];
 
   const controlButtonsOrder = [ 'play'];
