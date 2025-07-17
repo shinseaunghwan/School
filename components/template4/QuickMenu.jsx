@@ -31,7 +31,7 @@ export default function QuickMenu() {
                 <p>{item.name}</p>
                 {item.type === 'ico' && (
                   <span>
-                    <Image src={item.src} alt={item.name} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }}/>
+                    <Image src={item.src} alt={item.name} width={0} height={0} sizes="100vw" style={{ width: '2.05rem', height: 'auto' }}/>
                   </span>
                 )}
                 {item.type === 'link' && (

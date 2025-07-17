@@ -179,7 +179,7 @@ a.btn_more.ty:hover i { transform: rotate(90deg); }
 .magazine .titleWrap h2 {color: #fff;margin: 0;}
 .magazine .titleWrap h2 span {color: #CFE4FF;} 
 .magazine .ico {display: flex;width: 5rem;height: 5rem;border: 1px solid rgb(255 255 255 / 60%);border-radius: 50%;align-content: center;justify-content: center;flex-wrap: wrap;}
-.magazine .ico img{max-width: 100%;}
+.magazine .ico img{max-width: 2.85rem;}
 
 /* 매거진:active */
 .magazine:hover,
@@ -201,7 +201,7 @@ a.btn_more.ty:hover i { transform: rotate(90deg); }
 .quickMenu .quickList li a.ico{justify-content: space-between;}
 .quickMenu .quickList li a p{font-size: 0.9rem;max-width: calc(100% - 2.5rem);font-weight: 500;font-family: 'Pretendard';color: #222;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
 .quickMenu .quickList li a.ico span {display: flex;align-items: center;justify-content: center;}
-.quickMenu .quickList li a.ico span img{max-width: 100%;}
+.quickMenu .quickList li a.ico span img{max-width: 2.05rem;}
 .quickMenu .quickList li a.link i{margin-left: 0.3rem;font-size: 0.95rem;color: #888888;}
 
 /* 퀵메뉴:active */
