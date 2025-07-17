@@ -48,6 +48,8 @@ menu, nav, output, ruby, section, summary,
 time, mark, audio, video {margin: 0; padding: 0; border: 0; vertical-align: baseline;}
 /* b, strong {font: inherit;} 게시글 editor 작성 속성까지 초기화됨 */
 
+img {max-width: 100%;}
+
 /* Skip 메뉴 */
 #skipArea {position: absolute; top: -1000px; left: 0; width: 100%; height: 0; line-height: 0; font-size: 0; z-index: 1000;}
 #skipArea a {display: block; width: 100%; line-height: 0; text-align: center; font-size: 0;}
