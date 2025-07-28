@@ -6,7 +6,7 @@ import "../font/Montserrat/fonts.css";
 import "../font/XEIcon-2.3.3/xeicon.css";
 import "../font/RimixIcon/remixicon.css";
 import '../styles/global.css';
-import '../styles/slick.css';
+// import '../styles/slick.css';
 
 export const metadata: Metadata = {
   title: {

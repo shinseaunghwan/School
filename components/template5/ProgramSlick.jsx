@@ -26,27 +26,57 @@ const ProgramSlick = ({ items, controlButtonsOrder, sliderName, widget }) => {
   const sliderRef = useRef(null);
 
   // 슬라이더 설정
-  const settings = useMemo(() => ({
-    infinite: true,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    rows: 2,
-    arrows: true,
-    beforeChange: (_, next) => {
-      setCurrentSlide(next);
-      const slidesToShow = window.innerWidth <= 380 ? 1 : window.innerWidth <= 768 ? 2 : window.innerWidth <= 1200 ? 3 : 4;
-      const rows = window.innerWidth <= 1200 ? 1 : 2;
-      const total = Math.ceil(items.length / rows);
-      const maxNextSlide = total - slidesToShow;
-      const calc = next === 0 ? 0 : Math.min(Math.max((next / (window.innerWidth <= 1200 ? total - 1 : maxNextSlide)) * 100, 0), 100);
-      setProgress(Math.round(calc));
-    },
-    responsive: [
-      { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1, rows: 1 } },
-      { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 1, rows: 1 } },
-      { breakpoint: 380, settings: { slidesToShow: 1, slidesToScroll: 1, rows: 1 } },
-    ],
-  }), [items.length]);
+  const settings = useMemo(
+    () => ({
+      infinite: true,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      rows: 2,
+      arrows: true,
+      beforeChange: (_, next) => {
+        setCurrentSlide(next);
+        const slidesToShow =
+          window.innerWidth <= 380
+            ? 1
+            : window.innerWidth <= 768
+            ? 2
+            : window.innerWidth <= 1200
+            ? 3
+            : 4;
+        const rows = window.innerWidth <= 1200 ? 1 : 2;
+        const total = Math.ceil(items.length / rows);
+        const maxNextSlide = total - slidesToShow;
+        const calc =
+          next === 0
+            ? 0
+            : Math.min(
+                Math.max(
+                  (next /
+                    (window.innerWidth <= 1200 ? total - 1 : maxNextSlide)) *
+                    100,
+                  0
+                ),
+                100
+              );
+        setProgress(Math.round(calc));
+      },
+      responsive: [
+        {
+          breakpoint: 1200,
+          settings: { slidesToShow: 3, slidesToScroll: 1, rows: 1 },
+        },
+        {
+          breakpoint: 768,
+          settings: { slidesToShow: 2, slidesToScroll: 1, rows: 1 },
+        },
+        {
+          breakpoint: 380,
+          settings: { slidesToShow: 1, slidesToScroll: 1, rows: 1 },
+        },
+      ],
+    }),
+    [items.length]
+  );
 
   // 재생/정지 제어
   const togglePlay = useCallback(() => {
@@ -55,12 +85,19 @@ const ProgramSlick = ({ items, controlButtonsOrder, sliderName, widget }) => {
     } else {
       sliderRef.current?.slickPlay();
     }
-    setIsPlaying(prev => !prev);
+    setIsPlaying((prev) => !prev);
   }, [isPlaying]);
 
   // 컨트롤 버튼 렌더링
   const renderControlButtons = useCallback(() => {
-    const slidesToShow = window.innerWidth <= 380 ? 1 : window.innerWidth <= 768 ? 2 : window.innerWidth <= 1200 ? 3 : 4;
+    const slidesToShow =
+      window.innerWidth <= 380
+        ? 1
+        : window.innerWidth <= 768
+        ? 2
+        : window.innerWidth <= 1200
+        ? 3
+        : 4;
     const rows = window.innerWidth <= 1200 ? 1 : 2;
     return controlButtonsOrder.map((buttonName, index) => {
       switch (buttonName) {
@@ -111,7 +148,15 @@ const ProgramSlick = ({ items, controlButtonsOrder, sliderName, widget }) => {
           return null;
       }
     });
-  }, [controlButtonsOrder, currentSlide, isPlaying, sliderName, widget, items.length, togglePlay]);
+  }, [
+    controlButtonsOrder,
+    currentSlide,
+    isPlaying,
+    sliderName,
+    widget,
+    items.length,
+    togglePlay,
+  ]);
 
   const showControls = items.length > 3;
 
@@ -122,15 +167,28 @@ const ProgramSlick = ({ items, controlButtonsOrder, sliderName, widget }) => {
           <div className={widget.item} key={item.id}>
             <div className={widget.itemWrap}>
               <div className={widget.tagWrap}>
-
-
-
                 <span className={`${widget.tagClass} ${item.tagClass}`}>
-                  {item.tagClass === "a" ? "견학체험" : item.tagClass === "b" ? "교육연수" : item.tagClass === "c" ? "평생교육" : item.tagClass === "d" ? "시설대관" : item.tagClass === "e" ? "공연행사" : ""}
-                  </span>
+                  {item.tagClass === "a"
+                    ? "견학체험"
+                    : item.tagClass === "b"
+                    ? "교육연수"
+                    : item.tagClass === "c"
+                    ? "평생교육"
+                    : item.tagClass === "d"
+                    ? "시설대관"
+                    : item.tagClass === "e"
+                    ? "공연행사"
+                    : ""}
+                </span>
                 <span className={`${widget.status} ${item.status}`}>
-                  {item.status === "Wait" ? "접수대기" : item.status === "Img" ? "접수중" : item.status === "End" ? "접수마감" : ""}
-                  </span>
+                  {item.status === "Wait"
+                    ? "접수대기"
+                    : item.status === "Img"
+                    ? "접수중"
+                    : item.status === "End"
+                    ? "접수마감"
+                    : ""}
+                </span>
               </div>
               <p className={widget.tit}>{item.tit}</p>
               <p className={widget.address}>{item.address}</p>
@@ -160,7 +218,11 @@ const ProgramSlick = ({ items, controlButtonsOrder, sliderName, widget }) => {
       {showControls && (
         <div className={widget.control}>
           <div className={widget.barBox}>
-            <div className={widget.bar} style={{ width: `${progress}%` }} aria-valuenow={progress}></div>
+            <div
+              className={widget.bar}
+              style={{ width: `calc(${progress}% + 16px)` }}
+              aria-valuenow={progress}
+            ></div>
           </div>
           {renderControlButtons()}
         </div>

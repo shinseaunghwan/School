@@ -369,7 +369,7 @@ a.btn_more.ty:hover i { transform: rotate(90deg); }
     .program .slider .item .buttonWrap {margin-top:0.5rem}
     .program .slider .item .buttonWrap a {height: 2rem;}
     .program .control .barBox {width: calc(100% - 4.65rem);}
-    .program .control .barBox .bar::after {width: 12px;height: 12px;outline: 3px solid #ffdc50;}
+    .program .control .barBox .bar::after {width: 12px;height: 12px; right:-3px; outline: 3px solid #ffdc50;}
     .program .control {position:relative;display: flex;gap: 0.2rem;}
     .program .control button {width: 2rem;height: 2rem;} 
     .program .control button i{font-size: 1rem;} 
