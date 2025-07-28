@@ -83,7 +83,7 @@ export default function MainNotice() {
   const TabNotice = ({ tabpart }) => {
     const result = Tabs.filter((tab) => tab.part === tabpart).map((tab) => (
       <dl className={widget.new} key={tab.id}>
-        <dt><span className={widget.img}><Image src="/images/template/T0005/main/Group.png" width={56} height={0} alt="icon" /> </span></dt>
+        <dt><span className={widget.img}><Image src="/images/template/T0005/main/Group.png" width={56} height={49} alt="icon" /> </span></dt>
         <dd>
           <h3 className={widget.tit}>{tab.tit}</h3>
           <p>{tab.text}</p>

@@ -1,117 +1,67 @@
-// components/ProgramSlick.js
 "use client";
-import React, { useState, useEffect, useRef, Fragment } from "react";
+import React, { useState, useRef, useCallback, useMemo } from "react";
 import Slider from "react-slick";
+
+// 재사용 가능한 컨트롤 버튼 컴포넌트
+const ControlButton = ({ className, onClick, iconClass, text, widget }) => (
+  <button className={className} onClick={onClick}>
+    <span className={widget.hid}>{text}</span>
+    <i className={iconClass} aria-hidden="true"></i>
+  </button>
+);
+
+// 슬라이드 카운터 컴포넌트
+const SlideCounter = ({ currentSlide, totalSlides, slidesToShow, rows }) => (
+  <p className={widget.page}>
+    <strong>{currentSlide + 1}</strong>
+    <span>/</span>
+    <span>{Math.ceil(totalSlides / rows)}</span>
+  </p>
+);
 
 const ProgramSlick = ({ items, controlButtonsOrder, sliderName, widget }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [totalSlides, setTotalSlides] = useState(items.length);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [breakpoint, setBreakpoint] = useState("desktop");
+  const [progress, setProgress] = useState(0);
   const sliderRef = useRef(null);
-  const [progressWidth, setProgressWidth] = useState("8px");
-  const [ariaValueNow, setAriaValueNow] = useState(0);
-
-  // 창 크기에 따라 브레이크포인트 설정
-  const getCurrentBreakpoint = () => {
-    const windowWidth = window.innerWidth || document.documentElement.clientWidth;
-    return windowWidth <= 1200 ? "mobile" : "desktop";
-  };
 
   // 슬라이더 설정
-  const settings = {
+  const settings = useMemo(() => ({
     infinite: true,
-    slidesToShow: breakpoint === "mobile" ? 3 : 4,
-    slidesToScroll: breakpoint === "mobile" ? 1 : 4,
-    rows: breakpoint === "mobile" ? 1 : 2,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    rows: 2,
     arrows: true,
-    beforeChange: (current, next) => {
+    beforeChange: (_, next) => {
       setCurrentSlide(next);
-      const slidesToShow = breakpoint === "mobile" ? (window.innerWidth <= 380 ? 1 : window.innerWidth <= 768 ? 2 : 3) : 4;
-      const total = totalSlides / (breakpoint === "mobile" ? 1 : 2); // rows에 따라 조정
+      const slidesToShow = window.innerWidth <= 380 ? 1 : window.innerWidth <= 768 ? 2 : window.innerWidth <= 1200 ? 3 : 4;
+      const rows = window.innerWidth <= 1200 ? 1 : 2;
+      const total = Math.ceil(items.length / rows);
       const maxNextSlide = total - slidesToShow;
-
-      let calc = 0;
-      if (next === 0) {
-        setProgressWidth("8px");
-        setAriaValueNow(0);
-      } else if (maxNextSlide > 0) {
-        calc = (next / (breakpoint === "mobile" ? total - 1 : maxNextSlide)) * 100;
-        calc = Math.min(Math.max(calc, 0), 100);
-        calc = Math.round(calc);
-        setProgressWidth(`${calc}%`);
-        setAriaValueNow(calc);
-      }
+      const calc = next === 0 ? 0 : Math.min(Math.max((next / (window.innerWidth <= 1200 ? total - 1 : maxNextSlide)) * 100, 0), 100);
+      setProgress(Math.round(calc));
     },
-    responsive: breakpoint === "mobile" ? [
-      { breakpoint: 768, settings: { slidesToShow: 2 } },
-      { breakpoint: 380, settings: { slidesToShow: 1 } },
-    ] : [],
-  };
+    responsive: [
+      { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1, rows: 1 } },
+      { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 1, rows: 1 } },
+      { breakpoint: 380, settings: { slidesToShow: 1, slidesToScroll: 1, rows: 1 } },
+    ],
+  }), [items.length]);
 
   // 재생/정지 제어
-  const play = () => {
-    sliderRef.current?.slickPlay();
-    setIsPlaying(true);
-  };
+  const togglePlay = useCallback(() => {
+    if (isPlaying) {
+      sliderRef.current?.slickPause();
+    } else {
+      sliderRef.current?.slickPlay();
+    }
+    setIsPlaying(prev => !prev);
+  }, [isPlaying]);
 
-  const pause = () => {
-    sliderRef.current?.slickPause();
-    setIsPlaying(false);
-  };
-
-  const togglePlay = () => {
-    setIsPlaying(!isPlaying);
-    isPlaying ? pause() : play();
-  };
-
-  // 슬라이더 초기화
-  const initSlickSlider = () => {
-    const newBreakpoint = getCurrentBreakpoint();
-    setBreakpoint(newBreakpoint);
-    setTotalSlides(items.length);
-  };
-
-  // 창 크기 변경 이벤트 처리 (디바운싱)
-  useEffect(() => {
-    initSlickSlider();
-    let resizeTimer;
-    const handleResize = () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        const newBreakpoint = getCurrentBreakpoint();
-        if (newBreakpoint !== breakpoint) {
-          setBreakpoint(newBreakpoint);
-        }
-      }, 200);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      clearTimeout(resizeTimer);
-    };
-  }, [breakpoint]);
-
-  // 슬라이드 개수에 따라 컨트롤 표시 여부
-  const showControls = totalSlides > 3;
-
-  const ControlButton = ({ className, onClick, iconClass, text }) => (
-    <button className={className} onClick={onClick}>
-      <span className={widget.hid}>{text}</span>
-      <i className={iconClass} aria-hidden="true"></i>
-    </button>
-  );
-
-  const SlideCounter = ({ currentSlide, totalSlides }) => (
-    <p className={widget.page}>
-      <strong>{currentSlide + 1}</strong>
-      <p>/</p>
-      <span>{totalSlides / (breakpoint === "mobile" ? 1 : 2)}</span>
-    </p>
-  );
-
-  const renderControlButtons = () => {
+  // 컨트롤 버튼 렌더링
+  const renderControlButtons = useCallback(() => {
+    const slidesToShow = window.innerWidth <= 380 ? 1 : window.innerWidth <= 768 ? 2 : window.innerWidth <= 1200 ? 3 : 4;
+    const rows = window.innerWidth <= 1200 ? 1 : 2;
     return controlButtonsOrder.map((buttonName, index) => {
       switch (buttonName) {
         case "pager":
@@ -119,25 +69,20 @@ const ProgramSlick = ({ items, controlButtonsOrder, sliderName, widget }) => {
             <SlideCounter
               key={index}
               currentSlide={currentSlide}
-              totalSlides={totalSlides}
+              totalSlides={items.length}
+              slidesToShow={slidesToShow}
+              rows={rows}
             />
           );
         case "play":
-          return isPlaying ? (
+          return (
             <ControlButton
               key={index}
-              className={widget.stop}
+              className={isPlaying ? widget.stop : widget.play}
               onClick={togglePlay}
-              iconClass="xi-pause"
-              text={`${sliderName} 정지`}
-            />
-          ) : (
-            <ControlButton
-              key={index}
-              className={widget.play}
-              onClick={togglePlay}
-              iconClass="xi-play"
-              text={`${sliderName} 재생`}
+              iconClass={isPlaying ? "xi-pause" : "xi-play"}
+              text={`${sliderName} ${isPlaying ? "정지" : "재생"}`}
+              widget={widget}
             />
           );
         case "prev":
@@ -148,6 +93,7 @@ const ProgramSlick = ({ items, controlButtonsOrder, sliderName, widget }) => {
               onClick={() => sliderRef.current?.slickPrev()}
               iconClass="xi-angle-left"
               text={`${sliderName} 이전`}
+              widget={widget}
             />
           );
         case "next":
@@ -158,60 +104,68 @@ const ProgramSlick = ({ items, controlButtonsOrder, sliderName, widget }) => {
               onClick={() => sliderRef.current?.slickNext()}
               iconClass="xi-angle-right"
               text={`${sliderName} 다음`}
+              widget={widget}
             />
           );
         default:
           return null;
       }
     });
-  };
+  }, [controlButtonsOrder, currentSlide, isPlaying, sliderName, widget, items.length, togglePlay]);
+
+  const showControls = items.length > 3;
 
   return (
-    <Fragment>
-      <div className={widget.program}>
-        <Slider className={`${widget.slider} ${widget.slider}`} ref={sliderRef} {...settings}>
-          {items.map((item) => (
-            <div className={`${widget.item} ${widget.item}`} key={item.id}>
-              <div className={`${widget.itemWrap} ${widget.itemWrap}`}>
-                <div className={`${widget.tagWrap} ${widget.tagWrap}`}>
-                  <span className={`${widget.tagClass} ${item.tagClass} ${widget.tagClass}`}>{item.tagClass}</span>
-                  <span className={`${widget.status} ${item.status} ${widget.status}`}>{item.status}</span>
-                </div>
-                <p className={`${widget.tit} ${widget.tit}`}>{item.tit}</p>
-                <p className={`${widget.address} ${widget.address}`}>{item.address}</p>
-                <div className={`${widget.date} ${widget.date}`}>
-                  <p>
-                    <span>기관</span>
-                    <em>{item.text}</em>
-                  </p>
-                  <p>
-                    <span>운영기간</span>
-                    <em>{item.date1}</em>
-                  </p>
-                  <p>
-                    <span>신청기간</span>
-                    <em>{item.date2}</em>
-                  </p>
-                </div>
+    <div className={widget.program}>
+      <Slider className={widget.slider} ref={sliderRef} {...settings}>
+        {items.map((item) => (
+          <div className={widget.item} key={item.id}>
+            <div className={widget.itemWrap}>
+              <div className={widget.tagWrap}>
+
+
+
+                <span className={`${widget.tagClass} ${item.tagClass}`}>
+                  {item.tagClass === "a" ? "견학체험" : item.tagClass === "b" ? "교육연수" : item.tagClass === "c" ? "평생교육" : item.tagClass === "d" ? "시설대관" : item.tagClass === "e" ? "공연행사" : ""}
+                  </span>
+                <span className={`${widget.status} ${item.status}`}>
+                  {item.status === "Wait" ? "접수대기" : item.status === "Img" ? "접수중" : item.status === "End" ? "접수마감" : ""}
+                  </span>
               </div>
-              <div className={`${widget.buttonWrap} ${widget.buttonWrap}`}>
-                <a href="#" title="자세히보기">
-                  <span>자세히보기</span>
-                </a>
+              <p className={widget.tit}>{item.tit}</p>
+              <p className={widget.address}>{item.address}</p>
+              <div className={widget.date}>
+                <p>
+                  <span>기관</span>
+                  <em>{item.text}</em>
+                </p>
+                <p>
+                  <span>운영기간</span>
+                  <em>{item.date1}</em>
+                </p>
+                <p>
+                  <span>신청기간</span>
+                  <em>{item.date2}</em>
+                </p>
               </div>
             </div>
-          ))}
-        </Slider>
-        {showControls && (
-          <div className={`${widget.control} ${widget.control}`}>
-            <div className={widget.barBox}>
-              <div className={widget.bar} style={{ width: progressWidth }} aria-valuenow={ariaValueNow}></div>
+            <div className={widget.buttonWrap}>
+              <a href="#" title="자세히보기">
+                <span>자세히보기</span>
+              </a>
             </div>
-            {renderControlButtons()}
           </div>
-        )}
-      </div>
-    </Fragment>
+        ))}
+      </Slider>
+      {showControls && (
+        <div className={widget.control}>
+          <div className={widget.barBox}>
+            <div className={widget.bar} style={{ width: `${progress}%` }} aria-valuenow={progress}></div>
+          </div>
+          {renderControlButtons()}
+        </div>
+      )}
+    </div>
   );
 };
 

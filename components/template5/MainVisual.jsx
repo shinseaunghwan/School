@@ -66,6 +66,7 @@ export default function MainVisual() {
 
     // 초기 좌표 업데이트
     updateMapCoords();
+    // updateMapImage();
 
     // 리사이즈 이벤트 핸들러
     window.addEventListener("resize", updateMapCoords);

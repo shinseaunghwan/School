@@ -8,6 +8,7 @@ export default function MainLink01() {
     {
       url: "#",
       width:'91',
+      height: '86',
       class: widget.blue,
       src: "/images/template/T0005/main/ico_01.png",
       tit: "예약확인 및 취소",
@@ -16,6 +17,7 @@ export default function MainLink01() {
     {
       url: "#",
       width:'132',
+      height: '100',
       class: widget.green,
       src: "/images/template/T0005/main/ico_02.png",
       tit: "이용안내",
@@ -30,7 +32,7 @@ export default function MainLink01() {
         {Items.map((item) => (
           <li key={item.id} className={item.class}>
             <a href={item.url}>
-              <p className={widget.img}><Image src={item.src} alt="" width={item.width} height={0} /></p>
+              <p className={widget.img}><Image src={item.src} alt="" width={item.width} height={item.height} /></p>
               <p className={widget.tit}>{item.tit}</p>
               <span className={widget.button}>자세히보기<i className="xi-long-arrow-right" aria-hidden="true"></i></span>
 
