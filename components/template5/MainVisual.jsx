@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useContext, useRef, useEffect } from "react";
 import { WidgetContext } from "../../app/(main)/main/template5/App";
 import Image from "next/image";

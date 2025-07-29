@@ -1,8 +1,9 @@
 "use client";
-import React, { useState, useRef, useCallback, useMemo } from "react";
-import Slider from "react-slick";
+import React, { useState, useRef, useCallback, useMemo, useEffect } from "react";
+import dynamic from 'next/dynamic';
 
-// 재사용 가능한 컨트롤 버튼 컴포넌트
+const Slider = dynamic(() => import('react-slick'), { ssr: false });
+
 const ControlButton = ({ className, onClick, iconClass, text, widget }) => (
   <button className={className} onClick={onClick}>
     <span className={widget.hid}>{text}</span>
@@ -10,7 +11,6 @@ const ControlButton = ({ className, onClick, iconClass, text, widget }) => (
   </button>
 );
 
-// 슬라이드 카운터 컴포넌트
 const SlideCounter = ({ currentSlide, totalSlides, slidesToShow, rows }) => (
   <p className={widget.page}>
     <strong>{currentSlide + 1}</strong>
@@ -23,39 +23,40 @@ const ProgramSlick = ({ items, controlButtonsOrder, sliderName, widget }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [slidesToShow, setSlidesToShow] = useState(4);
+  const [rows, setRows] = useState(2);
   const sliderRef = useRef(null);
 
-  // 슬라이더 설정
+  useEffect(() => {
+    const updateSlides = () => {
+      const width = window.innerWidth;
+      setSlidesToShow(
+        width <= 380 ? 1 : width <= 768 ? 2 : width <= 1200 ? 3 : 4
+      );
+      setRows(width <= 1200 ? 1 : 2);
+    };
+
+    updateSlides();
+    window.addEventListener('resize', updateSlides);
+    return () => window.removeEventListener('resize', updateSlides);
+  }, []);
+
   const settings = useMemo(
     () => ({
       infinite: true,
-      slidesToShow: 4,
-      slidesToScroll: 4,
-      rows: 2,
+      slidesToShow: slidesToShow,
+      slidesToScroll: slidesToShow,
+      rows: rows,
       arrows: true,
       beforeChange: (_, next) => {
         setCurrentSlide(next);
-        const slidesToShow =
-          window.innerWidth <= 380
-            ? 1
-            : window.innerWidth <= 768
-            ? 2
-            : window.innerWidth <= 1200
-            ? 3
-            : 4;
-        const rows = window.innerWidth <= 1200 ? 1 : 2;
         const total = Math.ceil(items.length / rows);
         const maxNextSlide = total - slidesToShow;
         const calc =
           next === 0
             ? 0
             : Math.min(
-                Math.max(
-                  (next /
-                    (window.innerWidth <= 1200 ? total - 1 : maxNextSlide)) *
-                    100,
-                  0
-                ),
+                Math.max((next / (rows === 1 ? total - 1 : maxNextSlide)) * 100, 0),
                 100
               );
         setProgress(Math.round(calc));
@@ -75,10 +76,9 @@ const ProgramSlick = ({ items, controlButtonsOrder, sliderName, widget }) => {
         },
       ],
     }),
-    [items.length]
+    [items.length, slidesToShow, rows]
   );
 
-  // 재생/정지 제어
   const togglePlay = useCallback(() => {
     if (isPlaying) {
       sliderRef.current?.slickPause();
@@ -88,17 +88,7 @@ const ProgramSlick = ({ items, controlButtonsOrder, sliderName, widget }) => {
     setIsPlaying((prev) => !prev);
   }, [isPlaying]);
 
-  // 컨트롤 버튼 렌더링
   const renderControlButtons = useCallback(() => {
-    const slidesToShow =
-      window.innerWidth <= 380
-        ? 1
-        : window.innerWidth <= 768
-        ? 2
-        : window.innerWidth <= 1200
-        ? 3
-        : 4;
-    const rows = window.innerWidth <= 1200 ? 1 : 2;
     return controlButtonsOrder.map((buttonName, index) => {
       switch (buttonName) {
         case "pager":
@@ -155,6 +145,8 @@ const ProgramSlick = ({ items, controlButtonsOrder, sliderName, widget }) => {
     sliderName,
     widget,
     items.length,
+    slidesToShow,
+    rows,
     togglePlay,
   ]);
 
