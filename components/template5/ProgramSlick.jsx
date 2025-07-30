@@ -88,6 +88,8 @@ const ProgramSlick = ({ items, controlButtonsOrder, sliderName, widget }) => {
     setIsPlaying((prev) => !prev);
   }, [isPlaying]);
 
+
+  
   const renderControlButtons = useCallback(() => {
     return controlButtonsOrder.map((buttonName, index) => {
       switch (buttonName) {
