@@ -1,5 +1,4 @@
-.menuTypeWrap {position: absolute; top: 0rem; right: -7rem; width: 5rem; z-index: 999;}
-.menuTypeWrap button {margin: 0.15rem 0;}
+.menuTypeWrap {position: absolute; top: 0rem; right: -7rem; width: 5rem; z-index: 999;}.menuTypeWrap button {margin: 0.15rem 0;}
 
 
 /* header */
@@ -7,8 +6,8 @@
 .header:before {position: absolute; top: 4.5rem; left: 0; width: 100%; height: 1px; background: #eeeff1; content: ""; z-index: 100;}
 .header .top {width: 96%; height: 4.5rem; padding:1.25rem 0 0; text-align: right;}
 .header .top:after {clear: both; display: block; content: "";}
-.header h1 {position: absolute; max-width: 8rem; top: 22px; left: 0;}
-.header h1 a {display: block; font-size: 0;} 
+.header h1 {position: absolute;  top: 22px; left: 0;}
+.header h1 a {display: block; max-width: 8rem; font-size: 0;} 
 .header h1 a img {max-width: 100%; height: auto;}
 
 /* header - 유틸리티 */
@@ -146,10 +145,10 @@
 
 /* 전체메뉴 */
 .popFullmenu {position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #fff; z-index: 999;}
-.popFullmenu .fullmenu_wrap {position: relative; margin: 0 auto; width: 100%; max-width: 70rem; height: 100%;}
+.popFullmenu .fullmenuWrap {position: relative; margin: 0 auto; width: 100%; max-width: 70rem; height: 100%;}
 .popFullmenu h2 {position: relative; height: 4.5rem; line-height: 4.5rem; font-size: 1.25rem; border-bottom: 1px solid #000;}
 .popFullmenu .popUntil {display: none;}
-.popFullmenu .fullmenu_group {padding: 1.5rem 0; height: calc(100% - 4.5rem); overflow: hidden;} 
+.popFullmenu .fullmenuGroup {padding: 1.5rem 0; height: calc(100% - 4.5rem); overflow: hidden;} 
 .popFullmenu .titBox {display: none;}
 .popFullmenu .depth02 > ul > li.dep > a,
 .popFullmenu .depth02 > ul > li > a[target='_blank'] {padding-right: 1.5rem;}
@@ -250,7 +249,7 @@
 	.header .topUtil .font_size p {padding: 0 0.35rem 0 0;}
 
 	/* 전체메뉴 */
-	.popFullmenu .fullmenu_wrap{ max-width: 72rem; padding: 0 1rem;}
+	.popFullmenu .fullmenuWrap{ max-width: 72rem; padding: 0 1rem;}
 	.fullmenu {display: inline-block; width: 5rem; height: 1.5rem; line-height: 1.5rem; text-align: center; color: #fff; background: #8852C2; border-radius: 0.75rem;}
 	.fullmenu i {margin-right: 0.15rem;}
 	.fullmenuClose {position: absolute; top: 1.25rem; right: 1rem; width: 2.25rem; height: 2.25rem; line-height: 2.25rem; text-align: center; font-size: 1.2rem; color: #000; transition: all 0.2s;}
@@ -319,7 +318,7 @@
 	.popFullmenu .popUntil .user > li > a {padding: 0.75rem; color: #fff; background: #00508f;}
 	.popFullmenu .popUntil .util > li > a {position: relative;}
 	.popFullmenu .popUntil .util > li + li > a:before{position: absolute; top: calc(50% - 2px); left: 0; width: 4px; height: 4px; border-radius: 50%; background: #aaa; content: "";}
-	.popFullmenu .fullmenu_group {position: relative; padding: 0 0 3rem; width: 100%;}
+	.popFullmenu .fullmenuGroup {position: relative; padding: 0 0 3rem; width: 100%;}
 	.popFullmenu .depth01 {max-height: 100%;}
 	.popFullmenu .depth01:before {position: absolute; top: 0; left: 0; width: 40%; height: 100%; background: #f6f6f6; content: "";}
 	.popFullmenu .depth01 a {display: block; color: #000;}
