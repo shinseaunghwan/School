@@ -71,7 +71,8 @@ h2.pageTitle { font-size:1.3rem; font-weight:600; margin:0 0 0.5rem; }
 .snsBox .snsMore a:hover,
 .snsBox .snsMore a:focus{color:#085eb9;}   
 
-
+.listBox {width: 100%; display: flex; justify-content: flex-start; align-items: center; flex-wrap: wrap; gap: 1rem;}
+.textAreaBox {width: 100%;}
 
 @media (max-width:1440px) {
  
