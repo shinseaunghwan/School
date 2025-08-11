@@ -4,7 +4,7 @@ import layout from "../../../../../styles/Layout.module.css"
 import Header from "../Header";
 
 export const metadata = {
-  title: "템플릿 5",
+  title: "서브페이지",
 };
 
 export default function SubPage() {
