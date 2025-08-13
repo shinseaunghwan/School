@@ -27,10 +27,7 @@ export default function MainPage () {
       </div>
     <div className={intro.button_wrap}>
       <IntroModalPop tit={"메모장"} texts={
-        ["2025.02.13 상단 스크롤링 버튼 기능 추가, 모달 팝업 기능 추가, 레이어 팝업 기능 구현", 
-        "2025.02.14 header,footer 컴포넌트 개별분리",
-        "2025.06.17 대전과학고 이식 작업중"
-      ]
+        ["NextJs 공부중"]
         } />
       <LayerPopup tit1={"레이어"} tit2={"팝업"} />
 
@@ -39,6 +36,7 @@ export default function MainPage () {
       <div className={intro.button}><Link href="/main/template3">템플릿 페이지 3</Link></div>
       <div className={intro.button}><Link href="/main/template4">대전과학고등학교</Link></div>
       <div className={intro.button}><Link href="/main/template5">부산통합예약</Link></div>
+      <div className={intro.button}><Link href="/main/template5/sub">서브페이지</Link></div>
       <div className={intro.button}><Link href="/main/react">React</Link></div>
     </div>
     

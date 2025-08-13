@@ -3,3 +3,22 @@
 .txt {padding: 1rem 0; width: 100%;}
 .button_wrap {text-align: right;}
 .button {border: 2px solid #111; border-radius: 10px; padding: .2rem 1rem;}
+
+
+.modalPopWrap {display: flex; justify-content: center; align-items: center; position: fixed;inset: 0px;background-color: rgba(0, 0, 0, 0.5);z-index: 99999;}
+.modalPop {background-color: #fff; display: flex; flex-wrap: wrap; width: 80%; padding: 1rem; border-radius: 0.5rem; min-height: 15rem; overflow-y: auto;}
+.modalPop .contWrap {position: relative; width:100%;}
+.modalPop .contWrap .contList {max-height: 290px; overflow-y: auto; margin-bottom: 1rem;}
+.modalPop .contWrap .contList li{position: relative; display: flex; align-items: center; justify-content: space-between; padding-left: 0.5rem;}
+.modalPop .contWrap .contList li span{display: inline-block; max-width: calc(100% - 7rem); color: #111; font-weight: 500; font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.modalPop .contWrap .contList li::before{ content:''; position:absolute; top:50%; transform: translateY(-50%); left:0; width:5px; height:2px; background:#085eba; }
+.modalPop .contWrap .contList li .buttonWrap{position: relative;}
+.modalPop .back {display: inline-block; width: 100%; margin-top: auto; text-align: right;}
+
+
+@media (max-width:480px) {
+    .modalPop {width:95%}
+/* .modalPop .contWrap .contList li {flex-wrap: wrap;}
+.modalPop .contWrap .contList li span {max-width: 100%;}
+.modalPop .contWrap .contList li .buttonWrap{position: relative;} */
+}
