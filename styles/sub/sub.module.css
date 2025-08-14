@@ -72,7 +72,19 @@ h2.pageTitle { font-size:1.3rem; font-weight:600; margin:0 0 0.5rem; }
 .snsBox .snsMore a:focus{color:#085eb9;}   
 
 .listBox {width: 100%; display: flex; justify-content: flex-start; align-items: center; flex-wrap: wrap; gap: 0.25rem;}
-.textAreaBox {width: 100%;}
+.textAreaBox {width: 100%; overflow-y: auto;}
+.tableArea {position: relative; width: 100%; padding: 0 .5rem; font-size: 1rem;line-height: 1.5rem;overflow-y: auto;}
+.tableArea:empty::before {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+  content: attr(data-placeholder); /* data-placeholder 속성의 값을 가져옴 */
+  color: #111; /* placeholder 텍스트 색상 */
+  pointer-events: none; /* placeholder 위로 마우스 클릭이 가능하게 함 */
+  display: inline-block; /* 줄바꿈 등 레이아웃 문제 방지 */
+  text-align: center;
+}
 .inputBox {width: 100%; display: flex; gap: 1rem; align-items: start; margin-top: 1rem;}
 
 @media (max-width:1440px) {
