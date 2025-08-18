@@ -36,7 +36,8 @@ export default function MainPage () {
       <div className={intro.button}><Link href="/main/template3">템플릿 페이지 3</Link></div>
       <div className={intro.button}><Link href="/main/template4">대전과학고등학교</Link></div>
       <div className={intro.button}><Link href="/main/template5">부산통합예약</Link></div>
-      <div className={intro.button}><Link href="/main/template5/sub">서브페이지</Link></div>
+      <div className={intro.button}><Link href="/main/template5/sub/cont1">에디터</Link></div>
+      <div className={intro.button}><Link href="/main/template5/sub/cont2">테이블 에디터</Link></div>
       <div className={intro.button}><Link href="/main/react">React</Link></div>
     </div>
     

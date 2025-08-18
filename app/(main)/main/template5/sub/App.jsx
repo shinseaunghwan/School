@@ -1,3 +1,4 @@
+// app/(main)/template/sub/App.jsx
 "use client";
 import React, { createContext } from "react";
 import widget from "../../../../../styles/sub/sub.module.css";
@@ -5,11 +6,11 @@ import Lnb from "../../../../../components/sub/Lnb";
 import Location from "../../../../../components/sub/Location";
 import Sns from "../../../../../components/sub/Sns";
 import MenuList from "../Menu";
-import SubWrap from "./(sub)/SubWrap";
 
 export const WidgetContext = createContext();
 
-function App() {
+// children prop을 받습니다.
+function App({ children }) {
   return (
     <MenuList>
       {(items) => (
@@ -24,10 +25,11 @@ function App() {
                 <Location items={items}/>
                 <Sns />
               </div>
-              <SubWrap />
+              
+              {children}
             </div>
-            </div>
-          </WidgetContext.Provider>
+          </div>
+        </WidgetContext.Provider>
       )}
     </MenuList>
   );
