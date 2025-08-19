@@ -5,8 +5,9 @@ import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import markup from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
-import prettier from "prettier/standalone";
-import htmlParser from "prettier/parser-html";
+// [수정] Prettier와 파서 import 방식을 더 명시적으로 변경
+import * as prettier from "prettier/standalone";
+import * as htmlParser from "prettier/parser-html";
 
 SyntaxHighlighter.registerLanguage('markup', markup);
 
@@ -91,8 +92,6 @@ const cleanTableHtml = (htmlString) => {
     };
 
     const applyTableSemantics = (table) => {
-        if (table.hasAttribute('data-processed')) return;
-
         if (!table.parentElement || !table.parentElement.classList.contains('tbl_st1')) {
             const wrapperDiv = document.createElement('div');
             wrapperDiv.className = 'tbl_st1';
@@ -138,8 +137,6 @@ const cleanTableHtml = (htmlString) => {
 
         if (newThead.childNodes.length > 0) table.appendChild(newThead);
         if (newTbody.childNodes.length > 0) table.appendChild(newTbody);
-        
-        table.setAttribute('data-processed', 'true');
     };
 
     const tablesToProcess = [tableElement, ...Array.from(tableElement.querySelectorAll('table'))];
@@ -155,11 +152,6 @@ const cleanTableHtml = (htmlString) => {
         applyTableSemantics(table);
     });
     
-    // [수정] 모든 처리가 끝난 후, 최종 HTML에 남지 않도록 임시 속성을 제거합니다.
-    tablesToProcess.forEach(table => {
-        table.removeAttribute('data-processed');
-    });
-
     return tableElement.parentElement ? tableElement.parentElement.outerHTML : tableElement.outerHTML;
 };
 
@@ -224,9 +216,10 @@ export default function TableEditorApp() {
 
         debounceTimeout.current = setTimeout(async () => {
             try {
+                // [수정] await와 formatAsync를 사용하여 비동기 포매팅 실행
                 const formatted = await prettier.format(tableHtml, {
                     parser: "html",
-                    plugins: [htmlParser],
+                    plugins: [htmlParser], // plugins 배열은 그대로 유지
                     htmlWhitespaceSensitivity: "css",
                     tabWidth: 2,
                 });
@@ -262,9 +255,11 @@ export default function TableEditorApp() {
     const handleClear = useCallback(() => {
         setTableHtml('');
     }, []);
+
     const handleShow = () => {
         setContentShow(!contentShow);
     }
+
     return (
         <div className={subContent}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -288,14 +283,13 @@ export default function TableEditorApp() {
                 {formattedHtml}
             </SyntaxHighlighter>
 
- <div className="mgt20" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-<h4 className="tit2">렌더링 결과</h4>
- <button onClick={handleShow} className="btn_red">내용 보기</button>
- </div>
-           {contentShow === true ? (
-               <div dangerouslySetInnerHTML={{ __html: tableHtml }} />
-           ) : ""} 
-         
+            <div className="mgt20" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <h4 className="tit2">렌더링 결과</h4>
+                <button onClick={handleShow} className="btn_red">내용 보기</button>
+            </div>
+            {contentShow === true ? (
+                <div dangerouslySetInnerHTML={{ __html: tableHtml }} />
+            ) : ""} 
         </div>
     );
 }
