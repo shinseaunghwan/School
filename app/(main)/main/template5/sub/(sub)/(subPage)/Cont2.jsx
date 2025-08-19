@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect, useCallback, useRef, useContext } from "react";
 import { WidgetContext } from "../../App";
-
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import markup from 'react-syntax-highlighter/dist/esm/languages/prism/markup';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -9,24 +8,44 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import prettier from "prettier/standalone";
 import htmlParser from "prettier/parser-html";
 
-// Vercel 빌드 문제를 해결하기 위해 언어를 명시적으로 등록합니다.
 SyntaxHighlighter.registerLanguage('markup', markup);
 
-// 문제 해결 2: 중첩 테이블을 지원하도록 함수 수정
 const cleanTableHtml = (htmlString) => {
     if (!htmlString) return '';
+
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = htmlString;
 
-    // --- 1. 전역 클리닝: 허용되지 않은 태그와 속성을 먼저 정리합니다. ---
-    const allowedTags = new Set(['table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'a']);
+    const tableElement = tempDiv.querySelector('table');
+    if (!tableElement) {
+        return '';
+    }
+
+    const removeComments = (element) => {
+        for (let i = element.childNodes.length - 1; i >= 0; i--) {
+            const node = element.childNodes[i];
+            if (node.nodeType === 8) {
+                node.parentNode.removeChild(node);
+            } else if (node.nodeType === 1) {
+                removeComments(node);
+            }
+        }
+    };
+    removeComments(tableElement);
+    
+    const allowedTags = new Set(['table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'a', 'br', 'p']);
     const allowedAttributes = new Set(['rowspan', 'colspan', 'href']);
 
-    const allElements = tempDiv.querySelectorAll('*');
-
+    const allElements = tableElement.querySelectorAll('*');
     for (let i = allElements.length - 1; i >= 0; i--) {
         const el = allElements[i];
         const tagName = el.tagName.toLowerCase();
+        const tagPrefix = tagName.split(':')[0];
+
+        if (['v', 'w', 'o'].includes(tagPrefix)) {
+            el.parentNode.removeChild(el);
+            continue;
+        }
 
         if (!allowedTags.has(tagName)) {
             el.replaceWith(...el.childNodes);
@@ -41,29 +60,49 @@ const cleanTableHtml = (htmlString) => {
         });
     }
 
-    // --- 2. 테이블 구조화: 모든 테이블에 thead, th, caption을 적용합니다. ---
-    const applyTableSemantics = (tableElement) => {
-        if (tableElement.hasAttribute('data-processed')) return;
+    const tableAttributes = Array.from(tableElement.attributes);
+    tableAttributes.forEach(attr => {
+        if (!allowedAttributes.has(attr.name.toLowerCase())) {
+            tableElement.removeAttribute(attr.name);
+        }
+    });
 
-        // ==========================================================
-        // ## 추가된 기능 ##
-        // 현재 테이블이 다른 테이블의 셀(td, th) 안에 있는지 확인합니다.
-        const parentCell = tableElement.closest('td, th');
-        
-        // 중첩된 테이블이고, 아직 div로 감싸여 있지 않다면 div로 감싸줍니다.
-        if (parentCell && !tableElement.parentElement.classList.contains('tbl_st1')) {
+    const replaceParagraphsWithBreaks = (cell) => {
+        let paragraphs = Array.from(cell.querySelectorAll('p'));
+        paragraphs = paragraphs.filter(p => {
+            const trimmedHtml = p.innerHTML.trim();
+            if (trimmedHtml === '' || trimmedHtml === '&nbsp;') {
+                p.remove();
+                return false;
+            }
+            return true;
+        });
+
+        paragraphs.forEach((p, index) => {
+            const fragment = document.createDocumentFragment();
+            while (p.firstChild) {
+                fragment.appendChild(p.firstChild);
+            }
+            if (index < paragraphs.length - 1) {
+                fragment.appendChild(document.createElement('br'));
+            }
+            p.replaceWith(fragment);
+        });
+    };
+
+    const applyTableSemantics = (table) => {
+        if (table.hasAttribute('data-processed')) return;
+
+        if (!table.parentElement || !table.parentElement.classList.contains('tbl_st1')) {
             const wrapperDiv = document.createElement('div');
             wrapperDiv.className = 'tbl_st1';
-            // wrapper를 테이블 앞에 삽입하고
-            tableElement.parentNode.insertBefore(wrapperDiv, tableElement);
-            // 테이블을 wrapper 안으로 이동시킵니다.
-            wrapperDiv.appendChild(tableElement);
+            table.parentNode.insertBefore(wrapperDiv, table);
+            wrapperDiv.appendChild(table);
         }
-        // ==========================================================
         
         const newThead = document.createElement('thead');
         const newTbody = document.createElement('tbody');
-        const allRows = Array.from(tableElement.rows);
+        const allRows = Array.from(table.rows);
         
         let headerRowCount = 1;
         if (allRows.length > 0 && allRows[0].cells.length > 0) {
@@ -86,34 +125,49 @@ const cleanTableHtml = (htmlString) => {
             }
         });
         
-        while (tableElement.firstChild) {
-            tableElement.removeChild(tableElement.firstChild);
+        while (table.firstChild) {
+            table.removeChild(table.firstChild);
         }
         
         if (newThead.rows.length > 0) {
             const caption = document.createElement('caption');
             const headerTexts = Array.from(newThead.querySelectorAll('th')).map(th => th.textContent.trim());
             caption.textContent = `표: ${headerTexts.join(', ')}`;
-            tableElement.appendChild(caption);
+            table.appendChild(caption);
         }
 
-        if (newThead.childNodes.length > 0) tableElement.appendChild(newThead);
-        if (newTbody.childNodes.length > 0) tableElement.appendChild(newTbody);
+        if (newThead.childNodes.length > 0) table.appendChild(newThead);
+        if (newTbody.childNodes.length > 0) table.appendChild(newTbody);
         
-        // tableElement.setAttribute('data-processed', 'true');
+        table.setAttribute('data-processed', 'true');
     };
 
-    const allTables = Array.from(tempDiv.querySelectorAll('table'));
-    allTables.reverse().forEach(table => applyTableSemantics(table));
+    const tablesToProcess = [tableElement, ...Array.from(tableElement.querySelectorAll('table'))];
+    tablesToProcess.reverse();
+    
+    tablesToProcess.forEach(table => {
+        const cells = table.querySelectorAll('th, td');
+        cells.forEach(cell => {
+            if (cell.closest('table') === table) {
+                replaceParagraphsWithBreaks(cell);
+            }
+        });
+        applyTableSemantics(table);
+    });
+    
+    // [수정] 모든 처리가 끝난 후, 최종 HTML에 남지 않도록 임시 속성을 제거합니다.
+    tablesToProcess.forEach(table => {
+        table.removeAttribute('data-processed');
+    });
 
-    const sourceTable = tempDiv.querySelector('table');
-    return sourceTable ? sourceTable.outerHTML : '';
+    return tableElement.parentElement ? tableElement.parentElement.outerHTML : tableElement.outerHTML;
 };
+
+
 const WysiwygTableEditor = ({ rawContent, onContentChange }) => {
     const editorRef = useRef(null);
 
     useEffect(() => {
-        // 외부에서 rawContent가 변경되었을 때(예: '내용 삭제' 버튼 클릭) 에디터 내용을 동기화
         if (editorRef.current && editorRef.current.innerHTML !== rawContent) {
             editorRef.current.innerHTML = rawContent;
         }
@@ -122,7 +176,7 @@ const WysiwygTableEditor = ({ rawContent, onContentChange }) => {
     const handlePaste = useCallback((e) => {
         e.preventDefault();
         const pastedHtml = e.clipboardData.getData('text/html');
-        if (pastedHtml && pastedHtml.includes('<table')) {
+        if (pastedHtml) {
             const cleanedHtml = cleanTableHtml(pastedHtml);
             onContentChange(cleanedHtml);
         } else {
@@ -142,52 +196,47 @@ const WysiwygTableEditor = ({ rawContent, onContentChange }) => {
             contentEditable={true}
             onPaste={handlePaste}
             onInput={handleInput}
-            className="tableArea mgt20 tbl_st1"
-            style={{ width: "100%", minHeight: "5rem", maxHeight: "10rem", overflowY: "auto", background: '#fff', border: '1px solid #ccc' }}
+            className="tableArea mgt"
+            style={{ width: "100%", minHeight: "15rem", maxHeight: "15rem", overflowY: "auto", background: '#fff', border: '1px solid #ccc', padding:"0.5rem" }}
             data-placeholder="여기에 엑셀, 한글, 웹페이지 등의 표를 붙여넣으세요..."
         />
     );
 };
 
+
 export default function TableEditorApp() {
     const [tableHtml, setTableHtml] = useState('');
-    const [formattedHtml, setFormattedHtml] = useState('...');
+    const [contentShow, setContentShow] = useState(false);
+    const [formattedHtml, setFormattedHtml] = useState('');
     const [copyButtonText, setCopyButtonText] = useState('복사');
     const { subContent } = useContext(WidgetContext);
-    
-    // 최적화 3: 디바운싱을 위한 ref 추가
     const debounceTimeout = useRef(null);
 
-    // 최적화: tableHtml이 변경될 때마다 Prettier를 실행하되, 디바운싱을 적용하여 성능 향상
     useEffect(() => {
         if (!tableHtml) {
-            setFormattedHtml('...');
+            setFormattedHtml('');
             return;
         }
 
-        // 기존 타이머가 있으면 제거
         if (debounceTimeout.current) {
             clearTimeout(debounceTimeout.current);
         }
 
-        // 500ms 후에 포매팅 실행
         debounceTimeout.current = setTimeout(async () => {
             try {
                 const formatted = await prettier.format(tableHtml, {
                     parser: "html",
                     plugins: [htmlParser],
-                    // 추가: Prettier 옵션으로 가독성 향상
                     htmlWhitespaceSensitivity: "css",
                     tabWidth: 2,
                 });
                 setFormattedHtml(formatted);
             } catch (error) {
                 console.error("HTML 포매팅 실패:", error);
-                setFormattedHtml(tableHtml); // 포매팅 실패 시 원본 HTML 표시
+                setFormattedHtml(tableHtml);
             }
         }, 500);
 
-        // 컴포넌트 언마운트 시 타이머 정리
         return () => {
             if (debounceTimeout.current) {
                 clearTimeout(debounceTimeout.current);
@@ -201,33 +250,35 @@ export default function TableEditorApp() {
             alert('복사할 내용이 없습니다.');
             return;
         }
-        navigator.clipboard.writeText(formattedHtml).then(() => { // 포매팅된 코드를 복사
+        navigator.clipboard.writeText(formattedHtml).then(() => {
             setCopyButtonText('복사 완료!');
             setTimeout(() => setCopyButtonText('복사'), 2000);
         }).catch(err => {
             console.error('복사 실패:', err);
             alert('복사에 실패했습니다.');
         });
-    }, [tableHtml, formattedHtml]);
+    }, [formattedHtml]);
 
     const handleClear = useCallback(() => {
         setTableHtml('');
     }, []);
-
+    const handleShow = () => {
+        setContentShow(!contentShow);
+    }
     return (
         <div className={subContent}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <h4 className="tit2">테이블 에디터</h4>
                 <button onClick={handleClear} className="btn_red">내용 삭제</button>
             </div>
-            <p className="bu_ment">아래 입력란에 엑셀, 웹페이지 등의 표를 붙여넣으세요.</p>
+            <p className="bu_ment">아래 입력란에 엑셀,한글, 웹페이지 등의 표를 붙여넣으세요.</p>
             <WysiwygTableEditor
                 rawContent={tableHtml}
                 onContentChange={setTableHtml}
             />
             
             <div className="mgt20" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <h4 className="tit2" style={{marginBottom:"0"}}>저장될 HTML (State)</h4>
+                <h4 className="tit2" style={{marginBottom:"0"}}>HTML 마크업</h4>
                 <button onClick={handleCopy} className="btn_Dbl">
                     {copyButtonText}
                 </button>
@@ -237,8 +288,14 @@ export default function TableEditorApp() {
                 {formattedHtml}
             </SyntaxHighlighter>
 
-            <h4 className="tit2">렌더링 결과</h4>
-            <div className="tbl_st1" dangerouslySetInnerHTML={{ __html: tableHtml }} />
+ <div className="mgt20" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+<h4 className="tit2">렌더링 결과</h4>
+ <button onClick={handleShow} className="btn_red">내용 보기</button>
+ </div>
+           {contentShow === true ? (
+               <div dangerouslySetInnerHTML={{ __html: tableHtml }} />
+           ) : ""} 
+         
         </div>
     );
 }
