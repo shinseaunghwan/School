@@ -2,8 +2,8 @@
 import React, { useState, useEffect, useCallback, useRef, useContext } from "react";
 import { WidgetContext } from "../../App";
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import markup from 'react-syntax-highlighter/dist/esm/languages/prism/markup';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import markup from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 import prettier from "prettier/standalone";
 import htmlParser from "prettier/parser-html";
