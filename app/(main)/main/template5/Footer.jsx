@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "../../../../styles/footer/footer2.module.css"
 import layout from "../../../../styles/Layout.module.css"
-import ModalPop from "../../../../components/modal/modal"
+// import ModalPop from "../../../../components/modal/modal"
 import BtnTop from '../../../../components/footer/btnTop';
 import FooterLink from "../../../../components/footer/footerLink"
 import FooterInfo from "../../../../components/footer/footerInfo"
@@ -26,7 +26,7 @@ const Footer = () => {
                 <FooterInfo styles={styles} items={address} />
                 <BtnTop styles={styles} />
             </div>
-            <ModalPop styles={styles} tit="제목" text="내용"/>
+            {/* <ModalPop styles={styles} tit="제목" text="내용"/> */}
         </footer>
     )
 }

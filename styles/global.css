@@ -274,6 +274,10 @@ input.mx-w20{ width:100%; max-width:20rem; }
 input.mx-w30{ width:100%; max-width:30rem; }
 input.mx-w40{ width:100%; max-width:40rem; }
 
+/* 테이블 에디터 */
+.tableArea {position: relative; width: 100%; padding: 0 .5rem; font-size: 1rem;line-height: 1.5rem;overflow-y: auto;}
+.tableArea:empty::before {position: absolute;top:50%;left:50%;transform: translate(-50%, -50%);content: attr(data-placeholder); color: #111; pointer-events: none; display: inline-block; text-align: center;}
+
 /* 들여쓰기 */
 .indent{margin-left:1rem;}
 div + .indent { margin-top:1.5rem; }
@@ -439,6 +443,7 @@ div[class*='tbl_type'] > table thead th { background:#f3f8fe; padding:1rem 0.5re
 div[class*='tbl_type'] > table tbody th { background:#f9f9f9; }
 div[class*='tbl_type'] > table tfoot th { background:#f9f9f9; }
 div[class*='tbl_type'] + div[class*='tbl_type'] { margin-top:1rem; }
+
 
 /* 테이블 : PC 스크롤 */
 div[class*='tbl_st'].scroll_wide { overflow: auto;}
@@ -866,3 +871,4 @@ br + a[class^="btn_"] { margin-top:0.5rem; }
   [class^="box_st"] .search_wrap  input { width:100%; float:none; }
   [class^="box_st"] .search_wrap  .btn_style3 { width:100%; float:none; margin:.5rem 0 0; }
 }
+

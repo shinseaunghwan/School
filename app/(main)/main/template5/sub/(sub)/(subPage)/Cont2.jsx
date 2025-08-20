@@ -10,7 +10,7 @@ import * as htmlParser from "prettier/parser-html";
 
 SyntaxHighlighter.registerLanguage('markup', markup);
 
-// [수정] wrapperClass를 인자로 받도록 함수 시그니처 유지
+
 const cleanTableHtml = (htmlString, wrapperClass) => {
     if (!htmlString) return '';
 
@@ -34,7 +34,7 @@ const cleanTableHtml = (htmlString, wrapperClass) => {
     };
     removeComments(tableElement);
     
-    // [수정] 허용 태그 및 속성에서 colgroup, col, style 제거
+    
     const allowedTags = new Set(['table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'a', 'br', 'p']);
     const allowedAttributes = new Set(['rowspan', 'colspan', 'href']);
 
@@ -92,7 +92,7 @@ const cleanTableHtml = (htmlString, wrapperClass) => {
         });
     };
 
-    // [수정] applyTableSemantics 함수를 colgroup 및 style 로직이 없는 버전으로 되돌림
+    
     const applyTableSemantics = (table, wClass) => {
         if (!table.parentElement || !table.parentElement.classList.contains(wClass)) {
             const wrapperDiv = document.createElement('div');
@@ -189,7 +189,7 @@ const WysiwygTableEditor = ({ rawContent, onContentChange, customWrapperClass })
             contentEditable={true}
             onPaste={handlePaste}
             onInput={handleInput}
-            className="tableArea mgt"
+            className="tableArea"
             style={{ width: "100%", minHeight: "15rem", maxHeight: "15rem", overflowY: "auto", background: '#fff', border: '1px solid #ccc', padding:"0.5rem" }}
             data-placeholder="여기에 엑셀, 한글, 웹페이지 등의 표를 붙여넣으세요..."
         />
@@ -206,6 +206,7 @@ export default function TableEditorApp() {
     const { subContent } = useContext(WidgetContext);
     const debounceTimeout = useRef(null);
 
+    // ... (useEffect, handleCopy, handleClear, handleShow 등 다른 코드는 동일) ...
     useEffect(() => {
         if (!tableHtml) {
             setFormattedHtml('');
@@ -260,6 +261,47 @@ export default function TableEditorApp() {
         setContentShow(!contentShow);
     }
 
+    // ✨ 1. 모든 Wrapper Div를 제거하도록 핸들러 로직 전면 수정
+    const handleRemoveWrapper = useCallback(() => {
+        if (!tableHtml) {
+            alert('제거할 내용이 없습니다.');
+            return;
+        }
+
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = tableHtml;
+
+        // ✨ 2. 내용물 안의 모든 table 태그를 찾음
+        const allTables = tempDiv.querySelectorAll('table');
+
+        // ✨ 3. DOM을 안전하게 변경하기 위해 역순으로 반복
+        for (let i = allTables.length - 1; i >= 0; i--) {
+            const table = allTables[i];
+            const parent = table.parentElement;
+
+            // ✨ 4. 부모가 단순 wrapper 역할을 하는 DIV인지 확인
+            // (자식 요소가 table 하나뿐인 경우)
+            if (parent && parent.tagName === 'DIV' && parent.childElementCount === 1) {
+                const wrapperClass = parent.className;
+
+                // Wrapper div의 클래스를 table로 옮김
+                if (wrapperClass) {
+                    wrapperClass.split(' ').forEach(cls => {
+                        if (cls) table.classList.add(cls);
+                    });
+                }
+
+                // ✨ 5. Wrapper div를 내용물(table)로 교체 (언래핑)
+                parent.replaceWith(...parent.childNodes);
+            }
+        }
+
+        // ✨ 6. 완전히 언래핑된 HTML로 상태를 업데이트
+        setTableHtml(tempDiv.innerHTML);
+
+    }, [tableHtml]);
+
+
     return (
         <div className={subContent}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -279,18 +321,23 @@ export default function TableEditorApp() {
                 />
             </div>
             
-            <p className="bu_ment mgt">아래 입력란에 엑셀,한글, 웹페이지 등의 표를 붙여넣으세요.</p>
+            <p className="bu_ment mgb10">아래 입력란에 엑셀,한글, 웹페이지 등의 표를 붙여넣으세요.</p>
             <WysiwygTableEditor
                 rawContent={tableHtml}
                 onContentChange={setTableHtml}
                 customWrapperClass={wrapperClassName}
             />
             
-            <div className="mgt20" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div className="mgt20" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
                 <h4 className="tit2" style={{marginBottom:"0"}}>HTML 마크업</h4>
-                <button onClick={handleCopy} className="btn_Dbl">
-                    {copyButtonText}
-                </button>
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                    <button onClick={handleRemoveWrapper} className="btn_red">
+                       상위 div 삭제 (충남용)
+                    </button>
+                    <button onClick={handleCopy} className="btn_Dbl">
+                        {copyButtonText}
+                    </button>
+                </div>
             </div>
             
             <SyntaxHighlighter language="markup" style={vscDarkPlus} wrapLines={true} customStyle={{ minHeight: '10rem', margin: '1rem 0 0', maxHeight: "20rem", overflowY: "auto" }}>
