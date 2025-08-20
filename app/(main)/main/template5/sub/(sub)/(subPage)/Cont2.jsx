@@ -5,13 +5,13 @@ import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import markup from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
-// [수정] Prettier와 파서 import 방식을 더 명시적으로 변경
 import * as prettier from "prettier/standalone";
 import * as htmlParser from "prettier/parser-html";
 
 SyntaxHighlighter.registerLanguage('markup', markup);
 
-const cleanTableHtml = (htmlString) => {
+// [수정] wrapperClass를 인자로 받도록 함수 시그니처 유지
+const cleanTableHtml = (htmlString, wrapperClass) => {
     if (!htmlString) return '';
 
     const tempDiv = document.createElement('div');
@@ -34,6 +34,7 @@ const cleanTableHtml = (htmlString) => {
     };
     removeComments(tableElement);
     
+    // [수정] 허용 태그 및 속성에서 colgroup, col, style 제거
     const allowedTags = new Set(['table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'a', 'br', 'p']);
     const allowedAttributes = new Set(['rowspan', 'colspan', 'href']);
 
@@ -91,10 +92,11 @@ const cleanTableHtml = (htmlString) => {
         });
     };
 
-    const applyTableSemantics = (table) => {
-        if (!table.parentElement || !table.parentElement.classList.contains('tbl_st1')) {
+    // [수정] applyTableSemantics 함수를 colgroup 및 style 로직이 없는 버전으로 되돌림
+    const applyTableSemantics = (table, wClass) => {
+        if (!table.parentElement || !table.parentElement.classList.contains(wClass)) {
             const wrapperDiv = document.createElement('div');
-            wrapperDiv.className = 'tbl_st1';
+            wrapperDiv.className = wClass;
             table.parentNode.insertBefore(wrapperDiv, table);
             wrapperDiv.appendChild(table);
         }
@@ -131,7 +133,7 @@ const cleanTableHtml = (htmlString) => {
         if (newThead.rows.length > 0) {
             const caption = document.createElement('caption');
             const headerTexts = Array.from(newThead.querySelectorAll('th')).map(th => th.textContent.trim());
-            caption.textContent = `표: ${headerTexts.join(', ')}`;
+            caption.textContent = `${headerTexts.join(', ')}의 정보(을)를 포함한 표입니다.`;
             table.appendChild(caption);
         }
 
@@ -149,14 +151,13 @@ const cleanTableHtml = (htmlString) => {
                 replaceParagraphsWithBreaks(cell);
             }
         });
-        applyTableSemantics(table);
+        applyTableSemantics(table, wrapperClass);
     });
     
     return tableElement.parentElement ? tableElement.parentElement.outerHTML : tableElement.outerHTML;
 };
 
-
-const WysiwygTableEditor = ({ rawContent, onContentChange }) => {
+const WysiwygTableEditor = ({ rawContent, onContentChange, customWrapperClass }) => {
     const editorRef = useRef(null);
 
     useEffect(() => {
@@ -169,13 +170,13 @@ const WysiwygTableEditor = ({ rawContent, onContentChange }) => {
         e.preventDefault();
         const pastedHtml = e.clipboardData.getData('text/html');
         if (pastedHtml) {
-            const cleanedHtml = cleanTableHtml(pastedHtml);
+            const cleanedHtml = cleanTableHtml(pastedHtml, customWrapperClass); 
             onContentChange(cleanedHtml);
         } else {
             const pastedText = e.clipboardData.getData('text/plain');
             document.execCommand('insertText', false, pastedText);
         }
-    }, [onContentChange]);
+    }, [onContentChange, customWrapperClass]); 
 
     const handleInput = useCallback((e) => {
         const newContent = e.currentTarget.innerHTML;
@@ -198,6 +199,7 @@ const WysiwygTableEditor = ({ rawContent, onContentChange }) => {
 
 export default function TableEditorApp() {
     const [tableHtml, setTableHtml] = useState('');
+    const [wrapperClassName, setWrapperClassName] = useState('tbl_st1');
     const [contentShow, setContentShow] = useState(false);
     const [formattedHtml, setFormattedHtml] = useState('');
     const [copyButtonText, setCopyButtonText] = useState('복사');
@@ -216,10 +218,9 @@ export default function TableEditorApp() {
 
         debounceTimeout.current = setTimeout(async () => {
             try {
-                // [수정] await와 formatAsync를 사용하여 비동기 포매팅 실행
                 const formatted = await prettier.format(tableHtml, {
                     parser: "html",
-                    plugins: [htmlParser], // plugins 배열은 그대로 유지
+                    plugins: [htmlParser],
                     htmlWhitespaceSensitivity: "css",
                     tabWidth: 2,
                 });
@@ -236,7 +237,6 @@ export default function TableEditorApp() {
             }
         };
     }, [tableHtml]);
-
 
     const handleCopy = useCallback(() => {
         if (!tableHtml) {
@@ -266,10 +266,24 @@ export default function TableEditorApp() {
                 <h4 className="tit2">테이블 에디터</h4>
                 <button onClick={handleClear} className="btn_red">내용 삭제</button>
             </div>
-            <p className="bu_ment">아래 입력란에 엑셀,한글, 웹페이지 등의 표를 붙여넣으세요.</p>
+
+            <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <label htmlFor="wrapperClassInput" style={{ flexShrink: 0 }}>테이블 클래스:</label>
+                <input
+                    id="wrapperClassInput"
+                    type="text"
+                    value={wrapperClassName}
+                    onChange={(e) => setWrapperClassName(e.target.value)}
+                    placeholder="예: tbl_st1"
+                    style={{ width: '100%', padding: '0.25rem', border: '1px solid #ccc', borderRadius: '4px' }}
+                />
+            </div>
+            
+            <p className="bu_ment mgt">아래 입력란에 엑셀,한글, 웹페이지 등의 표를 붙여넣으세요.</p>
             <WysiwygTableEditor
                 rawContent={tableHtml}
                 onContentChange={setTableHtml}
+                customWrapperClass={wrapperClassName}
             />
             
             <div className="mgt20" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
