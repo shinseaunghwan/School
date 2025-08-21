@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect, useCallback, useRef, useContext } from "react";
-import modal from "../../../../../../../styles/modalPop.module.css";
-import { WidgetContext } from "../../App"; 
+import { WidgetContext } from "../../App";
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import markup from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
@@ -11,7 +10,8 @@ import * as htmlParser from "prettier/parser-html";
 
 SyntaxHighlighter.registerLanguage('markup', markup);
 
-const cleanTableHtml = (htmlString, wrapperClass, ulClass) => {
+
+const cleanTableHtml = (htmlString, wrapperClass) => {
     if (!htmlString) return '';
 
     const tempDiv = document.createElement('div');
@@ -33,8 +33,9 @@ const cleanTableHtml = (htmlString, wrapperClass, ulClass) => {
         }
     };
     removeComments(tableElement);
-
-    const allowedTags = new Set(['table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'colgroup', 'col', 'a', 'br', 'p', 'ul', 'li']);
+    
+    
+    const allowedTags = new Set(['table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'a', 'br', 'p']);
     const allowedAttributes = new Set(['rowspan', 'colspan', 'href']);
 
     const allElements = tableElement.querySelectorAll('*');
@@ -68,72 +69,30 @@ const cleanTableHtml = (htmlString, wrapperClass, ulClass) => {
         }
     });
 
-    const processCellContent = (cell, currentUlClass) => {
-        const listLikeRegex = /^\s*(?:(?:[가-힣]|\d{1,3})[.)]|[-•*·□■△▲○●◎◇◆㉮-㉻㉠-㉭ⓐ-ⓩ①-⑮Ⅰ-Ⅻⅰ-ⅻ])/;
-        const annotationRegex = /^\s*※/;
-        
-        const linesHtml = cell.innerHTML
-            .replace(/<p[^>]*>/gi, '')
-            .replace(/<\/p>/gi, '<br>');
-
-        const lines = linesHtml.split(/<br\s*\/?>/gi).filter(line => line.trim() !== '' && line.trim() !== '&nbsp;');
-        
-        if (lines.length === 0) return;
-
-        const newNodes = [];
-        let currentUl = null;
-
-        lines.forEach(lineHtml => {
-            const tempLineDiv = document.createElement('div');
-            tempLineDiv.innerHTML = lineHtml;
-            const text = tempLineDiv.textContent || '';
-
-            const isListItem = listLikeRegex.test(text);
-            const isAnnotation = annotationRegex.test(text);
-
-            if (isListItem) {
-                if (!currentUl) {
-                    currentUl = document.createElement('ul');
-                    if (currentUlClass) {
-                        currentUl.className = currentUlClass;
-                    }
-                    newNodes.push(currentUl);
-                }
-                const li = document.createElement('li');
-                while(tempLineDiv.firstChild) {
-                    li.appendChild(tempLineDiv.firstChild);
-                }
-                currentUl.appendChild(li);
-
-            } else if (isAnnotation && currentUl && currentUl.lastElementChild) {
-                const lastLi = currentUl.lastElementChild;
-                lastLi.appendChild(document.createElement('br'));
-                while(tempLineDiv.firstChild) {
-                    lastLi.appendChild(tempLineDiv.firstChild);
-                }
-
-            } else {
-                currentUl = null;
-                const fragment = document.createDocumentFragment();
-                 while(tempLineDiv.firstChild) {
-                    fragment.appendChild(tempLineDiv.firstChild);
-                }
-                newNodes.push(fragment);
-                newNodes.push(document.createElement('br'));
+    const replaceParagraphsWithBreaks = (cell) => {
+        let paragraphs = Array.from(cell.querySelectorAll('p'));
+        paragraphs = paragraphs.filter(p => {
+            const trimmedHtml = p.innerHTML.trim();
+            if (trimmedHtml === '' || trimmedHtml === '&nbsp;') {
+                p.remove();
+                return false;
             }
+            return true;
         });
 
-        if (newNodes.length > 0) {
-            const lastNode = newNodes[newNodes.length - 1];
-            if (lastNode.nodeType === 1 && lastNode.tagName === 'BR') {
-                newNodes.pop();
+        paragraphs.forEach((p, index) => {
+            const fragment = document.createDocumentFragment();
+            while (p.firstChild) {
+                fragment.appendChild(p.firstChild);
             }
-        }
-
-        cell.innerHTML = '';
-        newNodes.forEach(node => cell.appendChild(node));
+            if (index < paragraphs.length - 1) {
+                fragment.appendChild(document.createElement('br'));
+            }
+            p.replaceWith(fragment);
+        });
     };
 
+    
     const applyTableSemantics = (table, wClass) => {
         if (!table.parentElement || !table.parentElement.classList.contains(wClass)) {
             const wrapperDiv = document.createElement('div');
@@ -141,89 +100,64 @@ const cleanTableHtml = (htmlString, wrapperClass, ulClass) => {
             table.parentNode.insertBefore(wrapperDiv, table);
             wrapperDiv.appendChild(table);
         }
-    
+        
         const newThead = document.createElement('thead');
         const newTbody = document.createElement('tbody');
         const allRows = Array.from(table.rows);
-    
+        
         let headerRowCount = 1;
         if (allRows.length > 0 && allRows[0].cells.length > 0) {
-            const firstRowCells = Array.from(allRows[0].cells).filter(cell => cell.closest('table') === table);
-            if (firstRowCells.length > 0) {
-                const maxRowspan = Math.max(...firstRowCells.map(cell => parseInt(cell.getAttribute('rowspan')) || 1));
-                headerRowCount = Math.min(maxRowspan, allRows.length);
-            }
+            const firstRowCells = Array.from(allRows[0].cells);
+            const maxRowspan = Math.max(...firstRowCells.map(cell => parseInt(cell.getAttribute('rowspan')) || 1));
+            headerRowCount = Math.min(maxRowspan, allRows.length);
         }
-    
+
         allRows.forEach((row, index) => {
-            if (row.closest('table') === table) {
-                const isHeaderRow = index < headerRowCount;
-    
-                if (isHeaderRow) {
-                    row.querySelectorAll('td').forEach(td => {
-                        // ✨ [핵심 수정 1] td 내부에 table이 없는 경우에만 th로 변환
-                        if (td.closest('table') === table && !td.querySelector('table')) {
-                            const th = document.createElement('th');
-                            
-                            // ✨ [핵심 수정 2] innerHTML 대신 자식 노드를 직접 이동 (더 안정적)
-                            while (td.firstChild) {
-                                th.appendChild(td.firstChild);
-                            }
-                            
-                            for (const attr of td.attributes) {
-                                th.setAttribute(attr.name, attr.value);
-                            }
-                            td.replaceWith(th);
-                        }
-                    });
-                    newThead.appendChild(row);
-                } else {
-                    newTbody.appendChild(row);
-                }
+            if (index < headerRowCount) {
+                row.querySelectorAll('td').forEach(td => {
+                    const th = document.createElement('th');
+                    th.innerHTML = td.innerHTML;
+                    for (const attr of td.attributes) { th.setAttribute(attr.name, attr.value); }
+                    td.replaceWith(th);
+                });
+                newThead.appendChild(row);
+            } else {
+                newTbody.appendChild(row);
             }
         });
-    
-        table.querySelectorAll('thead, tbody, caption').forEach(el => {
-            if (el.parentElement === table) {
-                el.remove();
-            }
-        });
-    
+        
+        while (table.firstChild) {
+            table.removeChild(table.firstChild);
+        }
+        
         if (newThead.rows.length > 0) {
             const caption = document.createElement('caption');
             const headerTexts = Array.from(newThead.querySelectorAll('th')).map(th => th.textContent.trim());
             caption.textContent = `${headerTexts.join(', ')}의 정보(을)를 포함한 표입니다.`;
             table.appendChild(caption);
         }
-    
+
         if (newThead.childNodes.length > 0) table.appendChild(newThead);
         if (newTbody.childNodes.length > 0) table.appendChild(newTbody);
     };
 
     const tablesToProcess = [tableElement, ...Array.from(tableElement.querySelectorAll('table'))];
     tablesToProcess.reverse();
-
+    
     tablesToProcess.forEach(table => {
-        const rows = Array.from(table.rows);
-        rows.forEach(row => {
-            if (row.closest('table') === table) {
-                const cells = Array.from(row.cells);
-                cells.forEach((cell, cellIndex) => {
-                    if (cellIndex > 0) {
-                        if (cell.querySelector('table')) return;
-                        processCellContent(cell, ulClass);
-                    }
-                });
+        const cells = table.querySelectorAll('th, td');
+        cells.forEach(cell => {
+            if (cell.closest('table') === table) {
+                replaceParagraphsWithBreaks(cell);
             }
         });
-
         applyTableSemantics(table, wrapperClass);
     });
-
+    
     return tableElement.parentElement ? tableElement.parentElement.outerHTML : tableElement.outerHTML;
 };
 
-const WysiwygTableEditor = ({ rawContent, onContentChange, customWrapperClass, customUlClass }) => {
+const WysiwygTableEditor = ({ rawContent, onContentChange, customWrapperClass }) => {
     const editorRef = useRef(null);
 
     useEffect(() => {
@@ -236,13 +170,13 @@ const WysiwygTableEditor = ({ rawContent, onContentChange, customWrapperClass, c
         e.preventDefault();
         const pastedHtml = e.clipboardData.getData('text/html');
         if (pastedHtml) {
-            const cleanedHtml = cleanTableHtml(pastedHtml, customWrapperClass, customUlClass); 
+            const cleanedHtml = cleanTableHtml(pastedHtml, customWrapperClass); 
             onContentChange(cleanedHtml);
         } else {
             const pastedText = e.clipboardData.getData('text/plain');
             document.execCommand('insertText', false, pastedText);
         }
-    }, [onContentChange, customWrapperClass, customUlClass]); 
+    }, [onContentChange, customWrapperClass]); 
 
     const handleInput = useCallback((e) => {
         const newContent = e.currentTarget.innerHTML;
@@ -262,10 +196,10 @@ const WysiwygTableEditor = ({ rawContent, onContentChange, customWrapperClass, c
     );
 };
 
+
 export default function TableEditorApp() {
     const [tableHtml, setTableHtml] = useState('');
     const [wrapperClassName, setWrapperClassName] = useState('tbl_st1');
-    const [ulClassName, setUlClassName] = useState('list_st1 al');
     const [contentShow, setContentShow] = useState(false);
     const [formattedHtml, setFormattedHtml] = useState('');
     const [copyButtonText, setCopyButtonText] = useState('복사');
@@ -303,7 +237,7 @@ export default function TableEditorApp() {
             }
         };
     }, [tableHtml]);
-    
+
     const handleCopy = useCallback(() => {
         if (!tableHtml) {
             alert('복사할 내용이 없습니다.');
@@ -321,7 +255,11 @@ export default function TableEditorApp() {
     const handleClear = useCallback(() => {
         setTableHtml('');
     }, []);
-    
+
+    const handleShow = () => {
+        setContentShow(!contentShow);
+    }
+
     const handleRemoveWrapper = useCallback(() => {
         if (!tableHtml) {
             alert('제거할 내용이 없습니다.');
@@ -345,67 +283,47 @@ export default function TableEditorApp() {
                         if (cls) table.classList.add(cls);
                     });
                 }
+
                 parent.replaceWith(...parent.childNodes);
             }
         }
+
         setTableHtml(tempDiv.innerHTML);
+
     }, [tableHtml]);
 
-    const handleShow = () => {
-        setContentShow(!contentShow);
-    }
 
     return (
         <div className={subContent}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between',gap: '0.5rem', flexWrap:'wrap' }}>
-                    <h4 className="tit2">테이블 에디터</h4>
-                     <div style={{ display: 'flex', gap: '0.5rem' }}>
-                    <button onClick={handleShow} className="btn_grL">미리 보기</button>
-                    <button onClick={handleClear} className="btn_red">내용 삭제</button>
-                    </div>
-                </div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'start',gap: '0.5rem 1.5rem', flexWrap:'wrap' }}>
-                
-    
-                <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-                    <label htmlFor="wrapperClassInput" style={{ flexShrink: 0 }}><h4 className="titT2">테이블 클래스</h4></label>
-                    <input
-                        id="wrapperClassInput"
-                        type="text"
-                        value={wrapperClassName}
-                        onChange={(e) => setWrapperClassName(e.target.value)}
-                        placeholder="예: tbl_st1"
-                        style={{ width: '100%', padding: '0.25rem', border: '1px solid #ccc', borderRadius: '4px',  }}
-                    />
-                </div>
-                  <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-                <label htmlFor="ulClassInput" style={{ flexShrink: 0 }}><h4 className="titT2">ul 클래스</h4></label>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <h4 className="tit2">테이블 에디터</h4>
+                <button onClick={handleClear} className="btn_red">내용 삭제</button>
+            </div>
+
+            <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <label htmlFor="wrapperClassInput" style={{ flexShrink: 0 }}>테이블 클래스:</label>
                 <input
-                    id="ulClassInput"
+                    id="wrapperClassInput"
                     type="text"
-                    value={ulClassName}
-                    onChange={(e) => setUlClassName(e.target.value)}
-                    placeholder="예: list_st1 al"
+                    value={wrapperClassName}
+                    onChange={(e) => setWrapperClassName(e.target.value)}
+                    placeholder="예: tbl_st1"
                     style={{ width: '100%', padding: '0.25rem', border: '1px solid #ccc', borderRadius: '4px' }}
                 />
             </div>
-            </div>
-           
-
-            <p className="bu_ment">아래 입력란에 엑셀,한글, 웹페이지 등의 표를 붙여넣으세요.</p>
-            <p className="bu_ment mgb10">ul.list1 하위 2 ~ 3 구조는 수정해주셔야합니다.</p>
+            
+            <p className="bu_ment mgb10">아래 입력란에 엑셀,한글, 웹페이지 등의 표를 붙여넣으세요.</p>
             <WysiwygTableEditor
                 rawContent={tableHtml}
                 onContentChange={setTableHtml}
                 customWrapperClass={wrapperClassName}
-                customUlClass={ulClassName}
             />
             
-            <div className="mgt20" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem',flexWrap:'wrap' }}>
+            <div className="mgt20" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
                 <h4 className="tit2" style={{marginBottom:"0"}}>HTML 마크업</h4>
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
                     <button onClick={handleRemoveWrapper} className="btn_red">
-                        상위 div 삭제(충남)
+                       상위 div 삭제 (충남용)
                     </button>
                     <button onClick={handleCopy} className="btn_Dbl">
                         {copyButtonText}
@@ -417,16 +335,15 @@ export default function TableEditorApp() {
                 {formattedHtml}
             </SyntaxHighlighter>
 
+            <div className="mgt20" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <h4 className="tit2">렌더링 결과</h4>
+                <button onClick={handleShow} className="btn_red">내용 보기</button>
+            </div>
             {contentShow === true ? (
-                <div className={modal.modalPopWrap2}>
-                    <div className={modal.modalPop2}>
-                        <div className={modal.contWrap}>
-                              <div className={modal.back}><button className="btn_gr" onClick={() => setContentShow(false)}>닫기</button></div>
-                            <div style={{overflowX:"auto"}} dangerouslySetInnerHTML={{ __html: tableHtml }} />
-                        </div>
-                    </div>
-                </div>
+                <div dangerouslySetInnerHTML={{ __html: tableHtml }} />
             ) : ""} 
         </div>
     );
 }
+
+

@@ -275,7 +275,7 @@ input.mx-w30{ width:100%; max-width:30rem; }
 input.mx-w40{ width:100%; max-width:40rem; }
 
 /* 테이블 에디터 */
-.tableArea {position: relative; width: 100%; padding: 0 .5rem; font-size: 1rem;line-height: 1.5rem;overflow-y: auto;}
+.tableArea {position: relative; width: 100%; padding: 0 .5rem; font-size: 0.8rem;line-height: 1.2rem;overflow-y: auto;}
 .tableArea:empty::before {position: absolute;top:50%;left:50%;transform: translate(-50%, -50%);content: attr(data-placeholder); color: #111; pointer-events: none; display: inline-block; text-align: center;}
 
 /* 들여쓰기 */
@@ -855,6 +855,8 @@ br + a[class^="btn_"] { margin-top:0.5rem; }
   /* 기본 박스 : 검색 */
   [class^="box_st"] .search_wrap  input { width:100%; float:none; }
   [class^="box_st"] .search_wrap  .btn_style3 { width:100%; float:none; margin:.5rem 0 0; }
+
+  div[class*='tbl_st'] {overflow-x: auto;}
 
   table {max-width: 1024px;}
 }
