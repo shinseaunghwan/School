@@ -22,53 +22,66 @@ const cleanTableHtml = (htmlString, wrapperClass, ulClass) => {
         return '';
     }
 
-    const removeComments = (element) => {
-        for (let i = element.childNodes.length - 1; i >= 0; i--) {
-            const node = element.childNodes[i];
-            if (node.nodeType === 8) {
-                node.parentNode.removeChild(node);
-            } else if (node.nodeType === 1) {
-                removeComments(node);
-            }
-        }
-    };
-    removeComments(tableElement);
-
     const allowedTags = new Set(['table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'colgroup', 'col', 'a', 'br', 'p', 'ul', 'li']);
     const allowedAttributes = new Set(['rowspan', 'colspan', 'href']);
 
-    const allElements = tableElement.querySelectorAll('*');
-    for (let i = allElements.length - 1; i >= 0; i--) {
-        const el = allElements[i];
-        const tagName = el.tagName.toLowerCase();
+    // ✨ 최적화된 클리닝 함수 (로직 보강)
+    const traverseAndClean = (element) => {
+        // 1. 자식 노드부터 재귀적으로 정리 (후위 순회 방식)
+        for (let i = element.childNodes.length - 1; i >= 0; i--) {
+            const node = element.childNodes[i];
+
+            // 주석 노드 제거
+            if (node.nodeType === 8) { // Node.COMMENT_NODE
+                node.remove();
+                continue;
+            }
+
+            // 엘리먼트 노드인 경우 재귀 호출
+            if (node.nodeType === 1) { // Node.ELEMENT_NODE
+                traverseAndClean(node);
+            }
+        }
+        
+        // 2. 자식 노드 정리가 끝난 후, 현재 엘리먼트 자체를 정리
+        // (최상위 table 태그 자체도 이 로직을 통해 처리됨)
+        const tagName = element.tagName.toLowerCase();
         const tagPrefix = tagName.split(':')[0];
 
+        // MS Office 관련 태그 제거
         if (['v', 'w', 'o'].includes(tagPrefix)) {
-            el.parentNode.removeChild(el);
-            continue;
+            element.parentNode.removeChild(element);
+            return;
         }
 
+        // 허용되지 않은 태그는 제거하고 자식 노드만 남김 (unwrap)
         if (!allowedTags.has(tagName)) {
-            el.replaceWith(...el.childNodes);
-            continue;
+            element.replaceWith(...element.childNodes);
+            return;
         }
 
-        const attributes = Array.from(el.attributes);
+        // 허용되지 않은 속성 제거 (border, style, width, cellpadding 등)
+        const attributes = Array.from(element.attributes);
         attributes.forEach(attr => {
             if (!allowedAttributes.has(attr.name.toLowerCase())) {
-                el.removeAttribute(attr.name);
+                element.removeAttribute(attr.name);
             }
         });
-    }
-
-    const tableAttributes = Array.from(tableElement.attributes);
-    tableAttributes.forEach(attr => {
-        if (!allowedAttributes.has(attr.name.toLowerCase())) {
-            tableElement.removeAttribute(attr.name);
-        }
-    });
-
-    const processCellContent = (cell, currentUlClass) => {
+    };
+    
+    // 클리닝 함수 실행
+    traverseAndClean(tableElement);
+    
+    const cleanWrapperCell = (cell) => {
+        const emptyParagraphs = cell.querySelectorAll('p');
+        emptyParagraphs.forEach(p => {
+            if (p.innerHTML.trim() === '' || p.innerHTML.trim() === '&nbsp;') {
+                p.remove();
+            }
+        });
+    };
+    
+    const processCellContent = (cell, currentUlClass, createLists = true) => { 
         const listLikeRegex = /^\s*(?:(?:[가-힣]|\d{1,3})[.)]|[-•*·□■△▲○●◎◇◆㉮-㉻㉠-㉭ⓐ-ⓩ①-⑮Ⅰ-Ⅻⅰ-ⅻ])/;
         const annotationRegex = /^\s*※/;
         
@@ -88,8 +101,8 @@ const cleanTableHtml = (htmlString, wrapperClass, ulClass) => {
             tempLineDiv.innerHTML = lineHtml;
             const text = tempLineDiv.textContent || '';
 
-            const isListItem = listLikeRegex.test(text);
-            const isAnnotation = annotationRegex.test(text);
+            const isListItem = createLists && listLikeRegex.test(text);
+            const isAnnotation = createLists && annotationRegex.test(text);
 
             if (isListItem) {
                 if (!currentUl) {
@@ -161,11 +174,9 @@ const cleanTableHtml = (htmlString, wrapperClass, ulClass) => {
     
                 if (isHeaderRow) {
                     row.querySelectorAll('td').forEach(td => {
-                        // ✨ [핵심 수정 1] td 내부에 table이 없는 경우에만 th로 변환
                         if (td.closest('table') === table && !td.querySelector('table')) {
                             const th = document.createElement('th');
                             
-                            // ✨ [핵심 수정 2] innerHTML 대신 자식 노드를 직접 이동 (더 안정적)
                             while (td.firstChild) {
                                 th.appendChild(td.firstChild);
                             }
@@ -209,9 +220,14 @@ const cleanTableHtml = (htmlString, wrapperClass, ulClass) => {
             if (row.closest('table') === table) {
                 const cells = Array.from(row.cells);
                 cells.forEach((cell, cellIndex) => {
-                    if (cellIndex > 0) {
-                        if (cell.querySelector('table')) return;
-                        processCellContent(cell, ulClass);
+                    if (cell.querySelector('table')) {
+                        cleanWrapperCell(cell);
+                    } else {
+                        if (cellIndex > 0) {
+                            processCellContent(cell, ulClass, true);
+                        } else {
+                            processCellContent(cell, ulClass, false);
+                        }
                     }
                 });
             }
